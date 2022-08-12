@@ -98,7 +98,7 @@ git commit -m "message" -m "description"
 
 <details markdown="1"><summary>First you will need to have access to the repository</summary>
 
-This can be done via SSH keys or via [Gitcredential manager]({% post_url 2021-11-14-git-credential-manager %})
+This can be done via SSH keys or via [Gitcredential manager]({% post_url git-credential-manager %})
 
 1.  Create SSH keys and add the .pub (public part) of the key on github/your git provider
     
