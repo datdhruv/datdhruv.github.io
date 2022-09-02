@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>git on datDhruv's Blog</title><link>http://datdhruv.me/categories/git/</link><description>Recent content in git on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 14 Nov 2021 12:00:00 +0400</lastBuildDate><atom:link href="http://datdhruv.me/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git</title><link>http://datdhruv.me/p/git/</link><pubDate>Thu, 05 Mar 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/git/</guid><description>&lt;p>Some Conventions&lt;/p>
+&lt;p>repository(repo) -&amp;gt; basically just a folder, which has all your code in it&lt;/p>
+&lt;p>local repo -&amp;gt; The folder that is On your computer&lt;/p>
+&lt;p>remote repo -&amp;gt; The folder that is on some git server (or on a server, basically not on your computer)&lt;/p>
+&lt;p>origin is the git repo, master is the branch of the repo you want to push to.&lt;/p>
+&lt;p>Before we proceed, &lt;strong>please also check the help pages and the man pages for the topics, they go beyond these basics and explaing in more depth&lt;/strong>&lt;/p>
+&lt;h2 id="to-initialize-a-local-repository">To initialize a local repository&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git init &amp;lt;directory&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>if you create a directory on a remote and initialize with &lt;code>git init .&lt;/code> and then try commiting to it, it wont happen!&lt;/p>
+&lt;p>on the remote you need to &lt;code>git checkout -b tmp&lt;/code> and then push from your machine(local) to the remote&lt;/p>
+&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked" target="_blank" rel="noopener"
+>here is a stackoverflow page&lt;/a>&lt;/p>
+&lt;p>I just had the same error while I began learning Git. Some of the other answers are clearly not for someone new to Git!&lt;/p>
+&lt;p>(I am going to use non technical terms to get the idea across.) Anyway, what is happening is that you have two repositories, one is the original you first made, and the other the work one you just made.&lt;/p>
+&lt;p>Right now you are in your work repository and are using the &amp;ldquo;master&amp;rdquo; branch. But you also happen to be &amp;ldquo;logged in&amp;rdquo; in your original repository to the same &amp;ldquo;master&amp;rdquo; branch. Now since you&amp;rsquo;re &amp;ldquo;logged in&amp;rdquo; in the original, Git fears you might mess up because you might be working on the original and screw things up. So you need to return to the original repository and do a &amp;ldquo;git checkout someotherbranch&amp;rdquo;, and now you can push with no problems.&lt;/p>
+&lt;p>I hope this helps.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="to-add-the-recent-changes-to-the-tracker-list">To add the recent changes to the tracker list&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># adding only a single file
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add &amp;lt;filename&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># OR add an entire directory
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add &amp;lt;directory&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="checking-the-things-in-the-tracker-list">Checking the things in the tracker list&lt;/h4>
+&lt;p>this is done with the status command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git status
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># example
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># On branch master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Your branch is up to date with &amp;#39;origin/master&amp;#39;.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Changes to be committed:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># (use &amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34; to unstage)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># new file: About-git.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="commiting-the-changes-in-the-tracker-list">Commiting the changes in the tracker list&lt;/h2>
+&lt;!-- raw HTML omitted -->
+&lt;h4 id="for-global-config">for global config&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git config --global user.name &lt;span class="s2">&amp;#34;firstname lastname&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git config --global user.email &lt;span class="s2">&amp;#34;email_id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="you-can-also-set-local-directory-related-config">you can also set local directory related config&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git config user.name &lt;span class="s2">&amp;#34;firstname lastname&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git config user.email &lt;span class="s2">&amp;#34;email_id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>While commiting, a message is absolutely required. Another -m can be used to provide some description about the message&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git commit -m &amp;#34;message&amp;#34; -m &amp;#34;description&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># git commit -m &amp;#34;add stuff to about git&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># [master cd5c47a] add stuff to about git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 1 file changed, 126 insertions(+)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># create mode 100644 About-git.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="making-changes-to-a-remote-repository">Making changes to a remote repository&lt;/h2>
+&lt;!-- raw HTML omitted -->
+&lt;p>This can be done via SSH keys or via [Gitcredential manager]({% post_url git-credential-manager %})&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Create SSH keys and add the .pub (public part) of the key on github/your git provider&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh-keygen -t rsa -b &lt;span class="m">4096&lt;/span> -C &lt;span class="s2">&amp;#34;your_email@example.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Ensure ssh-agent is running&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># start the ssh-agent in the background&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="nb">eval&lt;/span> &lt;span class="k">$(&lt;/span>ssh-agent -s&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; Agent pid &lt;span class="m">59566&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>or on Windows powershell&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">Get-Service&lt;/span> &lt;span class="n">-Name&lt;/span> &lt;span class="nb">ssh-agent&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="nb">Set-Service&lt;/span> &lt;span class="n">-StartupType&lt;/span> &lt;span class="n">Manual&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">Start-Service&lt;/span> &lt;span class="nb">ssh-agent&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Add your SSH private key to the ssh-agent. If you created your key with a different name, or if you are adding an existing key that has a different name, replace�&lt;em>id_rsa&lt;/em>�in the command with the name of your private key file.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ ssh-add ~/.ssh/id_rsa
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Add the ssh key to your git provider&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="setting-up-a-git-server">setting up a git server&lt;/h3>
+&lt;p>Most of it is the same, you need to initialize a bare repository, to which you commit to and pull from on the &lt;em>server&lt;/em>. And ofc add ssh public key of your computer to the serve.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># on the server initialize a bare repository with .git extention as an conventi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir my_repo.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my_repo.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init --bare
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>Next you need to set up the repo in your git project using the &lt;code>git remote&lt;/code> sub-command.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git remote add &lt;span class="o">[&lt;/span>-t &amp;lt;branch&amp;gt;&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>-m &amp;lt;master&amp;gt;&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>-f&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>--&lt;span class="o">[&lt;/span>no-&lt;span class="o">]&lt;/span>tags&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>--mirror&lt;span class="o">=(&lt;/span>fetch&lt;span class="p">|&lt;/span>push&lt;span class="o">)]&lt;/span> &amp;lt;name&amp;gt; &amp;lt;url&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># or update and existing url with&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git remote set-url &lt;span class="o">[&lt;/span>--push&lt;span class="o">]&lt;/span> &amp;lt;name&amp;gt; &amp;lt;newurl&amp;gt; &lt;span class="o">[&lt;/span>&amp;lt;oldurl&amp;gt;&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then you can use the push command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git push origin master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># origin is the git repo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># master is the branch of the repo you want to push to&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="getting-changes-from-remote-repository">Getting changes from remote repository&lt;/h3>
+&lt;p>To do this you use the pull command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git pull origin master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="tracking-changes-in-a-local-repo">Tracking changes in a local repo&lt;/h2>
+&lt;p>use the git log command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git log
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>this gives the recent changes along with the unique hashcodes of each change&lt;/p>
+&lt;h2 id="undoing-changes">Undoing changes&lt;/h2>
+&lt;p>we can undo the most recent changes using the git reset command&lt;/p>
+&lt;p>reset without any argument resets only changes in the tracker list(git add stuff), to undo commits, you need to specify HEAD~a_num. HEAD is a pointer to the most recent change. HEAD~1 -&amp;gt; HEAD -1 = the change before the most recent change&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># for tracker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git reset
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># for commits
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git reset HEAD~1 # or HEAD~a_num
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>To undo Remote commits:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git reset HEAD~1 # remove commit locally
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push origin +HEAD # force-push the new HEAD commit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="branching">Branching&lt;/h2>
+&lt;p>to change to a different branch of the repo, use the checkout -b command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git checkout -b &amp;lt;branch-name&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># example
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># git checkout -b master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>to merge the changes of the two branches, here you don&amp;rsquo;t have to specify the branch you want to merge INTO because it is usually the branch you are currently working on&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git merge &amp;lt;branch name&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>to push a branch onto a remote git server:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git push --set-upstream origin branch_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -u origin branch_name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="managing-merge-conflicts">Managing merge conflicts&lt;/h3>
+&lt;p>&lt;a class="link" href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts" target="_blank" rel="noopener"
+>chekck this out&lt;/a>&lt;/p>
+&lt;p>use &lt;code>git stash&lt;/code> command&lt;/p>
+&lt;h3 id="to-delete-branches">To delete branches&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># To delete branch locally:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -d branch_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># To delete branch remotely:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push origin/remote_ref --delete branch_name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="git-tags">Git tags&lt;/h2>
+&lt;p>tags are non-branch save points&lt;/p>
+&lt;p>to create a tag, just do &lt;code>git tag tag-name&lt;/code>&lt;/p>
+&lt;p>you can also checkout git tags using the checkout command&lt;/p>
+&lt;h2 id="git-stash">Git stash&lt;/h2>
+&lt;p>What &lt;code>git stash&lt;/code> does is, it will see all the unadded, uncommited changes to files, with respect to HEAD (and possibly other branches if checked out into them) and store it in a tree.&lt;/p>
+&lt;p>Then it will revert the directory to the clean working state like HEAD&lt;/p>
+&lt;p>Use &lt;code>git stash pop&lt;/code> or &lt;code>git stash apply&lt;/code> to apply these previously unsaved changes again, after, for example pulling the latest version of the repo. Then the unsaved changes and work can be saved back to the updated repo.&lt;/p>
+&lt;p>If the changes have outlived their purpose, you can &lt;code>git stash drop&lt;/code> the changes&lt;/p>
+&lt;p>&lt;code>git stash list&lt;/code> to list stashes and &lt;code>git stash show&lt;/code> to show changes&lt;/p>
+&lt;h2 id="deleting-the-history-of-a-branch">Deleting the history of a branch&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git checkout --orphan tmp-main &lt;span class="c1"># create a temporary branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add -A &lt;span class="c1"># Add all files and commit them&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s1">&amp;#39;Add files&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -D main &lt;span class="c1"># Deletes the master branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -m main &lt;span class="c1"># Rename the current branch to master&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -f origin main &lt;span class="c1"># Force push master branch to Git server&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="git-log-git-show--git-diff">Git log, Git show &amp;amp; Git Diff&lt;/h2>
+&lt;p>git log shows you a history of all the commits in a branch.&lt;/p>
+&lt;p>With the &lt;code>git log --stat&lt;/code> command you can see what files were changed and a breif on what the changes were as well.&lt;/p>
+&lt;p>The &lt;code>git show&lt;/code> command will give you even more details telling you exactly what the changes were.&lt;/p>
+&lt;p>The &lt;code>git diff&lt;/code> command will give you the exact changes &lt;strong>between two&lt;/strong> commit hashes&lt;/p>
+&lt;h3 id="getting-changes-in-a-remote-repo">Getting changes in a remote repo&lt;/h3>
+&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Forget git history</title><link>http://datdhruv.me/p/forget-git-history/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/forget-git-history/</guid><description>&lt;h1 id="to-remove-the-git-history">To remove the git history&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git checkout --orphan tmp &lt;span class="c1"># create a temporary branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add -A &lt;span class="c1"># Add all files and commit them&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s1">&amp;#39;Add files&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -D main &lt;span class="c1"># Deletes the master branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -m main &lt;span class="c1"># Rename the current branch to master&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -f origin main &lt;span class="c1"># Force push master branch to Git server&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Git Credential Manager</title><link>http://datdhruv.me/p/git-credential-manager/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/git-credential-manager/</guid><description>&lt;p>Github removed the https login with username password to push/pull code.&lt;/p>
+&lt;p>Now you have to generate a personal access token and use that token instead of the password for those operations.&lt;/p>
+&lt;p>This brings us to git credential manger, you can save the username and password (or the personal access token) with git for https logins, so that you dont have to input it again and again.&lt;/p>
+&lt;p>You can do this with&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git config credential.helper store
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># or&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git config --global credential.helper store
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git pull
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The credentials are then stored in the &lt;code>.git-crendentials&lt;/code> file in either the home directory or the repo directory.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cli on datDhruv's Blog</title><link>http://datdhruv.me/categories/cli/</link><description>Recent content in cli on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Mar 2022 12:16:00 +0400</lastBuildDate><atom:link href="http://datdhruv.me/categories/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting a command from Shell History, Fast</title><link>http://datdhruv.me/p/getting-a-command-from-shell-history-fast/</link><pubDate>Thu, 10 Mar 2022 12:16:00 +0400</pubDate><guid>http://datdhruv.me/p/getting-a-command-from-shell-history-fast/</guid><description>&lt;p>To quickly search through, or re-run one of the previously run command, especially if it is a long one, instead of searching the &lt;code>.hist&lt;/code> file, you can just type &lt;code>ctrl r&lt;/code> and that will bring up a reverse/back search prompt where it will try to autocomplete the previously run command.&lt;/p>
+&lt;p>The command search from most recently used first, so if the first suggestion is not the command you want, you can keep going back and searching by repeatedly typing &lt;code>ctrl r&lt;/code>&lt;/p></description></item><item><title>Onefetch</title><link>http://datdhruv.me/p/onefetch/</link><pubDate>Wed, 19 Jan 2022 00:52:00 +0400</pubDate><guid>http://datdhruv.me/p/onefetch/</guid><description>&lt;p>Onefetch is a command-line Git information tool written in Rust that displays project information and code statistics for a local Git repository directly on your terminal. The tool is completely offline - no network access is required.&lt;/p>
+&lt;p>By default, the repo&amp;rsquo;s information is displayed alongside the dominant language&amp;rsquo;s logo, but you can further configure onefetch to instead use an image - on supported terminals -, a text input or nothing at all.&lt;/p>
+&lt;p>It automatically detects open source licenses from texts and provides the user with valuable information like code distribution, pending changes, number of dependencies (by package manager), top contributors (by number of commits), size on disk, creation date, LOC (lines of code), etc.&lt;/p>
+&lt;p>Onefetch can be configured via command-line flags to display exactly what you want, the way you want it to: you can customize ASCII/Text formatting, disable info lines, ignore files &amp;amp; directories, output in multiple formats (Json, Yaml), etc.&lt;/p>
+&lt;p>You can check out this amazing commandline tool &lt;a class="link" href="https://github.com/o2sh/onefetch" target="_blank" rel="noopener"
+>here&lt;/a>&lt;/p></description></item><item><title>ZSH Shenanigans</title><link>http://datdhruv.me/p/zsh-shenanigans/</link><pubDate>Wed, 05 Jan 2022 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/zsh-shenanigans/</guid><description>&lt;h2 id="aliases">Aliases&lt;/h2>
+&lt;h4 id="python-aliases">Python Aliases&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">pip&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;python3 -m pip&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">python&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">py&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="ls-alias">ls Alias&lt;/h4>
+&lt;p>Because ls does not automagically add color&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">ls&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;ls --color&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="prompt-customization">Prompt customization&lt;/h2>
+&lt;p>checkout the &lt;a class="link" href="https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Prompt-Expansion" target="_blank" rel="noopener"
+>sourcefile&lt;/a> for more, here I am going to detail the customization that I add.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PROMPT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">$&amp;#39;%F{green}%B%n%b%f %F{111}%3~%f %(?.%F{green}\U279c%f.%F{009}\U279c%f) &amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>$ : Required for unicode parsing&lt;/li>
+&lt;li>%F&amp;hellip;.%f is for setting Foreground colors,&lt;/li>
+&lt;li>colors specified in {color/color_code} format&lt;/li>
+&lt;li>%B&amp;hellip;.%b for bold text&lt;/li>
+&lt;li>%n for username&lt;/li>
+&lt;li>%m for machine name (condensed)&lt;/li>
+&lt;li>%~ for pwd, but with $HOME prefix,&lt;/li>
+&lt;li>3 for the number of parent dirs to show&lt;/li>
+&lt;li>alternatively use %d or %/ for full paths&lt;/li>
+&lt;li>\U0000 for unicode&lt;/li>
+&lt;li>%(?.if_reu\turn_code_istrue.if_reuturn_code_isfalse)&lt;/li>
+&lt;li>Next we have colorized the output for each case (true/false)&lt;/li>
+&lt;li>009 is a brighter, non panicy version of red&lt;/li>
+&lt;/ul>
+&lt;h2 id="you-can-invoke-the-new-user-install-again-by-running">You can invoke the new user install again by running&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">autoload zsh-newuser-install &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> zsh-newuser-install -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This will add some autocomplete magic and let you set options for history file etc.&lt;/p></description></item><item><title>Download files with curl</title><link>http://datdhruv.me/p/download-files-with-curl/</link><pubDate>Sun, 26 Dec 2021 20:48:00 +0400</pubDate><guid>http://datdhruv.me/p/download-files-with-curl/</guid><description>&lt;p>You can download files with curl, just like with wget, using the flag &lt;code>-O&lt;/code>&lt;/p>
+&lt;p>The capital &lt;code>-O&lt;/code> outputs the file name to be as the same name as the one on the server, but you can also use &lt;code>-o&lt;/code> (small o), to name the files as you want, like &lt;code>curl -o filename link-to-file&lt;/code>&lt;/p>
+&lt;p>These flags are important, because otherwise, curl will dump the output to stdout.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,1945 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>datDhruv's Blog</title><link>http://datdhruv.me/</link><description>Recent content on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 14 Aug 2022 22:20:00 +0400</lastBuildDate><atom:link href="http://datdhruv.me/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>http://datdhruv.me/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+&lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
+&lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
+&lt;p>This was an example of local port forwarding.&lt;/p>
+&lt;p>You can go the other way round as well, having a website run on &lt;code>computer-B:8080&lt;/code> and tunnel it to the Computer A. This is called remote port forwarding.&lt;/p>
+&lt;h2 id="a-little-more-explanation">A little more Explanation&lt;/h2>
+&lt;p>Let us consider the &amp;ldquo;tunnel&amp;rdquo;.&lt;/p>
+&lt;p>The tunnel has a start and an end and the traffic is tunneled from start to end.&lt;/p>
+&lt;p>When the tunnel ends at our local Machine host, it&amp;rsquo;s called a local port forward (Tunnel ends at Local port) whereas when the tunnel starts at local port &amp;amp; ends at the remote port it&amp;rsquo;s called remote port forwarding&lt;/p>
+&lt;hr>
+&lt;p>The first IP is for specifying access.&lt;/p>
+&lt;p>Who has access? &lt;code>localhost&lt;/code> or anyone on the network?&lt;/p>
+&lt;p>While in local port forwarding, you can have a setup wherein only you, on your own machine can access this website. There can be another arrangement wherein you can allow others on your network to access the tunnel/local port forward. In this situation they will access it via &lt;code>yourip:forward-binded-port&lt;/code>&lt;/p>
+&lt;p>Same for remote. If an ip is specified then only access to remote tunnel. No other ip on the network can access this IP address.&lt;/p>
+&lt;hr>
+&lt;p>When you use the -L flag, you can &lt;strong>bind&lt;/strong> the remote port to the local port and listen to incoming connections on that port&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">-L &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port:host:hostport
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-L &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port:remote_socket
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-L local_socket:host:hostport
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-L local_socket:remote_socket
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Specifies that connections to the given TCP port or Unix socket on the local (client) host are to be forwarded to the given host and port, or Unix socket, on the remote side. &lt;strong>This works by allocating a socket to listen to either a TCP port on the local side, optionally bound to the specified bind_address, or to a Unix socket.&lt;/strong> Whenever a connection is made to the local port or socket, the connection is forwarded over the secure channel, and a connection is made to either host port hostport, or the Unix socket remote_socket, from the remote machine.&lt;/p>
+&lt;p>Port forwardings can also be specified in the configuration file. Only the superuser can forward privileged ports. IPv6 addresses can be specified by enclosing the address in square brackets.&lt;/p>
+&lt;p>By default, the local port is bound in accordance with the GatewayPorts setting. However, an explicit bind_address may be used to bind the connection to a specific address. The bind_address of &lt;code>localhost&lt;/code> indicates that the listening port be bound for local use only, while an empty address or &lt;code>*&lt;/code> indicates that the port should be available from all interfaces.&lt;/p>
+&lt;p>If remote port forwarding does not work, it is most likely because GatewayPorts is set to no in the sshd_config file.&lt;/p>
+&lt;p>Remember, in local port forwarding, A request to my computer&amp;rsquo;s port is &lt;em>forwarded&lt;/em> to a remote computer&amp;rsquo;s port and in remote port forwarding, requests to a remote computer&amp;rsquo;s port are &lt;em>forwarded&lt;/em> to my computer&amp;rsquo;s port.&lt;/p>
+&lt;p>This means that the meaning of host varies depending upon if the the port forwarding is local or remote. In local port forwarding, the host is the ssh-server. Whereas in remote port forwarding the host is the ssh-client (host is the one which &lt;em>hosts something on a port&lt;/em>)&lt;/p>
+&lt;hr>
+&lt;p>You can further forward ports through jump servers.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh -L local_socket:host:hostport user@machine1 ssh -L local_socket:host:hostport user@machine2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="forwarding-with-an-already-established-ssh-connection">Forwarding with an already established ssh connection&lt;/h2>
+&lt;p>Note: &lt;code>~&lt;/code> is the escape sequence for ssh by default. If it doesnt work immediately, you may need to press enter once and the try entering &lt;code>~&lt;/code>&lt;/p>
+&lt;p>&lt;code>~ C&lt;/code> Brings up a (local) ssh shell, wherein you can then ask for port forwarding the same way we did earlier.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">-L &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port:host:hostport
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-R &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port:host:hostport
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="further-you-can-stop-the-port-forwarding">Further you can stop the port forwarding&lt;/h2>
+&lt;p>Enter the ssh command mode, then input the forwarding command with a leading &lt;strong>K&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">-KL &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-KR &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Git</title><link>http://datdhruv.me/p/git/</link><pubDate>Thu, 05 Mar 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/git/</guid><description>&lt;p>Some Conventions&lt;/p>
+&lt;p>repository(repo) -&amp;gt; basically just a folder, which has all your code in it&lt;/p>
+&lt;p>local repo -&amp;gt; The folder that is On your computer&lt;/p>
+&lt;p>remote repo -&amp;gt; The folder that is on some git server (or on a server, basically not on your computer)&lt;/p>
+&lt;p>origin is the git repo, master is the branch of the repo you want to push to.&lt;/p>
+&lt;p>Before we proceed, &lt;strong>please also check the help pages and the man pages for the topics, they go beyond these basics and explaing in more depth&lt;/strong>&lt;/p>
+&lt;h2 id="to-initialize-a-local-repository">To initialize a local repository&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git init &amp;lt;directory&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>if you create a directory on a remote and initialize with &lt;code>git init .&lt;/code> and then try commiting to it, it wont happen!&lt;/p>
+&lt;p>on the remote you need to &lt;code>git checkout -b tmp&lt;/code> and then push from your machine(local) to the remote&lt;/p>
+&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/2816369/git-push-error-remote-rejected-master-master-branch-is-currently-checked" target="_blank" rel="noopener"
+>here is a stackoverflow page&lt;/a>&lt;/p>
+&lt;p>I just had the same error while I began learning Git. Some of the other answers are clearly not for someone new to Git!&lt;/p>
+&lt;p>(I am going to use non technical terms to get the idea across.) Anyway, what is happening is that you have two repositories, one is the original you first made, and the other the work one you just made.&lt;/p>
+&lt;p>Right now you are in your work repository and are using the &amp;ldquo;master&amp;rdquo; branch. But you also happen to be &amp;ldquo;logged in&amp;rdquo; in your original repository to the same &amp;ldquo;master&amp;rdquo; branch. Now since you&amp;rsquo;re &amp;ldquo;logged in&amp;rdquo; in the original, Git fears you might mess up because you might be working on the original and screw things up. So you need to return to the original repository and do a &amp;ldquo;git checkout someotherbranch&amp;rdquo;, and now you can push with no problems.&lt;/p>
+&lt;p>I hope this helps.&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="to-add-the-recent-changes-to-the-tracker-list">To add the recent changes to the tracker list&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># adding only a single file
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add &amp;lt;filename&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># OR add an entire directory
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add &amp;lt;directory&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="checking-the-things-in-the-tracker-list">Checking the things in the tracker list&lt;/h4>
+&lt;p>this is done with the status command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git status
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># example
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># On branch master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Your branch is up to date with &amp;#39;origin/master&amp;#39;.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Changes to be committed:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># (use &amp;#34;git restore --staged &amp;lt;file&amp;gt;...&amp;#34; to unstage)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># new file: About-git.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="commiting-the-changes-in-the-tracker-list">Commiting the changes in the tracker list&lt;/h2>
+&lt;!-- raw HTML omitted -->
+&lt;h4 id="for-global-config">for global config&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git config --global user.name &lt;span class="s2">&amp;#34;firstname lastname&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git config --global user.email &lt;span class="s2">&amp;#34;email_id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="you-can-also-set-local-directory-related-config">you can also set local directory related config&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git config user.name &lt;span class="s2">&amp;#34;firstname lastname&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git config user.email &lt;span class="s2">&amp;#34;email_id&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>While commiting, a message is absolutely required. Another -m can be used to provide some description about the message&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git commit -m &amp;#34;message&amp;#34; -m &amp;#34;description&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># git commit -m &amp;#34;add stuff to about git&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># [master cd5c47a] add stuff to about git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 1 file changed, 126 insertions(+)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># create mode 100644 About-git.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="making-changes-to-a-remote-repository">Making changes to a remote repository&lt;/h2>
+&lt;!-- raw HTML omitted -->
+&lt;p>This can be done via SSH keys or via [Gitcredential manager]({% post_url git-credential-manager %})&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Create SSH keys and add the .pub (public part) of the key on github/your git provider&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ssh-keygen -t rsa -b &lt;span class="m">4096&lt;/span> -C &lt;span class="s2">&amp;#34;your_email@example.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Ensure ssh-agent is running&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># start the ssh-agent in the background&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="nb">eval&lt;/span> &lt;span class="k">$(&lt;/span>ssh-agent -s&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&amp;gt; Agent pid &lt;span class="m">59566&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>or on Windows powershell&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-powershell" data-lang="powershell">&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">Get-Service&lt;/span> &lt;span class="n">-Name&lt;/span> &lt;span class="nb">ssh-agent&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="nb">Set-Service&lt;/span> &lt;span class="n">-StartupType&lt;/span> &lt;span class="n">Manual&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">Start-Service&lt;/span> &lt;span class="nb">ssh-agent&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Add your SSH private key to the ssh-agent. If you created your key with a different name, or if you are adding an existing key that has a different name, replace�&lt;em>id_rsa&lt;/em>�in the command with the name of your private key file.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ ssh-add ~/.ssh/id_rsa
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Add the ssh key to your git provider&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="setting-up-a-git-server">setting up a git server&lt;/h3>
+&lt;p>Most of it is the same, you need to initialize a bare repository, to which you commit to and pull from on the &lt;em>server&lt;/em>. And ofc add ssh public key of your computer to the serve.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># on the server initialize a bare repository with .git extention as an conventi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir my_repo.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> my_repo.git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init --bare
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;p>Next you need to set up the repo in your git project using the &lt;code>git remote&lt;/code> sub-command.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git remote add &lt;span class="o">[&lt;/span>-t &amp;lt;branch&amp;gt;&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>-m &amp;lt;master&amp;gt;&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>-f&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>--&lt;span class="o">[&lt;/span>no-&lt;span class="o">]&lt;/span>tags&lt;span class="o">]&lt;/span> &lt;span class="o">[&lt;/span>--mirror&lt;span class="o">=(&lt;/span>fetch&lt;span class="p">|&lt;/span>push&lt;span class="o">)]&lt;/span> &amp;lt;name&amp;gt; &amp;lt;url&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># or update and existing url with&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git remote set-url &lt;span class="o">[&lt;/span>--push&lt;span class="o">]&lt;/span> &amp;lt;name&amp;gt; &amp;lt;newurl&amp;gt; &lt;span class="o">[&lt;/span>&amp;lt;oldurl&amp;gt;&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then you can use the push command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git push origin master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># origin is the git repo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># master is the branch of the repo you want to push to&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="getting-changes-from-remote-repository">Getting changes from remote repository&lt;/h3>
+&lt;p>To do this you use the pull command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git pull origin master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="tracking-changes-in-a-local-repo">Tracking changes in a local repo&lt;/h2>
+&lt;p>use the git log command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git log
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>this gives the recent changes along with the unique hashcodes of each change&lt;/p>
+&lt;h2 id="undoing-changes">Undoing changes&lt;/h2>
+&lt;p>we can undo the most recent changes using the git reset command&lt;/p>
+&lt;p>reset without any argument resets only changes in the tracker list(git add stuff), to undo commits, you need to specify HEAD~a_num. HEAD is a pointer to the most recent change. HEAD~1 -&amp;gt; HEAD -1 = the change before the most recent change&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># for tracker
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git reset
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># for commits
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git reset HEAD~1 # or HEAD~a_num
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>To undo Remote commits:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git reset HEAD~1 # remove commit locally
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push origin +HEAD # force-push the new HEAD commit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="branching">Branching&lt;/h2>
+&lt;p>to change to a different branch of the repo, use the checkout -b command&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git checkout -b &amp;lt;branch-name&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># example
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># git checkout -b master
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>to merge the changes of the two branches, here you don&amp;rsquo;t have to specify the branch you want to merge INTO because it is usually the branch you are currently working on&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git merge &amp;lt;branch name&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>to push a branch onto a remote git server:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git push --set-upstream origin branch_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -u origin branch_name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="managing-merge-conflicts">Managing merge conflicts&lt;/h3>
+&lt;p>&lt;a class="link" href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts" target="_blank" rel="noopener"
+>chekck this out&lt;/a>&lt;/p>
+&lt;p>use &lt;code>git stash&lt;/code> command&lt;/p>
+&lt;h3 id="to-delete-branches">To delete branches&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># To delete branch locally:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -d branch_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># To delete branch remotely:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push origin/remote_ref --delete branch_name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="git-tags">Git tags&lt;/h2>
+&lt;p>tags are non-branch save points&lt;/p>
+&lt;p>to create a tag, just do &lt;code>git tag tag-name&lt;/code>&lt;/p>
+&lt;p>you can also checkout git tags using the checkout command&lt;/p>
+&lt;h2 id="git-stash">Git stash&lt;/h2>
+&lt;p>What &lt;code>git stash&lt;/code> does is, it will see all the unadded, uncommited changes to files, with respect to HEAD (and possibly other branches if checked out into them) and store it in a tree.&lt;/p>
+&lt;p>Then it will revert the directory to the clean working state like HEAD&lt;/p>
+&lt;p>Use &lt;code>git stash pop&lt;/code> or &lt;code>git stash apply&lt;/code> to apply these previously unsaved changes again, after, for example pulling the latest version of the repo. Then the unsaved changes and work can be saved back to the updated repo.&lt;/p>
+&lt;p>If the changes have outlived their purpose, you can &lt;code>git stash drop&lt;/code> the changes&lt;/p>
+&lt;p>&lt;code>git stash list&lt;/code> to list stashes and &lt;code>git stash show&lt;/code> to show changes&lt;/p>
+&lt;h2 id="deleting-the-history-of-a-branch">Deleting the history of a branch&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git checkout --orphan tmp-main &lt;span class="c1"># create a temporary branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add -A &lt;span class="c1"># Add all files and commit them&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s1">&amp;#39;Add files&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -D main &lt;span class="c1"># Deletes the master branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -m main &lt;span class="c1"># Rename the current branch to master&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -f origin main &lt;span class="c1"># Force push master branch to Git server&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="git-log-git-show--git-diff">Git log, Git show &amp;amp; Git Diff&lt;/h2>
+&lt;p>git log shows you a history of all the commits in a branch.&lt;/p>
+&lt;p>With the &lt;code>git log --stat&lt;/code> command you can see what files were changed and a breif on what the changes were as well.&lt;/p>
+&lt;p>The &lt;code>git show&lt;/code> command will give you even more details telling you exactly what the changes were.&lt;/p>
+&lt;p>The &lt;code>git diff&lt;/code> command will give you the exact changes &lt;strong>between two&lt;/strong> commit hashes&lt;/p>
+&lt;h3 id="getting-changes-in-a-remote-repo">Getting changes in a remote repo&lt;/h3>
+&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>A list of (unix) environment variables on your system</title><link>http://datdhruv.me/p/a-list-of-unix-environment-variables-on-your-system/</link><pubDate>Sun, 14 Aug 2022 22:20:00 +0400</pubDate><guid>http://datdhruv.me/p/a-list-of-unix-environment-variables-on-your-system/</guid><description>&lt;p>On Linux, man 7 environ describes a number of common environment variables, and gives references to other man pages which describe them in more detail. Equivalents exist on other systems; see for example the FreeBSD version. (Historically, Unix V7 had an equivalent in section 5; the BSDs have had this in section 7 since at least BSD4.3.)&lt;/p>
+&lt;p>In general, to look through all the man pages which mention a given environment variable, you can use man -K, which runs a full-text search in all the installed man pages’ sources, with the -w and -i options (which respectively list man pages instead of viewing them, and match the strings’ case):&lt;/p>
+&lt;p>&lt;code>man -Kiw TZ&lt;/code>&lt;/p></description></item><item><title>Getting a command from Shell History, Fast</title><link>http://datdhruv.me/p/getting-a-command-from-shell-history-fast/</link><pubDate>Thu, 10 Mar 2022 12:16:00 +0400</pubDate><guid>http://datdhruv.me/p/getting-a-command-from-shell-history-fast/</guid><description>&lt;p>To quickly search through, or re-run one of the previously run command, especially if it is a long one, instead of searching the &lt;code>.hist&lt;/code> file, you can just type &lt;code>ctrl r&lt;/code> and that will bring up a reverse/back search prompt where it will try to autocomplete the previously run command.&lt;/p>
+&lt;p>The command search from most recently used first, so if the first suggestion is not the command you want, you can keep going back and searching by repeatedly typing &lt;code>ctrl r&lt;/code>&lt;/p></description></item><item><title>Onefetch</title><link>http://datdhruv.me/p/onefetch/</link><pubDate>Wed, 19 Jan 2022 00:52:00 +0400</pubDate><guid>http://datdhruv.me/p/onefetch/</guid><description>&lt;p>Onefetch is a command-line Git information tool written in Rust that displays project information and code statistics for a local Git repository directly on your terminal. The tool is completely offline - no network access is required.&lt;/p>
+&lt;p>By default, the repo&amp;rsquo;s information is displayed alongside the dominant language&amp;rsquo;s logo, but you can further configure onefetch to instead use an image - on supported terminals -, a text input or nothing at all.&lt;/p>
+&lt;p>It automatically detects open source licenses from texts and provides the user with valuable information like code distribution, pending changes, number of dependencies (by package manager), top contributors (by number of commits), size on disk, creation date, LOC (lines of code), etc.&lt;/p>
+&lt;p>Onefetch can be configured via command-line flags to display exactly what you want, the way you want it to: you can customize ASCII/Text formatting, disable info lines, ignore files &amp;amp; directories, output in multiple formats (Json, Yaml), etc.&lt;/p>
+&lt;p>You can check out this amazing commandline tool &lt;a class="link" href="https://github.com/o2sh/onefetch" target="_blank" rel="noopener"
+>here&lt;/a>&lt;/p></description></item><item><title>ZSH Shenanigans</title><link>http://datdhruv.me/p/zsh-shenanigans/</link><pubDate>Wed, 05 Jan 2022 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/zsh-shenanigans/</guid><description>&lt;h2 id="aliases">Aliases&lt;/h2>
+&lt;h4 id="python-aliases">Python Aliases&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">pip&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;python3 -m pip&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">python&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">py&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="ls-alias">ls Alias&lt;/h4>
+&lt;p>Because ls does not automagically add color&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">alias&lt;/span> &lt;span class="nv">ls&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;ls --color&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="prompt-customization">Prompt customization&lt;/h2>
+&lt;p>checkout the &lt;a class="link" href="https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Prompt-Expansion" target="_blank" rel="noopener"
+>sourcefile&lt;/a> for more, here I am going to detail the customization that I add.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">PROMPT&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">$&amp;#39;%F{green}%B%n%b%f %F{111}%3~%f %(?.%F{green}\U279c%f.%F{009}\U279c%f) &amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>$ : Required for unicode parsing&lt;/li>
+&lt;li>%F&amp;hellip;.%f is for setting Foreground colors,&lt;/li>
+&lt;li>colors specified in {color/color_code} format&lt;/li>
+&lt;li>%B&amp;hellip;.%b for bold text&lt;/li>
+&lt;li>%n for username&lt;/li>
+&lt;li>%m for machine name (condensed)&lt;/li>
+&lt;li>%~ for pwd, but with $HOME prefix,&lt;/li>
+&lt;li>3 for the number of parent dirs to show&lt;/li>
+&lt;li>alternatively use %d or %/ for full paths&lt;/li>
+&lt;li>\U0000 for unicode&lt;/li>
+&lt;li>%(?.if_reu\turn_code_istrue.if_reuturn_code_isfalse)&lt;/li>
+&lt;li>Next we have colorized the output for each case (true/false)&lt;/li>
+&lt;li>009 is a brighter, non panicy version of red&lt;/li>
+&lt;/ul>
+&lt;h2 id="you-can-invoke-the-new-user-install-again-by-running">You can invoke the new user install again by running&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">autoload zsh-newuser-install &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> zsh-newuser-install -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This will add some autocomplete magic and let you set options for history file etc.&lt;/p></description></item><item><title>Download files with curl</title><link>http://datdhruv.me/p/download-files-with-curl/</link><pubDate>Sun, 26 Dec 2021 20:48:00 +0400</pubDate><guid>http://datdhruv.me/p/download-files-with-curl/</guid><description>&lt;p>You can download files with curl, just like with wget, using the flag &lt;code>-O&lt;/code>&lt;/p>
+&lt;p>The capital &lt;code>-O&lt;/code> outputs the file name to be as the same name as the one on the server, but you can also use &lt;code>-o&lt;/code> (small o), to name the files as you want, like &lt;code>curl -o filename link-to-file&lt;/code>&lt;/p>
+&lt;p>These flags are important, because otherwise, curl will dump the output to stdout.&lt;/p></description></item><item><title>Laggy SSH-Server connections on Laptops</title><link>http://datdhruv.me/p/laggy-ssh-server-connections-on-laptops/</link><pubDate>Fri, 24 Dec 2021 20:12:56 +0400</pubDate><guid>http://datdhruv.me/p/laggy-ssh-server-connections-on-laptops/</guid><description>&lt;p>When using a laptop as a server, if the SSH connection is laggy, it may be because of a wireless card’s power-saving feature.&lt;/p>
+&lt;p>You can turn this feature off by issuing the command&lt;/p>
+&lt;p>&lt;code>iw &amp;lt;devname&amp;gt; set power_save off&lt;/code>&lt;/p>
+&lt;p>You can view the status of iw using the command&lt;/p>
+&lt;p>&lt;code>iw &amp;lt;devname&amp;gt; get power_save&lt;/code>&lt;/p>
+&lt;p>and the device name &lt;code>&amp;lt;devname&amp;gt;&lt;/code> using the command &lt;code>ip a&lt;/code>&lt;/p>
+&lt;p>iw is used to show / manipulate wireless devices and their configuration&lt;/p></description></item><item><title>Forget git history</title><link>http://datdhruv.me/p/forget-git-history/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/forget-git-history/</guid><description>&lt;h1 id="to-remove-the-git-history">To remove the git history&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git checkout --orphan tmp &lt;span class="c1"># create a temporary branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git add -A &lt;span class="c1"># Add all files and commit them&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit -m &lt;span class="s1">&amp;#39;Add files&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -D main &lt;span class="c1"># Deletes the master branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git branch -m main &lt;span class="c1"># Rename the current branch to master&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -f origin main &lt;span class="c1"># Force push master branch to Git server&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Git Credential Manager</title><link>http://datdhruv.me/p/git-credential-manager/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/git-credential-manager/</guid><description>&lt;p>Github removed the https login with username password to push/pull code.&lt;/p>
+&lt;p>Now you have to generate a personal access token and use that token instead of the password for those operations.&lt;/p>
+&lt;p>This brings us to git credential manger, you can save the username and password (or the personal access token) with git for https logins, so that you dont have to input it again and again.&lt;/p>
+&lt;p>You can do this with&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git config credential.helper store
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># or&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git config --global credential.helper store
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git pull
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>The credentials are then stored in the &lt;code>.git-crendentials&lt;/code> file in either the home directory or the repo directory.&lt;/p></description></item><item><title>Multihop SSH</title><link>http://datdhruv.me/p/multihop-ssh/</link><pubDate>Sun, 31 Oct 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/multihop-ssh/</guid><description>&lt;p>OpenSSH v7.3 onward supports a &lt;code>-J&lt;/code> switch and a &lt;code>ProxyJump&lt;/code> option, which allow one or more comma-separated jump hosts, so, you can simply do this now:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ssh -J jumpuser1@jumphost1,jumpuser2@jumphost2,...,jumpuserN@jumphostN user@hostbe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;p>If you want to bind ports as well, You basically have three possibilities:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ssh -L 9999:host2:1234 -N host1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>As noted above, the connection from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code> will not be secured.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code> and from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ssh -L 9999:localhost:9999 host1 ssh -L 9999:localhost:1234 -N host2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This will open a tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code> and another tunnel from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code>. However the port &lt;code>9999&lt;/code> to &lt;code>host2:1234&lt;/code> can be used by anyone on &lt;code>host1&lt;/code>. This may or may not be a problem.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code> and from &lt;code>localhost&lt;/code> to &lt;code>host2&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">ssh -L 9998:host2:22 -N host1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ssh -L 9999:localhost:1234 -N -p 9998 localhost
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This will open a tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code> through which the SSH service on &lt;code>host2&lt;/code> can be used. Then a second tunnel is opened from &lt;code>localhost&lt;/code> to &lt;code>host2&lt;/code> through the first tunnel.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Go with option 1. If the connection from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code> needs to be secured, go with option 2. Option 3 is mainly useful to access a service on &lt;code>host2&lt;/code> that is only reachable from &lt;code>host2&lt;/code> itself.&lt;/p></description></item><item><title>Python tools</title><link>http://datdhruv.me/p/python-tools/</link><pubDate>Tue, 05 Jan 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/python-tools/</guid><description>&lt;h1 id="index">Index&lt;/h1>
+&lt;ol>
+&lt;li>&lt;a class="link" href="#pydoc" >pydoc&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#pip" >Pip&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#setuptools" >Setuptools&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#json-tool" >json.tool&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#argparse" >argparse&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#pyinstaller" >pyinstaller&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#python-packages" >Note on python packages&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#kivy" >kivy&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#preferred-lsp" >Preferred LSP&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="pydoc">pydoc&lt;/h3>
+&lt;p>To get help with used defined functions and classes, just run &lt;code>pydoc&lt;/code>&lt;/p>
+&lt;p>eg:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># foo.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">bar&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;this is the docstring for bar()&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span> &lt;span class="s1">&amp;#39;hello&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">baz&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;this is the docstring for baz()&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span> &lt;span class="s1">&amp;#39;world&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>After Running &lt;code>pydoc&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="err">$&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="p">.&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">foo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">Help&lt;/span> &lt;span class="nv">on&lt;/span> &lt;span class="kn">module&lt;/span> &lt;span class="nl">foo&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">NAME&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">foo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">FILE&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">/&lt;/span>&lt;span class="nv">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">foo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">FUNCTIONS&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">bar&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">this&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">docstring&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="nf">bar&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">this&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">docstring&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You can also generate an HTML help file:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">$ pydoc -w ./foo.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">wrote foo.html
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Important remember&lt;/strong> pydoc will call only system docs, to call pydoc while in a &lt;em>virtualenv&lt;/em>, you need to call &lt;code>python -m pydoc module_name&lt;/code>&lt;/p>
+&lt;h3 id="pip">Pip&lt;/h3>
+&lt;p>Did you know you can install packages that are not in the PyPI with pip install? It needs a setup.py/setup.cfg at the base of the pacakge. (which you need anyway while publishing a python package) But other than that you are all set!&lt;/p>
+&lt;h4 id="pip-install-gitprotocolversion-control">pip install &amp;ldquo;git+protocol://version-control&amp;rdquo;&lt;/h4>
+&lt;p>eg:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># General syntax
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip install &amp;#34;git+https://git.example.com/MyProject.git&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Over ssh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git install &amp;#34;git+ssh://git.example.com/MyProject&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># Local git repo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git install &amp;#34;git+file:///home/user/projects/MyProject&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You can also pass a branch name, a commit hash, a tag name or a git ref is possible like so:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git+https://git.example.com/MyProject.git@main#egg=MyProject
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git+https://git.example.com/MyProject.git@v1.0#egg=MyProject
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git+https://git.example.com/MyProject.git@da39a3ee5e6b4b0d3255bfef95601890afd80709#egg=MyProject
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git+https://git.example.com/MyProject.git@refs/pull/123/head#egg=MyProject
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="pip-install-localfilename">pip install Local/file/name&lt;/h4>
+&lt;p>You can also install local files by doing:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">python -m pip install path/to/SomeProject
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="editable-installs">“EDITABLE” INSTALLS&lt;/h4>
+&lt;p>“Editable” installs are fundamentally “setuptools develop mode” installs.&lt;/p>
+&lt;h3 id="setuptools">setuptools&lt;/h3>
+&lt;p>&lt;em>For building packages for pip&lt;/em>&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>pyproject.toml&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[build-system]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">requires = [&amp;#34;setuptools&amp;#34;, &amp;#34;wheel&amp;#34;]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">build-backend = &amp;#34;setuptools.build_meta&amp;#34;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>setup.cfg&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[metadata]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">name = mypackage
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">version = 0.0.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[options]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">packages = mypackage
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">install_requires =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> docutils &amp;gt;= 0.3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> requests &amp;lt;= 0.4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> importlib; python_version == &amp;#34;2.6&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">include_package_data = True
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[options.entry_points]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">console_scripts =
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> main = mypkg:some_func
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Automatic package discovery&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[options]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">packages = find:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[options.packages.find] #optional
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">include=pkg1, pkg2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">exclude=pk3, pk4
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>project structure&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">~/mypackage/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> pyproject.toml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> setup.cfg # or setup.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> mypackage/__init__.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;h3 id="json-tool">json tool&lt;/h3>
+&lt;p>&lt;code>echo json-file | python3 -m json.tool&lt;/code>&lt;/p>
+&lt;p>This outputs the input file (or file stream) into formatted json&lt;/p>
+&lt;h3 id="argparse">argparse&lt;/h3>
+&lt;p>Learned about &lt;code>argparse&lt;/code> library of python std lib, it is &lt;strong>Amazing!&lt;/strong>&lt;/p>
+&lt;p>performance of pyinstller is reduced if you use the -F/&amp;ndash;onefile option. This is because pyinstaller needs to unpack everything in a temp direcotry and then run the code, which severly degrades performance.&lt;/p>
+&lt;p>Using the default option or the &amp;ndash;onedir option results in much faster code execution (so use that)&lt;/p>
+&lt;p>As to how to go about uncomplicating the directory stuff, just create a shortcut at the root of the folder and that&amp;rsquo;s that.&lt;/p>
+&lt;h3 id="pyinstaller">pyinstaller&lt;/h3>
+&lt;p>Pyinstaller is a python module that creates native binaries out of a python file.&lt;/p>
+&lt;p>pip install pyinstaller&lt;/p>
+&lt;p>-F, &amp;ndash;onefile creates just one standalone executable&lt;/p>
+&lt;h3 id="python-packages">Python packages&lt;/h3>
+&lt;p>They are modules! or maybe they are modules and they have and &lt;strong>init&lt;/strong>.py file at the base of the directory. I will experiment more with these and report more.&lt;/p>
+&lt;p>also if you want to import a file from a subdirectory, you need to do &lt;code>from directory import file&lt;/code>&lt;/p>
+&lt;h4 id="importing-another-file">Importing another file&lt;/h4>
+&lt;p>from the same directory, is very much possible!!&lt;/p>
+&lt;p>Just import the file and you are on!&lt;/p>
+&lt;h3 id="kivy">Kivy&lt;/h3>
+&lt;p>All about Kivy: the amazing GUI library of python&lt;/p>
+&lt;p>You can make android apps with kivy, using buildozer, but that is only supported on linux and Mac computers (UNIX)&lt;/p>
+&lt;p>The views and everything else is also much saner than tkinter&lt;/p>
+&lt;p>buildozer: build you need to specify INTERNET under requirements&lt;/p>
+&lt;h3 id="python-on-windows-is-very-very-weird">Python on windows is very very weird&lt;/h3>
+&lt;p>&lt;code>python pip&lt;/code> does not work by &lt;code>py -m pip&lt;/code> works?!?!&lt;/p>
+&lt;p>Idk this was too weird&lt;/p>
+&lt;h3 id="preferred-lsp">Preferred LSP&lt;/h3>
+&lt;p>Pylance hands down, is much closer to pycharm&amp;rsquo;s language completion.&lt;/p></description></item><item><title>Python Sockets</title><link>http://datdhruv.me/p/python-sockets/</link><pubDate>Tue, 11 Aug 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/python-sockets/</guid><description>&lt;h1 id="network-sockets">Network Sockets&lt;/h1>
+&lt;h2 id="server-side">Server side&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;span class="lnt">71
+&lt;/span>&lt;span class="lnt">72
+&lt;/span>&lt;span class="lnt">73
+&lt;/span>&lt;span class="lnt">74
+&lt;/span>&lt;span class="lnt">75
+&lt;/span>&lt;span class="lnt">76
+&lt;/span>&lt;span class="lnt">77
+&lt;/span>&lt;span class="lnt">78
+&lt;/span>&lt;span class="lnt">79
+&lt;/span>&lt;span class="lnt">80
+&lt;/span>&lt;span class="lnt">81
+&lt;/span>&lt;span class="lnt">82
+&lt;/span>&lt;span class="lnt">83
+&lt;/span>&lt;span class="lnt">84
+&lt;/span>&lt;span class="lnt">85
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">socket&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">threading&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">HEADER&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">64&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Choose a port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">PORT&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">5050&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">FORMAT&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DISCONNECT_MESSAGE&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;!DISCONNECT&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check your ip address using ifconfig/ipconfig/ip addr&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># SERVER = &amp;#34;192.168.1.114&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># To get based on dynamic hostname&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># SERVER = socket.gethostbyname(socket.gethostname())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Symbolic empty string signifies all availiable interfaces&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SERVER&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ADDR&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">SERVER&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">PORT&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># What kind of address are we going to look for in the connections&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># SOCK_Stream: Streaming data over the socket&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">socket&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">socket&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">socket&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">AF_INET&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">socket&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SOCK_STREAM&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># binds the server to the port. first arguemnt of bind is a tuple&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">bind&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">SERVER&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">PORT&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">handle_client&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">conn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">addr&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> We are not doing much with the address
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> But the object conn of type socket, that is the read deal.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> You see, that is the connection/connected object
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> That is like the io stream
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> conn.doThis conn.doThat and other shenanigans
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> :param conn:
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> :param addr:
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> :return:
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;[NEW CONNECTION] &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">addr&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> connected.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">connected&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="n">connected&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Here the first message from the client will always be the length of the header&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># knock knock protocol&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">msg_length&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">conn&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">recv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">HEADER&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># The first message comes in as an empty string. (connection succesful msg)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># To get around that, we check if the string is empty or not.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">msg_length&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">msg_length&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg_length&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Actual message&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">msg&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">conn&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">recv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg_length&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">FORMAT&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">msg&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s2">&amp;#34;!DISCONNECT&amp;#34;&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">connected&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;[&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">addr&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">] &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">conn&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Msg Recv!&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">encode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">FORMAT&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">conn&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">start&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> Listen is the actual thing that makes our server, &amp;#34;our server&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> That and the server.accept() method
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> &amp;#39;&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;[Starting] server is starting&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">listen&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;[SERVER HAS STARTED] Listening on &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">SERVER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="kc">True&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Wait for new connection&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">conn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">addr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">server&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">accept&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">thread&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">threading&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Thread&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">handle_client&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">args&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">conn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">addr&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Notice that we dont have handle_client() and arguemnts to it are passed by args()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">thread&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">start&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;[ACTIVE CONNECTIONS] &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">threading&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">activeCount&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">start&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="client-side">Client side&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">socket&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">HEADER&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">64&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Choose a port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">PORT&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">5050&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">FORMAT&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DISCONNECT_MESSAGE&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;!DISCONNECT&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Check your ip address using ifconfig/ipconfig/ip addr&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SERVER&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;192.168.1.114&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ADDR&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">SERVER&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">PORT&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">socket&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">socket&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">socket&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">AF_INET&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">socket&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SOCK_STREAM&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">connect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ADDR&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">message&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">encode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;utf-8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">msg_length&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">len&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">send_length&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">msg_length&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">encode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">FORMAT&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">send_length&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="sa">b&lt;/span>&lt;span class="s1">&amp;#39; &amp;#39;&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">HEADER&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="nb">len&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">send_length&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">send_length&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">message&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">recv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2048&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">FORMAT&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Hello world&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;YOLO&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;LALA LAND&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">DISCONNECT_MESSAGE&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Intermediate Python Concepts</title><link>http://datdhruv.me/p/intermediate-python-concepts/</link><pubDate>Wed, 05 Aug 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/intermediate-python-concepts/</guid><description>&lt;h2 id="classes-and-objects">Classes and objects&lt;/h2>
+&lt;ul>
+&lt;li>creating and using classes    &lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">circle&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">object&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">radius&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">color&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">radius&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">radius&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">color&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">RedCircle&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">circle&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;Red&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>Methods are functions which operate on the class instances&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">rectangle&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">object&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">height&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">color&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">height&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">height&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">width&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">color&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">add_height&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">h&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">height&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">height&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">h&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">radius&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="list-comprehension">List Comprehension&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">my_function&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">lambda&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">b&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">my_function&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Python OOPS Concepts</title><link>http://datdhruv.me/p/python-oops-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/python-oops-concepts/</guid><description>&lt;p>self =&amp;gt; instances -&amp;gt; methods taking this as the first arguement work on instances&lt;/p>
+&lt;p>cls =&amp;gt; classes -&amp;gt; work on the entire class rather than an instance&lt;/p>
+&lt;p>both of them are context-aware&lt;/p>
+&lt;p>when working with classes, unlike regular methods that take instances as the first arguemnt and unlike class methods that take classes as the first argument, static methods take no arguments&lt;/p>
+&lt;h1 id="object-oriented-concepts-with-python">Object Oriented Concepts with Python&lt;/h1>
+&lt;p>to declare a class in python you use the &lt;code>class&lt;/code> keyword, if at all you want the class to be empty, you can use the &lt;code>pass&lt;/code> keyword&lt;/p>
+&lt;p>example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Employee&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="instance-variables">Instance variables&lt;/h3>
+&lt;p>contain data this is unique to each instance of the class&lt;/p>
+&lt;h2 id="__init__self">&lt;strong>init&lt;/strong>(self)&lt;/h2>
+&lt;p>dunder init is like the default constructor in java&lt;/p>
+&lt;p>self is (a reference to) THE INSTANCE ITSELF, which the initialize receives automatically and that is not restricted to self but self is the convention&lt;/p>
+&lt;p>here&amp;rsquo;s what we mean:
+say we created that employee class, when we set a variable of the class, say first name, instead of doing &lt;code>emp1.first = &amp;quot;lala&amp;quot;&lt;/code>, we do &lt;code>self.first = &amp;quot;lala&amp;quot;&lt;/code>. Here emp1 is the instance and self is the &lt;strong>placeholder&lt;/strong> for the instance&lt;/p>
+&lt;p>The first parameter of any class method is always the instance (which we have named self). Then when we create new instances we dont have to pass that instance/self.&lt;/p>
+&lt;p>The init method will be run automatically, emp1 is passed to the self attribute&lt;/p>
+&lt;p>example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Employee&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">last&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pay&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pay&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">email&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s1">&amp;#39;.&amp;#39;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">last&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s2">&amp;#34;@company.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># The init method will be run automatically, emp1 is passed to the self attribute&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Employee&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Dhruv&amp;#34;&lt;/span> &lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;Jain&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">50000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>When this is run the init method is run automatically&lt;/p>
+&lt;p>If you dont pass in the self method, you get this error:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">Traceback &lt;span class="o">(&lt;/span>most recent call last&lt;span class="o">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> File &lt;span class="s2">&amp;#34;.\learning-computing\python-oop\HelloWorld.py&amp;#34;&lt;/span>, line 20, in &amp;lt;module&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> emp1.fullname&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">TypeError: fullname&lt;span class="o">()&lt;/span> takes &lt;span class="m">0&lt;/span> positional arguments but &lt;span class="m">1&lt;/span> was given
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This error arises because the class gives in the instance/self argument to the class-method, but here we said that the method does NOT take any argument. That is why this error aries.&lt;/p>
+&lt;h4 id="calling-class-method-from-the-class-rather-than-the-instance">calling class method from the class rather than the instance&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Calling class-method from instance&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fullname&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Calling class-method from class&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Employee&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">emp1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="class-variable">class variable&lt;/h2>
+&lt;p>class variables are variables that are same for all instances of a class when the instance is initialized&lt;/p>
+&lt;p>when a variable is called, python will first check if the variable exists in the namespace of the &lt;em>instance&lt;/em>, if it does not exist, then python will check for it in the classes the instance inherits from.&lt;/p>
+&lt;p>class variables can be accessed via instances as well as classes:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Employee&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">num_of_emps&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raise_amount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">1.04&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># same things as before&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Employee&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">num_of_emps&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">apply_raise&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pay&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pay&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">raise_amount&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># if we hardcoded this to Employees.raise_amount,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># instances cannot update this&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Employee&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Employee.raise_amount == 1.04&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># emp1.raise_amount == 1.04&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">raise_amount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">1.5&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># now emp1.raise_amount == 1.5&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># BUT Employee.raise_amount == 1.04&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># self.raise_amount is a general case of emp1.raise_amount&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>a_name.lol -&amp;gt; hardcoded value of the class
+self.lol -&amp;gt; can be changed by instances
+emp1.lol -&amp;gt; are instance variables inherited from class or are set afterwards&lt;/p>
+&lt;h2 id="class-methods">Class methods&lt;/h2>
+&lt;p>to define a class method, we use the decorator &lt;code>@classmethod&lt;/code> one line above the method.&lt;/p>
+&lt;p>What class methods do is that they manipulate the whole class &lt;em>along with all instances of the class&lt;/em>&lt;/p>
+&lt;p>Think of them as static methods (as seen in java)&lt;/p>
+&lt;p>Like the &lt;code>self&lt;/code> convention used for instances in python, classes have a convention called &lt;code>cls&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Employee&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raise_amt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">1.04&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@classmethod&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">set_raise_amount&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">cls&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">amount&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">cls&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">raise_amt&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">amount&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># or do something&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="class-methods-as-custom-constructors">class methods as custom constructors&lt;/h4>
+&lt;p>class methods can be used to construct new classes as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Employee&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">num_of_emps&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">last&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pay&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pay&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Employee&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">num_of_emps&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@classmethod&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">from_string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">cls&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">emp_str&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">emp_str&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;-&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">cls&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Most important point here&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># return a class object after parsing string&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp3_string&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;water bottle&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp3&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Employee&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">from_string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">emp3_string&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Employee&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">num_of_emps&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp3&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fullname&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In the above example, the &lt;code>cls()&lt;/code> is a class constructor. It creates a class object from by applying the given logic&lt;/p>
+&lt;h3 id="static-methods">Static methods&lt;/h3>
+&lt;p>when working with classes, unlike regular methods that take instances as the first arguemnt and unlike class methods that take classes as the first argument, static methods take no arguments&lt;/p>
+&lt;p>use static methods where you dont need to use any of the class&amp;rsquo;s variables or functions. In the example we are using, this may be the day of the week, which is entirely independent of the name or pay or anything else from the class really.&lt;/p>
+&lt;p>creating a staticmethod:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>using staticmethod() function&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> def addNumbers(x, y):
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return x + y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># create addNumbers static method
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Calculator.addNumbers = staticmethod(Calculator.addNumbers)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#39;Product:&amp;#39;, Calculator.addNumbers(15, 110))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>``&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>using @staticmethod decorator&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # create addNumbers static method
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> @staticmethod
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> def addNumbers(x, y):
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return x + y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#39;Product:&amp;#39;, Calculator.addNumbers(15, 110))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>``&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="inherititance">Inherititance&lt;/h2>
+&lt;p>to inherit a class&amp;rsquo;s attributes in anohter class, just pass it as an arguement to the inheriting class
+eg &lt;code>class Developer(Employee):&lt;/code>&lt;/p>
+&lt;p>remeber python resolves methods and variables as:&lt;/p>
+&lt;ol>
+&lt;li>current class object&lt;/li>
+&lt;li>parent class object&lt;/li>
+&lt;li>parent&amp;rsquo;s parent class object&lt;/li>
+&lt;/ol>
+&lt;p>and so on&lt;/p>
+&lt;h3 id="super">super()&lt;/h3>
+&lt;p>To call the methods of a class above the current class, use &lt;code>super&lt;/code>, for eg:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Developer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Employee&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raise_amount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">1.10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Can you think why this first, last ... is being passed down?&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Think.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># You need to do the same with *args and **kwargs also&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">prog_lang&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">super&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">prog_lang&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">prog_lang&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>oh and while using super, you dont need to pass through self in the &lt;code>super().__init__()&lt;/code>, however you need to pass ALL the fields of the super class in the class&amp;rsquo;s &lt;code>__init__&lt;/code>&lt;/p>
+&lt;h2 id="most-of-the-code-uptill-now">Most of the code uptill now&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;span class="lnt">71
+&lt;/span>&lt;span class="lnt">72
+&lt;/span>&lt;span class="lnt">73
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Employee&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">num_of_emps&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raise_amount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">1.04&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">last&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pay&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pay&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">email&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s1">&amp;#39;.&amp;#39;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">last&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s2">&amp;#34;@company.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Employee&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">num_of_emps&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="mi">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">apply_raise&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pay&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">int&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pay&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">raise_amount&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># if we hardcoded this to Employees.raise_amount, instances cannot update this value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@classmethod&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">from_string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">cls&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">emp_str&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">emp_str&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;-&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="bp">cls&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@staticmethod&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">is_workday&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">day&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">day&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">weekday&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">5&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">day&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">weekday&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">6&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="kc">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Developer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Employee&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">raise_amount&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">1.10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">prog_lang&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">super&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">prog_lang&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">prog_lang&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Manager&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Employee&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">employees&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">super&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">employees&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="kc">None&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">employees&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">employees&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">employees&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">add_emp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">emp&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">emp&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">employees&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">employees&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">emp&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">remove_emp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">emp&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">emp&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">employees&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">employees&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">remove&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">emp&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">disp_emp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">employees&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">emp&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fullname&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dev1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Developer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Dhruv&amp;#34;&lt;/span> &lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;Jain&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">50000&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;python&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dev2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Developer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Mamma&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;Hand&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">60000&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;java&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#print(dev1.pay)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#dev1.apply_raise()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#print(dev1.pay)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># dev1.fullname()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># dev2.fullname()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">mgr1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Manager&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;sue&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;smith&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">70000&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">dev1&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#print(isinstance(mgr1, Manager))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#print(isinstance(mgr1, Employee))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#print(isinstance(mgr1, Developer))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">issubclass&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Manager&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Employee&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="magic-methods">Magic methods&lt;/h2>
+&lt;p>allows us to emulate built in behaviour within python and allows us to implement operator overloading&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="fm">__repr__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># return a string for the DEVELOPERS to see&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="fm">__str__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># return stuff for the END USERS to see&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="fm">__add__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">other&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># defines how to add datatypes&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># And Yes, other is a convention&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="property-decorators">Property decorators&lt;/h2>
+&lt;p>property decorators allows methods to be accessed as variables rather than a function call&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Employee&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pay&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">last&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#self.email = first + &amp;#39;.&amp;#39; + last + &amp;#34;@company.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@property&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">email&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2">.&lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2">@email.com&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@property&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="si">{}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">se&lt;/span> &lt;span class="n">lf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Employee&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;shriyas&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;Iyer&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">50000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">emp2&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Employee&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Vikrant&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;Tiru&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">70000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">emp1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">email&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="setter-decorators-and-functions">Setter decorators and functions&lt;/h3>
+&lt;p>To use the Setter decorator, use the method name you want to define along with
+.setter, for eg:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@fullname&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">setter&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34; &amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">last&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="deleter-decorator">deleter decorator&lt;/h3>
+&lt;p>To use a deleter decorator, use the method name you want to use along with .deleter, and then while deleting, use the &lt;code>del&lt;/code> keyword&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@fullname&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">deleter&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Deleting name&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">None&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">del&lt;/span> &lt;span class="n">emp1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fullname&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="self--main">Self == main??&lt;/h2>
+&lt;p>&lt;strong>it is&lt;/strong> &lt;code>if __name__ == &amp;quot;__main__&amp;quot;&lt;/code>!!!&lt;/p>
+&lt;p>&lt;strong>name&lt;/strong> signifies name of the caller or something. &lt;strong>main&lt;/strong> is the caller then!&lt;/p></description></item><item><title>Regex concepts</title><link>http://datdhruv.me/p/regex-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/regex-concepts/</guid><description>&lt;h1 id="regex-concepts">Regex Concepts&lt;/h1>
+&lt;p>To escape characters you need to use &lt;code>\&lt;/code> escape characters, for eg if you want to search for a &amp;ldquo;?&amp;rdquo; or &amp;ldquo;.&amp;rdquo; or &amp;ldquo;&amp;quot;, use backslash &lt;code>\.&lt;/code>, &lt;code>\?&lt;/code>, &lt;code>\\&lt;/code>. If you want to search for an email address eg: &lt;a class="link" href="mailto:name@example.com" >name@example.com&lt;/a>, use: &lt;code>name@example\.com&lt;/code>&lt;/p>
+&lt;p>. -&amp;gt; matches any character except newline character&lt;/p>
+&lt;p>\d matches digits (anything from 0-9)&lt;/p>
+&lt;p>\D matches anything BUT a digit&lt;/p>
+&lt;p>\w searches for any alphanumeric character (a-z,A-Z,0-9)&lt;/p>
+&lt;p>\W matches anything that is not an alphanumeric character&lt;/p>
+&lt;p>\s matches whitespaces (space, tab, newline)&lt;/p>
+&lt;p>\S matches anthing that is not a whitespace&lt;/p>
+&lt;h4 id="anchors---dont-match-characters-but-special-positions">Anchors - dont match characters but special positions&lt;/h4>
+&lt;p>special posiotions like starting of the line, ending of the line etc&lt;/p>
+&lt;p>\b matches word at boundries&lt;/p>
+&lt;p>\B matches word that are not word boundries&lt;/p>
+&lt;p>for eg: Ha HaHa, &lt;code>\bHa&lt;/code> matches &lt;strong>Ha Ha&lt;/strong>Ha but not Ha Ha&lt;em>Ha&lt;/em>. &lt;code>\bHa\b&lt;/code> matches word boundries both at the end and at the begining: &lt;strong>Ha&lt;/strong> HaHa only matches where &lt;code>Ha\b&lt;/code> matches &lt;strong>Ha&lt;/strong> Ha&lt;strong>Ha&lt;/strong>&lt;/p>
+&lt;p>^ matches start of the line&lt;/p>
+&lt;p>^Ha matches only &lt;strong>Ha&lt;/strong> bro HaHa HaHa, because the line starts with an Ha&lt;/p>
+&lt;p>$ matches end of line&lt;/p>
+&lt;p>$Ha only matches Ha bro HaHa Ha&lt;strong>Ha&lt;/strong> beacause it is at the end of the line&lt;/p>
+&lt;h3 id="character-sets">character sets&lt;/h3>
+&lt;p>[] -&amp;gt; matches character set inside the brackets.(NO SPACES) eg [-*&amp;amp;a1] etc.
+Matches only the first character in the sequence.&lt;/p>
+&lt;p>- has a special meaning in character sets []. when at the start, it matches for the character &amp;lsquo;-&amp;rsquo;, but when in between it is used to specify a range. eg to match numbers from 1 to 7: [1-7], or matching a-d: [a-d]&lt;/p>
+&lt;p>caret ^ also has special meaning and stands for &amp;ldquo;everything except&amp;rdquo;. For eg to match al characters that are not a lower case letter: [^a-z]&lt;/p>
+&lt;h4 id="quantifiers-matching-more-than-one-character-at-a-time">Quantifiers: matching more than one character at a time&lt;/h4>
+&lt;ul>
+&lt;li>
+&lt;ul>
+&lt;li>matches 0 or more instances&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;ul>
+&lt;li>matches 1 or more&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>? matches 0 or one instances&lt;/li>
+&lt;li>{} matches exact numbers. eg a{3} -&amp;gt; a three times works same for \d \s \w stuffs&lt;/li>
+&lt;li>{num1, num2} matches an range of numbers and follows {min, max} range. eg a{1,3} one to three repetitions of a. works same for \d \s \w stuffs&lt;/li>
+&lt;/ul>
+&lt;h3 id="groups-allows-us-to-specify-different-matches">Groups: allows us to specify different matches&lt;/h3>
+&lt;p>groups are defined using parenthesis ()&lt;/p>
+&lt;p>for eg: to match Mr, Ms, Mrs:&lt;/p>
+&lt;p>M(r|s|rs)&lt;/p>
+&lt;p>pipe operator (|) is used to for &amp;ldquo;OR&amp;rdquo; in groups&lt;/p>
+&lt;h4 id="back-references">Back references&lt;/h4>
+&lt;p>the values in groups are stored in something called back groups.&lt;/p>
+&lt;p>in vscode you can call them with $grpnum (eg $2) to replace them in replace mode in &amp;ldquo;find&amp;rdquo;&lt;/p>
+&lt;p>however usually it is \num eg \2 for group 2&lt;/p>
+&lt;h2 id="examples">Examples&lt;/h2>
+&lt;ul>
+&lt;li>matching phone numbers&lt;/li>
+&lt;/ul>
+&lt;p>321-555-4321&lt;/p>
+&lt;p>123.555.1234&lt;/p>
+&lt;p>soln -&amp;gt; \d\d\d\W\d\d\d\W\d\d\d\d, dig dig dig non-whitespace dig&amp;hellip;..&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>character matching&lt;/p>
+&lt;p>cat&lt;/p>
+&lt;p>mat&lt;/p>
+&lt;p>pat&lt;/p>
+&lt;p>bat&lt;/p>
+&lt;p>match everything except bat&lt;/p>
+&lt;p>[^b]at&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="in-python">In Python&lt;/h1>
+&lt;p>remember to convert the string containing regular expressions to raw form: eg &lt;code>r&amp;quot;hello&amp;quot;&lt;/code>. This is done so that python does not take expressions with a leading backslash and escape sequesces of it&amp;rsquo;s own.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">re&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">urls&lt;/span> &lt;span class="o">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;for groups
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">match.group(grp_num) eg match.group(3)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1">&amp;#39;&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Substitutions&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">subbed_urls&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pattern&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">r&lt;/span>&lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Installing kali linux on Raspberry pi when you have no monitor</title><link>http://datdhruv.me/p/installing-kali-linux-on-raspberry-pi-when-you-have-no-monitor/</link><pubDate>Wed, 25 Dec 2019 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/installing-kali-linux-on-raspberry-pi-when-you-have-no-monitor/</guid><description>&lt;h1 id="installing-kali-linux-on-raspberry-pi">Installing Kali linux on Raspberry Pi&lt;/h1>
+&lt;ol>
+&lt;li>Flash the image on to the sd card (I recommend using balena etcher)&lt;/li>
+&lt;li>Before putting the SD card into the pi, in the boot folder, create a ssh file (just touch ssh in the boot folder)&lt;/li>
+&lt;li>now come the more tricky part. connect the pi to the router (with a wire) and then ssh into it.&lt;/li>
+&lt;li>use nmtui to to set up the network&lt;/li>
+&lt;li>now you have to enable ssh at each subsequent boot. This is done using &lt;code>sudo systemctl enable ssh.service&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>And you are done! ✨🎉🎊🎆&lt;/p></description></item><item><title>Archives</title><link>http://datdhruv.me/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>http://datdhruv.me/archives/</guid><description/></item><item><title>About</title><link>http://datdhruv.me/about/</link><pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate><guid>http://datdhruv.me/about/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"> _ _____ _
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> | | _ (____ \ | |
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> _ | | ____| |_ _ \ \| | _ ____ _ _ _ _
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> / || |/ _ | _)| | | | || \ / ___) | | | | | |
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">( (_| ( ( | | |__| |__/ /| | | | | | |_| |\ V /
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \____|\_||_|\___)_____/ |_| |_|_| \____| \_/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="hi-there-">Hi there 👋&lt;/h1>
+&lt;p>I am &lt;strong>Dhruv Jain&lt;/strong>, a C.S undergrad at BITS Pilani, Dubai. My interets include Augemented Reality 🔮, Python 🐍, Linux 🐧 and Archery 🏹&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>👨‍💻 I’m currently learning my way around Unity-3D&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>📫 Connect with me on &lt;a class="link" href="https://www.linkedin.com/in/dhruv-jain-a309501a0" target="_blank" rel="noopener"
+>LinkedIn&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>⚡ Fun fact: I am a major Chai Addict ☕️&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>🖥 Projects I have worked on:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/datdhruv/Patient-Journey-Management-with-Flutter" target="_blank" rel="noopener"
+>A Cross Platform Patient Journey Management Application&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/datdhruv/Cloud-Scheduling-Algo-Comparision" target="_blank" rel="noopener"
+>Comparative Analysis of various Cloud Scheduling Algorithms&lt;/a> using Cloudsim&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/datdhruvjain/cryptoker" target="_blank" rel="noopener"
+>Cryptoker&lt;/a> a command line tool to get Cryptocurrency Exchange rates&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/datDhruvJain/Home-Automation" target="_blank" rel="noopener"
+>A Home Automation System&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/datDhruvJain/GoBlockchain" target="_blank" rel="noopener"
+>GoBlockchain&lt;/a> an Implementation of blockchain in GOLang&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted --></description></item><item><title>./ in Linux</title><link>http://datdhruv.me/p/-in-linux/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://datdhruv.me/p/-in-linux/</guid><description>&lt;p>So, why exactly does &lt;code>./executable&lt;/code> work in Linux and Unix (and &lt;code>.\&lt;/code> in windows)?&lt;/p>
+&lt;p>The &lt;code>./&lt;/code> translates to: &lt;strong>in the current directory&lt;/strong> (dot(.) : this, slash(/) : directory)&lt;/p>
+&lt;p>Now recall that there is a variable called &lt;code>$PATH&lt;/code> in all operating system shells.&lt;/p>
+&lt;p>The role of this variable is to store the path to all the places where system binaries are stored (for eg in &lt;code>/bin&lt;/code> or &lt;code>/usr/bin&lt;/code> or &lt;code>/sbin&lt;/code>)&lt;/p>
+&lt;p>Also remember that shells can then take these binaries as inputs and directly run them like&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">ls
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">chmod
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>When you have an executable that does not exist in this path, and you want to run, what must you do then? 🧐&lt;/p>
+&lt;p>&lt;code>./&lt;/code> ofc!&lt;/p>
+&lt;p>In this way, we specify the &lt;strong>complete path&lt;/strong> to the executable, and hence can run it directly&lt;/p>
+&lt;p>&lt;code>.executable&lt;/code> does not work because it is a valid directory name.&lt;/p>
+&lt;p>&lt;code>/executable&lt;/code> does not work because it can mean the &lt;em>root/executable&lt;/em> and hence we &lt;strong>need&lt;/strong> &lt;code>./&lt;/code>&lt;/p></description></item><item><title>Linux as a Backend</title><link>http://datdhruv.me/p/linux-as-a-backend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://datdhruv.me/p/linux-as-a-backend/</guid><description>&lt;p>After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine.&lt;/p>
+&lt;p>[Why SSH Port Forwarding gives you Superpowers]({% post_url ssh-port-forwarding %})&lt;/p>
+&lt;p>Most of the usage of this kind of work will be via the terminal itself.&lt;/p>
+&lt;p>I am however still struggling with how to use desktop linux, so as to be that one guy who propogates Linux use on the desktop.&lt;/p>
+&lt;p>Windows is used everywhere, and admittedly it is much easier to set some stuff like virtualbox up, and get working fast, so that complicates the issue further.&lt;/p>
+&lt;p>I also want to use Linux, because I am really comfortable with how it works and I know in depth how it &lt;strong>might&lt;/strong> work, or how things might be set up.&lt;/p>
+&lt;hr>
+&lt;p>Think of the Desktop OS as a frontend, and Linux as the backend.&lt;/p>
+&lt;p>The frontend has different set of goals, outcomes and expectations whereas the backend has it&amp;rsquo;s own goals, outcomes and expectations.&lt;/p>
+&lt;p>And in any scenario, you will be accessing most tools through the terminal, so it doesn&amp;rsquo;t matter what you frontend you use.&lt;/p>
+&lt;hr>
+&lt;h3 id="an-aside-on-using-software-that-your-host-may-not-allow-you-to-run">An aside on using software that your host may not allow you to run&lt;/h3>
+&lt;p>Well, in any case, you can always download a virtualization platform and run it on linux!&lt;/p>
+&lt;p>For example, some time ago I had issues running qbittorrent on windows. It would be flagged by the antivirus and would be uninstalled immediately.&lt;/p>
+&lt;p>And alternative to this &lt;em>restriction&lt;/em> is to just install qbittorrent in a Linux VM and get what you want with that. It is a heavier alternative, but well it is &lt;em>an&lt;/em> alternative!&lt;/p></description></item><item><title>Search</title><link>http://datdhruv.me/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://datdhruv.me/search/</guid><description/></item></channel></rss>
