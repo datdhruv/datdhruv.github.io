@@ -1,4 +1,4 @@
-baseurl: http://datdhruv.me
+baseurl: https://datdhruv.github.io
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
