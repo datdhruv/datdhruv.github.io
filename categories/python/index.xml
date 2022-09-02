@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on datDhruv's Blog</title><link>http://datdhruv.me/categories/python/</link><description>Recent content in python on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 05 Jan 2021 12:00:00 +0400</lastBuildDate><atom:link href="http://datdhruv.me/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python tools</title><link>http://datdhruv.me/p/python-tools/</link><pubDate>Tue, 05 Jan 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/python-tools/</guid><description>&lt;h1 id="index">Index&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/python/</link><description>Recent content in python on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 05 Jan 2021 12:00:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python tools</title><link>https://datdhruv.github.io/p/python-tools/</link><pubDate>Tue, 05 Jan 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/python-tools/</guid><description>&lt;h1 id="index">Index&lt;/h1>
 &lt;ol>
 &lt;li>&lt;a class="link" href="#pydoc" >pydoc&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="#pip" >Pip&lt;/a>&lt;/li>
@@ -258,7 +258,7 @@
 &lt;p>&lt;code>python pip&lt;/code> does not work by &lt;code>py -m pip&lt;/code> works?!?!&lt;/p>
 &lt;p>Idk this was too weird&lt;/p>
 &lt;h3 id="preferred-lsp">Preferred LSP&lt;/h3>
-&lt;p>Pylance hands down, is much closer to pycharm&amp;rsquo;s language completion.&lt;/p></description></item><item><title>Python Sockets</title><link>http://datdhruv.me/p/python-sockets/</link><pubDate>Tue, 11 Aug 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/python-sockets/</guid><description>&lt;h1 id="network-sockets">Network Sockets&lt;/h1>
+&lt;p>Pylance hands down, is much closer to pycharm&amp;rsquo;s language completion.&lt;/p></description></item><item><title>Python Sockets</title><link>https://datdhruv.github.io/p/python-sockets/</link><pubDate>Tue, 11 Aug 2020 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/python-sockets/</guid><description>&lt;h1 id="network-sockets">Network Sockets&lt;/h1>
 &lt;h2 id="server-side">Server side&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -501,7 +501,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">DISCONNECT_MESSAGE&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Intermediate Python Concepts</title><link>http://datdhruv.me/p/intermediate-python-concepts/</link><pubDate>Wed, 05 Aug 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/intermediate-python-concepts/</guid><description>&lt;h2 id="classes-and-objects">Classes and objects&lt;/h2>
+&lt;/div></description></item><item><title>Intermediate Python Concepts</title><link>https://datdhruv.github.io/p/intermediate-python-concepts/</link><pubDate>Wed, 05 Aug 2020 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/intermediate-python-concepts/</guid><description>&lt;h2 id="classes-and-objects">Classes and objects&lt;/h2>
 &lt;ul>
 &lt;li>creating and using classes    &lt;/li>
 &lt;/ul>
@@ -557,7 +557,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">my_function&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Python OOPS Concepts</title><link>http://datdhruv.me/p/python-oops-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/python-oops-concepts/</guid><description>&lt;p>self =&amp;gt; instances -&amp;gt; methods taking this as the first arguement work on instances&lt;/p>
+&lt;/div></description></item><item><title>Python OOPS Concepts</title><link>https://datdhruv.github.io/p/python-oops-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/python-oops-concepts/</guid><description>&lt;p>self =&amp;gt; instances -&amp;gt; methods taking this as the first arguement work on instances&lt;/p>
 &lt;p>cls =&amp;gt; classes -&amp;gt; work on the entire class rather than an instance&lt;/p>
 &lt;p>both of them are context-aware&lt;/p>
 &lt;p>when working with classes, unlike regular methods that take instances as the first arguemnt and unlike class methods that take classes as the first argument, static methods take no arguments&lt;/p>
@@ -1162,7 +1162,7 @@ eg &lt;code>class Developer(Employee):&lt;/code>&lt;/p>
 &lt;/div>
 &lt;/div>&lt;h2 id="self--main">Self == main??&lt;/h2>
 &lt;p>&lt;strong>it is&lt;/strong> &lt;code>if __name__ == &amp;quot;__main__&amp;quot;&lt;/code>!!!&lt;/p>
-&lt;p>&lt;strong>name&lt;/strong> signifies name of the caller or something. &lt;strong>main&lt;/strong> is the caller then!&lt;/p></description></item><item><title>Regex concepts</title><link>http://datdhruv.me/p/regex-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/regex-concepts/</guid><description>&lt;h1 id="regex-concepts">Regex Concepts&lt;/h1>
+&lt;p>&lt;strong>name&lt;/strong> signifies name of the caller or something. &lt;strong>main&lt;/strong> is the caller then!&lt;/p></description></item><item><title>Regex concepts</title><link>https://datdhruv.github.io/p/regex-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/regex-concepts/</guid><description>&lt;h1 id="regex-concepts">Regex Concepts&lt;/h1>
 &lt;p>To escape characters you need to use &lt;code>\&lt;/code> escape characters, for eg if you want to search for a &amp;ldquo;?&amp;rdquo; or &amp;ldquo;.&amp;rdquo; or &amp;ldquo;&amp;quot;, use backslash &lt;code>\.&lt;/code>, &lt;code>\?&lt;/code>, &lt;code>\\&lt;/code>. If you want to search for an email address eg: &lt;a class="link" href="mailto:name@example.com" >name@example.com&lt;/a>, use: &lt;code>name@example\.com&lt;/code>&lt;/p>
 &lt;p>. -&amp;gt; matches any character except newline character&lt;/p>
 &lt;p>\d matches digits (anything from 0-9)&lt;/p>

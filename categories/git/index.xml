@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>git on datDhruv's Blog</title><link>http://datdhruv.me/categories/git/</link><description>Recent content in git on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 14 Nov 2021 12:00:00 +0400</lastBuildDate><atom:link href="http://datdhruv.me/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git</title><link>http://datdhruv.me/p/git/</link><pubDate>Thu, 05 Mar 2020 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/git/</guid><description>&lt;p>Some Conventions&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>git on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/git/</link><description>Recent content in git on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 14 Nov 2021 12:00:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git</title><link>https://datdhruv.github.io/p/git/</link><pubDate>Thu, 05 Mar 2020 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/git/</guid><description>&lt;p>Some Conventions&lt;/p>
 &lt;p>repository(repo) -&amp;gt; basically just a folder, which has all your code in it&lt;/p>
 &lt;p>local repo -&amp;gt; The folder that is On your computer&lt;/p>
 &lt;p>remote repo -&amp;gt; The folder that is on some git server (or on a server, basically not on your computer)&lt;/p>
@@ -350,7 +350,7 @@
 &lt;p>The &lt;code>git show&lt;/code> command will give you even more details telling you exactly what the changes were.&lt;/p>
 &lt;p>The &lt;code>git diff&lt;/code> command will give you the exact changes &lt;strong>between two&lt;/strong> commit hashes&lt;/p>
 &lt;h3 id="getting-changes-in-a-remote-repo">Getting changes in a remote repo&lt;/h3>
-&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Forget git history</title><link>http://datdhruv.me/p/forget-git-history/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/forget-git-history/</guid><description>&lt;h1 id="to-remove-the-git-history">To remove the git history&lt;/h1>
+&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Forget git history</title><link>https://datdhruv.github.io/p/forget-git-history/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/forget-git-history/</guid><description>&lt;h1 id="to-remove-the-git-history">To remove the git history&lt;/h1>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -369,7 +369,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -f origin main &lt;span class="c1"># Force push master branch to Git server&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Git Credential Manager</title><link>http://datdhruv.me/p/git-credential-manager/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>http://datdhruv.me/p/git-credential-manager/</guid><description>&lt;p>Github removed the https login with username password to push/pull code.&lt;/p>
+&lt;/div></description></item><item><title>Git Credential Manager</title><link>https://datdhruv.github.io/p/git-credential-manager/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/git-credential-manager/</guid><description>&lt;p>Github removed the https login with username password to push/pull code.&lt;/p>
 &lt;p>Now you have to generate a personal access token and use that token instead of the password for those operations.&lt;/p>
 &lt;p>This brings us to git credential manger, you can save the username and password (or the personal access token) with git for https logins, so that you dont have to input it again and again.&lt;/p>
 &lt;p>You can do this with&lt;/p>
