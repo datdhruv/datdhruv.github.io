@@ -4,7 +4,21 @@
 &lt;p>You can view the status of iw using the command&lt;/p>
 &lt;p>&lt;code>iw &amp;lt;devname&amp;gt; get power_save&lt;/code>&lt;/p>
 &lt;p>and the device name &lt;code>&amp;lt;devname&amp;gt;&lt;/code> using the command &lt;code>ip a&lt;/code>&lt;/p>
-&lt;p>iw is used to show / manipulate wireless devices and their configuration&lt;/p></description></item><item><title>./ in Linux</title><link>https://datdhruv.github.io/p/-in-linux/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://datdhruv.github.io/p/-in-linux/</guid><description>&lt;p>So, why exactly does &lt;code>./executable&lt;/code> work in Linux and Unix (and &lt;code>.\&lt;/code> in windows)?&lt;/p>
+&lt;p>iw is used to show / manipulate wireless devices and their configuration&lt;/p></description></item><item><title>Linux as a Backend</title><link>https://datdhruv.github.io/p/linux-as-a-backend/</link><pubDate>Thu, 02 Dec 2021 22:15:00 +0400</pubDate><guid>https://datdhruv.github.io/p/linux-as-a-backend/</guid><description>&lt;p>After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine.&lt;/p>
+&lt;p>[Why SSH Port Forwarding gives you Superpowers]({% post_url ssh-port-forwarding %})&lt;/p>
+&lt;p>Most of the usage of this kind of work will be via the terminal itself.&lt;/p>
+&lt;p>I am however still struggling with how to use desktop linux, so as to be that one guy who propogates Linux use on the desktop.&lt;/p>
+&lt;p>Windows is used everywhere, and admittedly it is much easier to set some stuff like virtualbox up, and get working fast, so that complicates the issue further.&lt;/p>
+&lt;p>I also want to use Linux, because I am really comfortable with how it works and I know in depth how it &lt;strong>might&lt;/strong> work, or how things might be set up.&lt;/p>
+&lt;hr>
+&lt;p>Think of the Desktop OS as a frontend, and Linux as the backend.&lt;/p>
+&lt;p>The frontend has different set of goals, outcomes and expectations whereas the backend has it&amp;rsquo;s own goals, outcomes and expectations.&lt;/p>
+&lt;p>And in any scenario, you will be accessing most tools through the terminal, so it doesn&amp;rsquo;t matter what you frontend you use.&lt;/p>
+&lt;hr>
+&lt;h3 id="an-aside-on-using-software-that-your-host-may-not-allow-you-to-run">An aside on using software that your host may not allow you to run&lt;/h3>
+&lt;p>Well, in any case, you can always download a virtualization platform and run it on linux!&lt;/p>
+&lt;p>For example, some time ago I had issues running qbittorrent on windows. It would be flagged by the antivirus and would be uninstalled immediately.&lt;/p>
+&lt;p>And alternative to this &lt;em>restriction&lt;/em> is to just install qbittorrent in a Linux VM and get what you want with that. It is a heavier alternative, but well it is &lt;em>an&lt;/em> alternative!&lt;/p></description></item><item><title>./ in Linux</title><link>https://datdhruv.github.io/p/-in-linux/</link><pubDate>Mon, 01 Nov 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/-in-linux/</guid><description>&lt;p>So, why exactly does &lt;code>./executable&lt;/code> work in Linux and Unix (and &lt;code>.\&lt;/code> in windows)?&lt;/p>
 &lt;p>The &lt;code>./&lt;/code> translates to: &lt;strong>in the current directory&lt;/strong> (dot(.) : this, slash(/) : directory)&lt;/p>
 &lt;p>Now recall that there is a variable called &lt;code>$PATH&lt;/code> in all operating system shells.&lt;/p>
 &lt;p>The role of this variable is to store the path to all the places where system binaries are stored (for eg in &lt;code>/bin&lt;/code> or &lt;code>/usr/bin&lt;/code> or &lt;code>/sbin&lt;/code>)&lt;/p>
@@ -27,18 +41,4 @@
 &lt;p>&lt;code>./&lt;/code> ofc!&lt;/p>
 &lt;p>In this way, we specify the &lt;strong>complete path&lt;/strong> to the executable, and hence can run it directly&lt;/p>
 &lt;p>&lt;code>.executable&lt;/code> does not work because it is a valid directory name.&lt;/p>
-&lt;p>&lt;code>/executable&lt;/code> does not work because it can mean the &lt;em>root/executable&lt;/em> and hence we &lt;strong>need&lt;/strong> &lt;code>./&lt;/code>&lt;/p></description></item><item><title>Linux as a Backend</title><link>https://datdhruv.github.io/p/linux-as-a-backend/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://datdhruv.github.io/p/linux-as-a-backend/</guid><description>&lt;p>After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine.&lt;/p>
-&lt;p>[Why SSH Port Forwarding gives you Superpowers]({% post_url ssh-port-forwarding %})&lt;/p>
-&lt;p>Most of the usage of this kind of work will be via the terminal itself.&lt;/p>
-&lt;p>I am however still struggling with how to use desktop linux, so as to be that one guy who propogates Linux use on the desktop.&lt;/p>
-&lt;p>Windows is used everywhere, and admittedly it is much easier to set some stuff like virtualbox up, and get working fast, so that complicates the issue further.&lt;/p>
-&lt;p>I also want to use Linux, because I am really comfortable with how it works and I know in depth how it &lt;strong>might&lt;/strong> work, or how things might be set up.&lt;/p>
-&lt;hr>
-&lt;p>Think of the Desktop OS as a frontend, and Linux as the backend.&lt;/p>
-&lt;p>The frontend has different set of goals, outcomes and expectations whereas the backend has it&amp;rsquo;s own goals, outcomes and expectations.&lt;/p>
-&lt;p>And in any scenario, you will be accessing most tools through the terminal, so it doesn&amp;rsquo;t matter what you frontend you use.&lt;/p>
-&lt;hr>
-&lt;h3 id="an-aside-on-using-software-that-your-host-may-not-allow-you-to-run">An aside on using software that your host may not allow you to run&lt;/h3>
-&lt;p>Well, in any case, you can always download a virtualization platform and run it on linux!&lt;/p>
-&lt;p>For example, some time ago I had issues running qbittorrent on windows. It would be flagged by the antivirus and would be uninstalled immediately.&lt;/p>
-&lt;p>And alternative to this &lt;em>restriction&lt;/em> is to just install qbittorrent in a Linux VM and get what you want with that. It is a heavier alternative, but well it is &lt;em>an&lt;/em> alternative!&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>/executable&lt;/code> does not work because it can mean the &lt;em>root/executable&lt;/em> and hence we &lt;strong>need&lt;/strong> &lt;code>./&lt;/code>&lt;/p></description></item></channel></rss>
