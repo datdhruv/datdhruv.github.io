@@ -511,7 +511,7 @@
 &lt;h3 id="an-aside-on-using-software-that-your-host-may-not-allow-you-to-run">An aside on using software that your host may not allow you to run&lt;/h3>
 &lt;p>Well, in any case, you can always download a virtualization platform and run it on linux!&lt;/p>
 &lt;p>For example, some time ago I had issues running qbittorrent on windows. It would be flagged by the antivirus and would be uninstalled immediately.&lt;/p>
-&lt;p>And alternative to this &lt;em>restriction&lt;/em> is to just install qbittorrent in a Linux VM and get what you want with that. It is a heavier alternative, but well it is &lt;em>an&lt;/em> alternative!&lt;/p></description></item><item><title>Forget git history</title><link>https://datdhruv.github.io/p/forget-git-history/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/forget-git-history/</guid><description>&lt;h1 id="to-remove-the-git-history">To remove the git history&lt;/h1>
+&lt;p>And alternative to this &lt;em>restriction&lt;/em> is to just install qbittorrent in a Linux VM and get what you want with that. It is a heavier alternative, but well it is &lt;em>an&lt;/em> alternative!&lt;/p></description></item><item><title>Forget git history</title><link>https://datdhruv.github.io/p/forget-git-history/</link><pubDate>Mon, 29 Nov 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/forget-git-history/</guid><description>&lt;h1 id="to-remove-the-git-history">To remove the git history&lt;/h1>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -530,7 +530,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push -f origin main &lt;span class="c1"># Force push master branch to Git server&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Git Credential Manager</title><link>https://datdhruv.github.io/p/git-credential-manager/</link><pubDate>Sun, 14 Nov 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/git-credential-manager/</guid><description>&lt;p>Github removed the https login with username password to push/pull code.&lt;/p>
+&lt;/div></description></item><item><title>Git Credential Manager</title><link>https://datdhruv.github.io/p/git-credential-manager/</link><pubDate>Fri, 26 Nov 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/git-credential-manager/</guid><description>&lt;p>Github removed the https login with username password to push/pull code.&lt;/p>
 &lt;p>Now you have to generate a personal access token and use that token instead of the password for those operations.&lt;/p>
 &lt;p>This brings us to git credential manger, you can save the username and password (or the personal access token) with git for https logins, so that you dont have to input it again and again.&lt;/p>
 &lt;p>You can do this with&lt;/p>
