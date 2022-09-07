@@ -7,7 +7,7 @@ categories: [linux, Epiphanies]
 
 After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine. 
 
-[Why SSH Port Forwarding gives you Superpowers]({% post_url ssh-port-forwarding %})
+[Why SSH Port Forwarding gives you Superpowers]({{< relref "ssh-port-forwarding" >}})
 
 Most of the usage of this kind of work will be via the terminal itself.
 
