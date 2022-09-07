@@ -2,7 +2,7 @@
 layout: post
 title:  "Forget git history"
 description: "Sometimes you just want to forget somethings and move forward, and life may not allow you to do that, but git does"
-date:   2021-11-14 12:00:00 +0400
+date:   2021-11-29 12:00:00 +0400
 categories: git
 ---
 

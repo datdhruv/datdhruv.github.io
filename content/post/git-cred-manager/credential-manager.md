@@ -2,7 +2,7 @@
 layout: post
 title:  "Git Credential Manager"
 description: "Github removed the https login with username password to push/pull code, This is now the official way if you dont want to use ssh-key"
-date:   2021-11-14 12:00:00 +0400
+date:   2021-11-26 12:00:00 +0400
 categories: git
 ---
 
