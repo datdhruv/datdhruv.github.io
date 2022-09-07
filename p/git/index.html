@@ -49,7 +49,7 @@
 </span></span><span class=line><span class=cl># [master cd5c47a] add stuff to about git
 </span></span><span class=line><span class=cl># 1 file changed, 126 insertions(+)
 </span></span><span class=line><span class=cl># create mode 100644 About-git.md
-</span></span></code></pre></td></tr></table></div></div><h2 id=making-changes-to-a-remote-repository>Making changes to a remote repository</h2><p>This can be done via SSH keys or via [Gitcredential manager]({% post_url git-credential-manager %})</p><ol><li><p>Create SSH keys and add the .pub (public part) of the key on github/your git provider</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><h2 id=making-changes-to-a-remote-repository>Making changes to a remote repository</h2><p>This can be done via SSH keys or via <a class=link href=/p/git-credential-manager/>Gitcredential manager</a></p><ol><li><p>Create SSH keys and add the .pub (public part) of the key on github/your git provider</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>ssh-keygen -t rsa -b <span class=m>4096</span> -C <span class=s2>&#34;your_email@example.com&#34;</span>
 </span></span></code></pre></td></tr></table></div></div></li><li><p>Ensure ssh-agent is running</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2

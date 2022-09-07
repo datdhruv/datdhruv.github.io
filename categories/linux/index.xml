@@ -5,7 +5,7 @@
 &lt;p>&lt;code>iw &amp;lt;devname&amp;gt; get power_save&lt;/code>&lt;/p>
 &lt;p>and the device name &lt;code>&amp;lt;devname&amp;gt;&lt;/code> using the command &lt;code>ip a&lt;/code>&lt;/p>
 &lt;p>iw is used to show / manipulate wireless devices and their configuration&lt;/p></description></item><item><title>Linux as a Backend</title><link>https://datdhruv.github.io/p/linux-as-a-backend/</link><pubDate>Thu, 02 Dec 2021 22:15:00 +0400</pubDate><guid>https://datdhruv.github.io/p/linux-as-a-backend/</guid><description>&lt;p>After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine.&lt;/p>
-&lt;p>[Why SSH Port Forwarding gives you Superpowers]({% post_url ssh-port-forwarding %})&lt;/p>
+&lt;p>&lt;a class="link" href="https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/" >Why SSH Port Forwarding gives you Superpowers&lt;/a>&lt;/p>
 &lt;p>Most of the usage of this kind of work will be via the terminal itself.&lt;/p>
 &lt;p>I am however still struggling with how to use desktop linux, so as to be that one guy who propogates Linux use on the desktop.&lt;/p>
 &lt;p>Windows is used everywhere, and admittedly it is much easier to set some stuff like virtualbox up, and get working fast, so that complicates the issue further.&lt;/p>

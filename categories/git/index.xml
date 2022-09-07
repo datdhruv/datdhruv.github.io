@@ -112,7 +112,7 @@
 &lt;/div>
 &lt;/div>&lt;h2 id="making-changes-to-a-remote-repository">Making changes to a remote repository&lt;/h2>
 &lt;!-- raw HTML omitted -->
-&lt;p>This can be done via SSH keys or via [Gitcredential manager]({% post_url git-credential-manager %})&lt;/p>
+&lt;p>This can be done via SSH keys or via &lt;a class="link" href="https://datdhruv.github.io/p/git-credential-manager/" >Gitcredential manager&lt;/a>&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>Create SSH keys and add the .pub (public part) of the key on github/your git provider&lt;/p>
