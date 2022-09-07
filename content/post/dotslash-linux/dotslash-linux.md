@@ -1,6 +1,6 @@
 ---
 title: "./ in Linux"
-date: 2021-11-1 12:00:00 +0400
+date: 2021-11-01 12:00:00 +0400
 description: "why does ./executable work in linux"
 categories: linux
 ---

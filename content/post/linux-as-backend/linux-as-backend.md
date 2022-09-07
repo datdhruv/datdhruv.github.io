@@ -1,7 +1,7 @@
 ---
-title: "Linux as a Backend"
-date: 2021-12-2 22:15:00 +0400
-description: "Abstracting 'User Shell' from the 'Terminal'"
+title:  "Linux as a Backend"
+date:   2021-12-02 22:15:00 +0400
+description:    "Abstracting 'User Shell' from the 'Terminal'"
 categories: [linux, Epiphanies]
 ---
 
