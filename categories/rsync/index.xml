@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>rsync on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/rsync/</link><description>Recent content in rsync on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 09 Sep 2022 11:25:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/rsync/index.xml" rel="self" type="application/rss+xml"/><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
+&lt;p>SCP, or Secure Copy uses SSH to copy files or directories that you select.&lt;/p>
+&lt;p>Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.&lt;/p>
+&lt;p>You can even copy files over jump or intermediate connections by specifiying the &lt;code>-o&lt;/code> flag, like this:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># To copy myfile.txt to /my/dir directory on your remote host&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">scp -o &lt;span class="s1">&amp;#39;ProxyJump your.jump.host&amp;#39;&lt;/span> myfile.txt remote.internal.host:/my/dir
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Note that with &lt;code>SSH version 9&lt;/code>, SCP now has a SFTP backend rather than the traditional rcp backend. More details can be found in the &lt;a class="link" href="https://www.openssh.com/txt/release-9.0" target="_blank" rel="noopener"
+>release notes&lt;/a>&lt;/p>
+&lt;h1 id="sftp">SFTP&lt;/h1>
+&lt;p>sftp works like scp&lt;/p>
+&lt;h1 id="rsync">RSYNC&lt;/h1>
+&lt;p>On first use, Rsync copies all files and directories and then it copies only the files and directories that you have changed. It does not copy all the files and directories again.&lt;/p>
+&lt;p>This command is not available on windows, so the not as cross platform as scp or sftp&lt;/p>
+&lt;p>This is extremely useful when you want to copy folder which change often, and can be used as a remote backup solution&lt;/p></description></item></channel></rss>
