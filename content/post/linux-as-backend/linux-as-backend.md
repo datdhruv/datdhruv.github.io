@@ -2,7 +2,7 @@
 title:  "Linux as a Backend"
 date:   2021-12-02 22:15:00 +0400
 description:    "Abstracting 'User Shell' from the 'Terminal'"
-categories: [linux, Epiphanies]
+categories: [linux, epiphanies]
 ---
 
 After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine. 
