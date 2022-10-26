@@ -184,7 +184,7 @@ emp1.lol -> are instance variables inherited from class or are set afterwards</p
 </span></span><span class=line><span class=cl>Calculator.addNumbers = staticmethod(Calculator.addNumbers)
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>print(&#39;Product:&#39;, Calculator.addNumbers(15, 110))
-</span></span></code></pre></td></tr></table></div></div><p>``</p></li><li><p>using @staticmethod decorator</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div></li><li><p>using @staticmethod decorator</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
@@ -198,7 +198,7 @@ emp1.lol -> are instance variables inherited from class or are set afterwards</p
 </span></span><span class=line><span class=cl>        return x + y
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>print(&#39;Product:&#39;, Calculator.addNumbers(15, 110))
-</span></span></code></pre></td></tr></table></div></div><p>``</p></li></ol><h2 id=inherititance>Inherititance</h2><p>to inherit a class&rsquo;s attributes in anohter class, just pass it as an arguement to the inheriting class
+</span></span></code></pre></td></tr></table></div></div></li></ol><h2 id=inherititance>Inherititance</h2><p>to inherit a class&rsquo;s attributes in anohter class, just pass it as an arguement to the inheriting class
 eg <code>class Developer(Employee):</code></p><p>remeber python resolves methods and variables as:</p><ol><li>current class object</li><li>parent class object</li><li>parent&rsquo;s parent class object</li></ol><p>and so on</p><h3 id=super>super()</h3><p>To call the methods of a class above the current class, use <code>super</code>, for eg:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3

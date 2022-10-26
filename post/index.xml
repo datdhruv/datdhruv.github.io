@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on datDhruv's Blog</title><link>https://datdhruv.github.io/post/</link><description>Recent content in Posts on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 09 Sep 2022 11:25:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on datDhruv's Blog</title><link>https://datdhruv.github.io/post/</link><description>Recent content in Posts on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 26 Oct 2022 12:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
 &lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
 &lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
 &lt;p>This was an example of local port forwarding.&lt;/p>
@@ -422,7 +422,11 @@
 &lt;p>The &lt;code>git show&lt;/code> command will give you even more details telling you exactly what the changes were.&lt;/p>
 &lt;p>The &lt;code>git diff&lt;/code> command will give you the exact changes &lt;strong>between two&lt;/strong> commit hashes&lt;/p>
 &lt;h3 id="getting-changes-in-a-remote-repo">Getting changes in a remote repo&lt;/h3>
-&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
+&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;p>&lt;code>ESC f&lt;/code>: Go forward one word&lt;/p>
+&lt;p>&lt;code>ESC b&lt;/code>: Go backword one word&lt;/p>
+&lt;p>&lt;code>CTRL a&lt;/code>: Go to start of line&lt;/p>
+&lt;p>&lt;code>CTRL e&lt;/code>: Go to end of line&lt;/p>
+&lt;p>&lt;code>~ C&lt;/code>: Enter SSH Command Mode&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
 &lt;p>SCP, or Secure Copy uses SSH to copy files or directories that you select.&lt;/p>
 &lt;p>Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.&lt;/p>
 &lt;p>You can even copy files over jump or intermediate connections by specifiying the &lt;code>-o&lt;/code> flag, like this:&lt;/p>
@@ -1481,8 +1485,7 @@ emp1.lol -&amp;gt; are instance variables inherited from class or are set afterw
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#39;Product:&amp;#39;, Calculator.addNumbers(15, 110))
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>``&lt;/p>
-&lt;/li>
+&lt;/div>&lt;/li>
 &lt;li>
 &lt;p>using @staticmethod decorator&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -1505,8 +1508,7 @@ emp1.lol -&amp;gt; are instance variables inherited from class or are set afterw
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#39;Product:&amp;#39;, Calculator.addNumbers(15, 110))
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>``&lt;/p>
-&lt;/li>
+&lt;/div>&lt;/li>
 &lt;/ol>
 &lt;h2 id="inherititance">Inherititance&lt;/h2>
 &lt;p>to inherit a class&amp;rsquo;s attributes in anohter class, just pass it as an arguement to the inheriting class

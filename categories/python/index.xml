@@ -830,8 +830,7 @@ emp1.lol -&amp;gt; are instance variables inherited from class or are set afterw
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#39;Product:&amp;#39;, Calculator.addNumbers(15, 110))
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>``&lt;/p>
-&lt;/li>
+&lt;/div>&lt;/li>
 &lt;li>
 &lt;p>using @staticmethod decorator&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -854,8 +853,7 @@ emp1.lol -&amp;gt; are instance variables inherited from class or are set afterw
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">print(&amp;#39;Product:&amp;#39;, Calculator.addNumbers(15, 110))
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>``&lt;/p>
-&lt;/li>
+&lt;/div>&lt;/li>
 &lt;/ol>
 &lt;h2 id="inherititance">Inherititance&lt;/h2>
 &lt;p>to inherit a class&amp;rsquo;s attributes in anohter class, just pass it as an arguement to the inheriting class
