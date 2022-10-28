@@ -422,11 +422,77 @@
 &lt;p>The &lt;code>git show&lt;/code> command will give you even more details telling you exactly what the changes were.&lt;/p>
 &lt;p>The &lt;code>git diff&lt;/code> command will give you the exact changes &lt;strong>between two&lt;/strong> commit hashes&lt;/p>
 &lt;h3 id="getting-changes-in-a-remote-repo">Getting changes in a remote repo&lt;/h3>
-&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;p>&lt;code>ESC f&lt;/code>: Go forward one word&lt;/p>
-&lt;p>&lt;code>ESC b&lt;/code>: Go backword one word&lt;/p>
-&lt;p>&lt;code>CTRL a&lt;/code>: Go to start of line&lt;/p>
-&lt;p>&lt;code>CTRL e&lt;/code>: Go to end of line&lt;/p>
-&lt;p>&lt;code>~ C&lt;/code>: Enter SSH Command Mode&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
+&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key Binding&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>ESC f&lt;/code>, &lt;code>ESC b&lt;/code>&lt;/td>
+&lt;td>Go forward/backword one word&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>CTRL a&lt;/code>, &lt;code>CTRL e&lt;/code>&lt;/td>
+&lt;td>Go to start/end of line&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>~ C&lt;/code>&lt;/td>
+&lt;td>Enter SSH Command Mode&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-b&lt;/code>, &lt;code>C-f&lt;/code>&lt;/td>
+&lt;td>Move backward/forward one character&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>M-b&lt;/code>, &lt;code>M-f&lt;/code>&lt;/td>
+&lt;td>Move backward/forward by word&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-a&lt;/code>, &lt;code>C-e&lt;/code>&lt;/td>
+&lt;td>Move to the beginning/end of the line&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-w&lt;/code>, &lt;code>M-d&lt;/code>&lt;/td>
+&lt;td>Kill word backward/forward&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-d&lt;/code>, &lt;code>Backspace&lt;/code>&lt;/td>
+&lt;td>Delete char forward/backward&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-d&lt;/code>&lt;/td>
+&lt;td>may send EOF on an empty line&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-k&lt;/code>, &lt;code>C-u&lt;/code>&lt;/td>
+&lt;td>Kill (to clipboard) to end of line/beginning of line&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-y&lt;/code>&lt;/td>
+&lt;td>Yank from kill ring&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>M-y&lt;/code> (after &lt;code>C-y&lt;/code>)&lt;/td>
+&lt;td>Cycle through kill ring history&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-t&lt;/code>, &lt;code>M-t&lt;/code>&lt;/td>
+&lt;td>Transpose character/word&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>M-u&lt;/code>, &lt;code>M-l&lt;/code>, &lt;code>M-c&lt;/code>&lt;/td>
+&lt;td>Upper, lower, or capitalize forward word&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>C-_&lt;/code>, &lt;code>C-x C-u&lt;/code>, &lt;code>C-/&lt;/code>&lt;/td>
+&lt;td>Cycle through the undo list&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;em>Note&lt;/em>: &lt;code>C&lt;/code> = &lt;code>Ctrl&lt;/code>, &lt;code>M&lt;/code> = Meta Key/modifier&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
 &lt;p>SCP, or Secure Copy uses SSH to copy files or directories that you select.&lt;/p>
 &lt;p>Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.&lt;/p>
 &lt;p>You can even copy files over jump or intermediate connections by specifiying the &lt;code>-o&lt;/code> flag, like this:&lt;/p>
