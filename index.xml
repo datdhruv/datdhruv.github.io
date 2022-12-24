@@ -492,7 +492,7 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;em>Note&lt;/em>: &lt;code>C&lt;/code> = &lt;code>Ctrl&lt;/code>, &lt;code>M&lt;/code> = Meta Key/modifier&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
+&lt;p>&lt;em>Note&lt;/em>: &lt;code>C&lt;/code> = &lt;code>Ctrl&lt;/code>, &lt;code>M&lt;/code> = Meta Key/modifier (&lt;code>alt&lt;/code> or &lt;code>esc&lt;/code>)&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
 &lt;p>SCP, or Secure Copy uses SSH to copy files or directories that you select.&lt;/p>
 &lt;p>Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.&lt;/p>
 &lt;p>You can even copy files over jump or intermediate connections by specifiying the &lt;code>-o&lt;/code> flag, like this:&lt;/p>
@@ -1850,7 +1850,7 @@ eg &lt;code>class Developer(Employee):&lt;/code>&lt;/p>
 &lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@fullname&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">setter&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@fullname.setter&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">first&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">last&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">name&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34; &amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">first&lt;/span>
@@ -1870,7 +1870,7 @@ eg &lt;code>class Developer(Employee):&lt;/code>&lt;/p>
 &lt;/span>&lt;span class="lnt">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@fullname&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">deleter&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@fullname.deleter&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="nf">fullname&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Deleting name&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">None&lt;/span>

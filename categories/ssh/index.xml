@@ -140,7 +140,7 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;em>Note&lt;/em>: &lt;code>C&lt;/code> = &lt;code>Ctrl&lt;/code>, &lt;code>M&lt;/code> = Meta Key/modifier&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
+&lt;p>&lt;em>Note&lt;/em>: &lt;code>C&lt;/code> = &lt;code>Ctrl&lt;/code>, &lt;code>M&lt;/code> = Meta Key/modifier (&lt;code>alt&lt;/code> or &lt;code>esc&lt;/code>)&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/copying-files-over-a-remote-connection/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
 &lt;p>SCP, or Secure Copy uses SSH to copy files or directories that you select.&lt;/p>
 &lt;p>Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.&lt;/p>
 &lt;p>You can even copy files over jump or intermediate connections by specifiying the &lt;code>-o&lt;/code> flag, like this:&lt;/p>
