@@ -23,4 +23,4 @@ categories: [cli, ssh]
 |`M-u`, `M-l`, `M-c`	| Upper, lower, or capitalize forward word|
 |`C-_`, `C-x C-u`, `C-/` | Cycle through the undo list|
 
-*Note*: `C` = `Ctrl`, `M` = Meta Key/modifier
+*Note*: `C` = `Ctrl`, `M` = Meta Key/modifier (`alt` or `esc`)
