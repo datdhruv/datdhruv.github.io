@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cli on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/cli/</link><description>Recent content in cli on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 26 Oct 2022 12:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;table>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cli on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/cli/</link><description>Recent content in cli on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 25 Dec 2022 11:25:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/cli/index.xml" rel="self" type="application/rss+xml"/><item><title>Get a Brief of Ip command (with Color)</title><link>https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/</link><pubDate>Sun, 25 Dec 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/</guid><description>&lt;p>The default &lt;code>ip addr&lt;/code> command, which gives you ip address of your device, is cluttered with alot of values, which may not be useful to you. To quickly get the output, you can pass the &lt;code>-br&lt;/code> argument, which outputs a brief of the network statistic.&lt;/p>
+&lt;p>Additionally you can get color output by passing the &lt;code>-c&lt;/code> argument.&lt;/p>
+&lt;p>&lt;img src="https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/ip-brief-output.png"
+width="2640"
+height="1194"
+srcset="https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/ip-brief-output_huecd3e24273e1c413adddcaf92a2540f7_387249_480x0_resize_box_3.png 480w, https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/ip-brief-output_huecd3e24273e1c413adddcaf92a2540f7_387249_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="221"
+data-flex-basis="530px"
+>&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>Key Binding&lt;/th>

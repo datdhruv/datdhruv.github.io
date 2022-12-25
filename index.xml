@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>datDhruv's Blog</title><link>https://datdhruv.github.io/</link><description>Recent content on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 26 Oct 2022 12:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>datDhruv's Blog</title><link>https://datdhruv.github.io/</link><description>Recent content on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 25 Dec 2022 11:25:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
 &lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
 &lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
 &lt;p>This was an example of local port forwarding.&lt;/p>
@@ -422,7 +422,17 @@
 &lt;p>The &lt;code>git show&lt;/code> command will give you even more details telling you exactly what the changes were.&lt;/p>
 &lt;p>The &lt;code>git diff&lt;/code> command will give you the exact changes &lt;strong>between two&lt;/strong> commit hashes&lt;/p>
 &lt;h3 id="getting-changes-in-a-remote-repo">Getting changes in a remote repo&lt;/h3>
-&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;table>
+&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Get a Brief of Ip command (with Color)</title><link>https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/</link><pubDate>Sun, 25 Dec 2022 11:25:00 +0400</pubDate><guid>https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/</guid><description>&lt;p>The default &lt;code>ip addr&lt;/code> command, which gives you ip address of your device, is cluttered with alot of values, which may not be useful to you. To quickly get the output, you can pass the &lt;code>-br&lt;/code> argument, which outputs a brief of the network statistic.&lt;/p>
+&lt;p>Additionally you can get color output by passing the &lt;code>-c&lt;/code> argument.&lt;/p>
+&lt;p>&lt;img src="https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/ip-brief-output.png"
+width="2640"
+height="1194"
+srcset="https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/ip-brief-output_huecd3e24273e1c413adddcaf92a2540f7_387249_480x0_resize_box_3.png 480w, https://datdhruv.github.io/p/get-a-brief-of-ip-command-with-color/ip-brief-output_huecd3e24273e1c413adddcaf92a2540f7_387249_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="221"
+data-flex-basis="530px"
+>&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>Key Binding&lt;/th>
