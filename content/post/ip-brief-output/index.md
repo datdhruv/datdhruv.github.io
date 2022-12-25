@@ -5,8 +5,8 @@ description: ""
 categories: [cli, linux]
 ---
 
-The default `ip addr` command, which gives you ip address of your device, is cluttered with alot of values, which may not be useful to you. To quickly get the output, you can pass the `-br` argument, which outputs a brief of the network statistic.
+The default `ip addr` command, which gives you ip address of your device, is cluttered with alot of values, which may not be useful to you. To quickly get the output, you can pass the `-br` or `--brief` argument, which outputs a brief of the network statistic.
 
-Additionally you can get color output by passing the `-c` argument.
+Additionally you can get color output by passing the `-c` or `--color` argument.
 
 ![](ip-brief-output.png)
