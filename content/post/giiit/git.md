@@ -198,6 +198,8 @@ to merge the changes of the two branches, here you don't have to specify the bra
 git merge <branch name>
 ```
 
+You can merge a branch into the main branch as a single commit using the `--squash` flag with `git merge`. When you sqash a branch, the commit history from that branch *does not* come into the branch you are merging into. So you may have multiple commits in the diverging branch, but when you merge, these commits will not come into the branch you are merging into, instead the state of the final commit will be merged.
+
 to push a branch onto a remote git server:
 ```git
 git push --set-upstream origin branch_name
