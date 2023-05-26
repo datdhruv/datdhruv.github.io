@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>datDhruv's Blog</title><link>https://datdhruv.github.io/</link><description>Recent content on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 25 Dec 2022 11:25:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>datDhruv's Blog</title><link>https://datdhruv.github.io/</link><description>Recent content on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 26 May 2023 22:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
 &lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
 &lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
 &lt;p>This was an example of local port forwarding.&lt;/p>
@@ -68,6 +68,29 @@
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">-KL &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-KR &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Find Patterns in a directory with grep</title><link>https://datdhruv.github.io/p/find-patterns-in-a-directory-with-grep/</link><pubDate>Fri, 26 May 2023 22:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/find-patterns-in-a-directory-with-grep/</guid><description>&lt;p>Recently I had to lookup a usage for function in a project I was working on.&lt;/p>
+&lt;p>This is relatively an easy task with vscode. You just open the search in files menu, type what you are looking for, and off you go.&lt;/p>
+&lt;p>This made me wonder, how would you achieve this task in the command line with something like grep?&lt;/p>
+&lt;p>There is an amazing tool which specializes in this activity: &lt;code>ripgrep&lt;/code>, however I was determined to complete this task with just grep.&lt;/p>
+&lt;p>Here&amp;rsquo;s what you do:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">grep --color -r pattern_to_search
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>This will recursively search for the given pattern in all files in the directory (and the subdiretory)&lt;/p>
+&lt;p>You can even exclude a directly (like &lt;code>.git&lt;/code>)&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">grep --color -r --exclude-dir&lt;span class="o">=&lt;/span>.git pattern_to_search
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item><item><title>Git</title><link>https://datdhruv.github.io/p/git/</link><pubDate>Thu, 05 Mar 2020 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/git/</guid><description>&lt;p>Some Conventions&lt;/p>
