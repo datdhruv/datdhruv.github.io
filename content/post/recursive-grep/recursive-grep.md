@@ -3,7 +3,6 @@ title:  "Find Patterns in a directory with grep"
 description: "recursive grep-ing"
 date:   2023-05-26 22:30:00 +0400
 categories: [cli, regex]
-weight: 20
 ---
 Recently I had to lookup a usage for function in a project I was working on.
 
