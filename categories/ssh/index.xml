@@ -115,6 +115,10 @@
 &lt;td>may send EOF on an empty line&lt;/td>
 &lt;/tr>
 &lt;tr>
+&lt;td>&lt;code>M-.&lt;/code>&lt;/td>
+&lt;td>Insert the argument to the previous command&lt;/td>
+&lt;/tr>
+&lt;tr>
 &lt;td>&lt;code>C-k&lt;/code>, &lt;code>C-u&lt;/code>&lt;/td>
 &lt;td>Kill (to clipboard) to end of line/beginning of line&lt;/td>
 &lt;/tr>
