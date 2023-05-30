@@ -16,6 +16,7 @@ categories: [cli, ssh]
 | `C-w`, `M-d` | Kill word backward/forward|
 | `C-d`, `Backspace` | Delete char forward/backward |
 | `C-d` | may send EOF on an empty line|
+| `M-.` | Insert the argument to the previous command |
 |`C-k`, `C-u`|	Kill (to clipboard) to end of line/beginning of line|
 |`C-y`|	Yank from kill ring|
 |`M-y` (after `C-y`) | Cycle through kill ring history|
