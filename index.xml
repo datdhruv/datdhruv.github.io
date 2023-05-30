@@ -502,7 +502,7 @@ data-flex-basis="530px"
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>M-.&lt;/code>&lt;/td>
-&lt;td>Insert the argument to the previous command&lt;/td>
+&lt;td>cycle through the argument to the previous commands&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td>&lt;code>C-k&lt;/code>, &lt;code>C-u&lt;/code>&lt;/td>
