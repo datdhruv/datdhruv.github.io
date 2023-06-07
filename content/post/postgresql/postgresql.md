@@ -1,3 +1,4 @@
+# Installing Postgres
 ``` bash
 sudo apt search postgres
 sudo apt install postgresql
@@ -11,3 +12,9 @@ sudo -u upskillr psql
 sudo adduser upskillr
 sudo -u upskillr psql
 ```
+
+# The PSQL Command
+
+To get help, just type \help in the psql console.
+
+You can also get help about the various psql commands if you type in `\?` into the psql console. Or you can also get help regarding various Postgres commands if you input \h into the console.
