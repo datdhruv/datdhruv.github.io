@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>datDhruv's Blog</title><link>https://datdhruv.github.io/</link><description>Recent content on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 26 May 2023 22:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>datDhruv's Blog</title><link>https://datdhruv.github.io/</link><description>Recent content on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 24 Jun 2023 11:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
 &lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
 &lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
 &lt;p>This was an example of local port forwarding.&lt;/p>
@@ -423,7 +423,131 @@
 &lt;p>The &lt;code>git show&lt;/code> command will give you even more details telling you exactly what the changes were.&lt;/p>
 &lt;p>The &lt;code>git diff&lt;/code> command will give you the exact changes &lt;strong>between two&lt;/strong> commit hashes&lt;/p>
 &lt;h3 id="getting-changes-in-a-remote-repo">Getting changes in a remote repo&lt;/h3>
-&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Find Patterns in a directory with grep</title><link>https://datdhruv.github.io/p/find-patterns-in-a-directory-with-grep/</link><pubDate>Fri, 26 May 2023 22:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/find-patterns-in-a-directory-with-grep/</guid><description>&lt;p>Recently I had to lookup a usage for function in a project I was working on.&lt;/p>
+&lt;p>First you need to fetch the changes, this is done with the command &lt;code>git fetch&lt;/code>. Then to see what the changes actually are, you can use &lt;code>git log main..origin/main&lt;/code> or &lt;code>git log local_branch..remote/branch&lt;/code>&lt;/p></description></item><item><title>Installing Postgresql on Ubuntu</title><link>https://datdhruv.github.io/p/installing-postgresql-on-ubuntu/</link><pubDate>Sat, 24 Jun 2023 11:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/installing-postgresql-on-ubuntu/</guid><description>&lt;h1 id="installing-postgres">Installing Postgres&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt search postgres
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install postgresql
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install postgresql postgresql-contrib
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl start postgresql.service
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo -i -u postgres
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo -u postgres createuser --interactive
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo -u upskillr psql
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo -u postgres createdb upskillr
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo -u upskillr psql
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo adduser upskillr
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo -u upskillr psql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="the-psql-command">The PSQL Command&lt;/h1>
+&lt;p>To get help, just type \help in the psql console.&lt;/p>
+&lt;p>You can also get help about the various psql commands if you type in &lt;code>\?&lt;/code> into the psql console. Or you can also get help regarding various Postgres commands if you input \h into the console.&lt;/p></description></item><item><title>Some Postgresql Examples</title><link>https://datdhruv.github.io/p/some-postgresql-examples/</link><pubDate>Sat, 24 Jun 2023 11:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/some-postgresql-examples/</guid><description>&lt;h2 id="jsonb-to-record">jsonb to record&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">select&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">fla&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">offer_id&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ans_data&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">from&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">fla&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">jsonb_to_record&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">answer_data&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">as&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">ans_data&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;AE46&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE3&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE16&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE45&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">date&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE47&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">date&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE55&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE60&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE61&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE73&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">date&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE74&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">date&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE62&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE27&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE42&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE58&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE25&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE54&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE44&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE17&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE53&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE59&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE19&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE56&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE21&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE57&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE33&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE32&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE41&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">date&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE31&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">date&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE65&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE66&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE67&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE72&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE52&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE38&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE69&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE70&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE68&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE71&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s2">&amp;#34;AE39&amp;#34;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">text&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="json-string-agg">JSON String agg&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">-- Data is stored as text within a json. Data itself is of type json
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">-- The end output is comma separted string from json keys
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">select&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">string_agg&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bf&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="s1">&amp;#39;, &amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">from&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">fact_logbook_ae&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">fla&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">json_object_keys&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="n">fla&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">answer_data&lt;/span>&lt;span class="o">-&amp;gt;&amp;gt;&lt;/span>&lt;span class="s1">&amp;#39;AE54&amp;#39;&lt;/span>&lt;span class="p">)::&lt;/span>&lt;span class="n">json&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">bf&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">where&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">offer_id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;SECD-20230013&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="update-record-on-conflict-while-inserting">Update record on conflict while inserting&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-perl" data-lang="perl">&lt;span class="line">&lt;span class="cl">&lt;span class="k">my&lt;/span> &lt;span class="nv">$STMT&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nv">$DBH&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">prepare&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sx">qq~insert into scd_logbook.fact_logbook_ae (offer_id,rev,answer_data,created_by_gid,last_saved_by_gid,created_ts,last_saved_ts) values(?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP) on conflict (offer_id, rev)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="sx"> do update set answer_data=excluded.answer_data, last_saved_ts=CURRENT_TIMESTAMP, last_saved_by_gid=excluded.last_saved_by_gid~&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">report_error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Error preparing SQL:&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="nv">$DBH&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">errstr&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">$STMT&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">execute&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;$OFFER_ID&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="nv">$FD&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="n">REV&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="n">encode_json&lt;/span> &lt;span class="o">\&lt;/span>&lt;span class="nv">%ANS&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="nv">$FD&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="n">GID&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="nv">$FD&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="n">GID&lt;/span>&lt;span class="p">})&lt;/span> &lt;span class="ow">or&lt;/span> &lt;span class="n">report_error&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Error executing SQL:&amp;#34;&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="nv">$DBH&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">errstr&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="validate-booking-using-functions">Validate Booking using Functions&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">CREATE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">OR&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">REPLACE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">FUNCTION&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">validate_booking_date&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">RETURNS&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">TRIGGER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">AS&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="err">$$&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">DECLARE&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">max_booking_end_date&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">DATE&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">BEGIN&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">SELECT&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">MAX&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">booking_end&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">INTO&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">max_booking_end_date&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">FROM&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">your_table&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">WHERE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">toolset_id&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">NEW&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">toolset_id&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">IF&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">NEW&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">booking_start&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;lt;=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">max_booking_end_date&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">THEN&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">RAISE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">EXCEPTION&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;Booking start date must be greater than the maximum booking end date.&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">END&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">IF&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">RETURN&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">NEW&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">END&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="err">$$&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">LANGUAGE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">plpgsql&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">-- Create a trigger that calls the validate_booking_date function
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">CREATE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">TRIGGER&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">check_booking_date_trigger&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">BEFORE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">INSERT&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">ON&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">your_table&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">FOR&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">EACH&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">ROW&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">EXECUTE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">FUNCTION&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">validate_booking_date&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Linux Filesystem Hierarchy</title><link>https://datdhruv.github.io/p/linux-filesystem-hierarchy/</link><pubDate>Mon, 12 Jun 2023 21:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/linux-filesystem-hierarchy/</guid><description>&lt;p>It is often tough to know where certain kinds of files or applications are in the Linux files system.&lt;/p>
+&lt;p>It is complicated due to historical reasons, and different distributions often put their files in different locations.&lt;/p>
+&lt;p>A good way to know where things are, or where things go, is by referring to your distribution&amp;rsquo;s man pages.&lt;/p>
+&lt;p>&lt;code>man hier&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://datdhruv.github.io/man-hier.png"
+loading="lazy"
+alt="Here&amp;rsquo;s a screenshot"
+>&lt;/p></description></item><item><title>Find Patterns in a directory with grep</title><link>https://datdhruv.github.io/p/find-patterns-in-a-directory-with-grep/</link><pubDate>Fri, 26 May 2023 22:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/find-patterns-in-a-directory-with-grep/</guid><description>&lt;p>Recently I had to lookup a usage for function in a project I was working on.&lt;/p>
 &lt;p>This is relatively an easy task with vscode. You just open the search in files menu, type what you are looking for, and off you go.&lt;/p>
 &lt;p>This made me wonder, how would you achieve this task in the command line with something like grep?&lt;/p>
 &lt;p>There is an amazing tool which specializes in this activity: &lt;code>ripgrep&lt;/code>, however I was determined to complete this task with just grep.&lt;/p>
@@ -2069,4 +2193,144 @@ Matches only the first character in the sequence.&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;!-- raw HTML omitted -->
-&lt;!-- raw HTML omitted --></description></item><item><title>Search</title><link>https://datdhruv.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://datdhruv.github.io/search/</guid><description/></item></channel></rss>
+&lt;!-- raw HTML omitted --></description></item><item><title/><link>https://datdhruv.github.io/p/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://datdhruv.github.io/p/</guid><description>&lt;h1 id="notes-on-making-a-web-scraper-in-java">Notes on making a Web Scraper in Java&lt;/h1>
+&lt;h2 id="first-things-first-a-web-request-library">First things first. A Web Request Library&lt;/h2>
+&lt;p>Before we can start to scrape anything, we will need a way to send and receive web requests. There are multiple ways to do this in java with various libraries, however we will use &lt;code>java.net.http.HttpClient&lt;/code> which was released with java 11.&lt;/p>
+&lt;p>Let&amp;rsquo;s create a simple request:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">package&lt;/span> &lt;span class="nn">org.datdhruv&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">java.io.IOException&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">java.net.URI&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">java.net.http.HttpClient&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">java.net.http.HttpRequest&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">java.net.http.HttpResponse&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Main&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="o">[]&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="kd">throws&lt;/span> &lt;span class="n">IOException&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">InterruptedException&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">var&lt;/span> &lt;span class="n">client&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">HttpClient&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">newHttpClient&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">HttpRequest&lt;/span> &lt;span class="n">request&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">HttpRequest&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">newBuilder&lt;/span>&lt;span class="o">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">uri&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">URI&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">create&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;https://datdhruv.me&amp;#34;&lt;/span>&lt;span class="o">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">var&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">send&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="n">HttpResponse&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">BodyHandlers&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">ofString&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">out&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">println&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">body&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>First we import &lt;code>java.net.URI&lt;/code>, &lt;code>java.net.http.HttpClient&lt;/code>, &lt;code>java.net.http.HttpRequest&lt;/code>, &lt;code>java.net.http.HttpResponse&lt;/code>. These are required for our requests to run.&lt;/p>
+&lt;p>The HttpRequest Object builds a query with the specified uri. This can be passed to the client to get a response. &lt;code>HttpResponse.BodyHandlers.ofString();&lt;/code> allows us to use the response body and parse it as a utf-8 encoded string.&lt;/p>
+&lt;p>If the query succeeds, you get the result in a HttpResponse object, from which you can operate on using methods like &lt;code>.body()&lt;/code>.&lt;/p>
+&lt;p>If the query fails, it throws an exception which needs to be handled. Hence we add the IOException and InterruptedException.&lt;/p>
+&lt;p>&lt;a class="link" href="https://openjdk.org/groups/net/httpclient/intro.html" target="_blank" rel="noopener"
+>Here&amp;rsquo;s the documentation for the same&lt;/a>&lt;/p>
+&lt;h5 id="to-escape--in-a-java-string-you-need-to-double-it">to escape % in a java string, you need to double it&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">private&lt;/span> &lt;span class="n">String&lt;/span> &lt;span class="n">payload&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;{\&amp;#34;requests\&amp;#34;: [{\&amp;#34;indexName\&amp;#34;: \&amp;#34;prod_all_launched_products_term_optimization\&amp;#34;,\&amp;#34;params\&amp;#34;: \&amp;#34;query=%s&amp;amp;hitsPerPage=5&amp;amp;facetFilters=%%5B%%5B%%22allLanguages%%3AEnglish%%22%%5D%%5D\&amp;#34;}]}&amp;#34;&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="auth">Auth&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">String&lt;/span> &lt;span class="n">encoding&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Base64Encoder&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">encode&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;test1:test1&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">HttpPost&lt;/span> &lt;span class="n">httppost&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">HttpPost&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;http://host:post/test/login&amp;#34;&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">httppost&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">setHeader&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;Authorization&amp;#34;&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="s">&amp;#34;Basic &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">System&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">out&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">println&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s">&amp;#34;executing request &amp;#34;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">httppost&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getRequestLine&lt;/span>&lt;span class="o">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">HttpResponse&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">httpclient&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">execute&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">httppost&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">HttpEntity&lt;/span> &lt;span class="n">entity&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getEntity&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="returning-from-a-thread">Returning from a thread&lt;/h2>
+&lt;p>You cant return from a thread. The workaround is to create a run method that writes to an internal variable. Then have a get method defined on that variable.&lt;/p>
+&lt;p>Usually you would do it something like this&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">class&lt;/span> &lt;span class="nc">Foo&lt;/span> &lt;span class="kd">implements&lt;/span> &lt;span class="n">Runnable&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">private&lt;/span> &lt;span class="kd">volatile&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">value&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Override&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">getValue&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">value&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then you can create the thread and retrieve the value (given that the value has been set)&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="n">Foo&lt;/span> &lt;span class="n">foo&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Foo&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Thread&lt;/span> &lt;span class="n">thread&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Thread&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="n">foo&lt;/span>&lt;span class="o">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">thread&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">start&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">thread&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">join&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">foo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">getValue&lt;/span>&lt;span class="o">();&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>tl;dr a thread cannot return a value (at least not without a callback mechanism). You should reference a thread like an ordinary class and ask for the value.&lt;/p></description></item><item><title>Search</title><link>https://datdhruv.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://datdhruv.github.io/search/</guid><description/></item></channel></rss>
