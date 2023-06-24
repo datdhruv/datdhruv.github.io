@@ -1,3 +1,10 @@
+---
+title:  "Installing Postgresql on Ubuntu"
+description: "Install steps and commands for Postgres on Ubuntu"
+date:   2023-06-24 11:30:00 +0400
+categories: postgresql
+---
+
 # Installing Postgres
 ``` bash
 sudo apt search postgres
