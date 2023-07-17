@@ -20,6 +20,15 @@ sudo adduser upskillr
 sudo -u upskillr psql
 ```
 
+# Double and single Quotes in (PG)SQL
+
+Double quotes are for names of tables or fields. Sometimes You can omit them. The single quotes are for string constants. This is the SQL standard. In the verbose form, your query looks like this:
+
+```sql
+select * from "employee" where "employee_name"='elina';
+```
+
+
 # The PSQL Command
 
 To get help, just type \help in the psql console.
