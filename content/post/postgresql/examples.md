@@ -10,6 +10,12 @@ categories: postgresql
 select fla.offer_id, ans_data.*  from fla, jsonb_to_record(answer_data) as ans_data("AE46" text,"AE3" text,"AE16" text,"AE45" date,"AE47" date,"AE55" text,"AE60" text,"AE61" text,"AE73" date,"AE74" date,"AE62" text,"AE27" text,"AE42" text,"AE58" text,"AE25" text,"AE54" text,"AE44" text,"AE17" text,"AE53" text,"AE59" text,"AE19" text,"AE56" text,"AE21" text,"AE57" text,"AE33" text,"AE32" text,"AE41" date,"AE31" date,"AE65" text,"AE66" text,"AE67" text,"AE72" text,"AE52" text,"AE38" text,"AE69" text,"AE70" text,"AE68" text,"AE71" text,"AE39" text); 
 ```
 
+## Accessing record's key and values
+
+```sql
+select offer_id, rev, bf.key as business_field, bf.value as business_field_comments from table_name tn, jsonb_each_text((tn.answer_data->>'FI5')::jsonb) as bf;
+```
+
 ## JSON String agg
 ``` sql
 -- Data is stored as text within a json. Data itself is of type json
