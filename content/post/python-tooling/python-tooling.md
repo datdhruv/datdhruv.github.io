@@ -40,7 +40,7 @@ def baz():
 After Running `pydoc`:
 
 ```
-$ pydoc ./foo.py
+$ pydoc foo # Note do not include the .py extention
 Help on module foo:
 
 NAME
@@ -61,8 +61,19 @@ FUNCTIONS
 You can also generate an HTML help file:
 
 ```
-$ pydoc -w ./foo.py
+$ pydoc -w foo
 wrote foo.html
+```
+
+When working with larger projects with modules, you need to specify the fully qualified package name to pydoc
+
+```
+# file path/to/module/submodule.py
+$ pydoc path.to.module.submodule
+
+# If init.py is present, calling pydoc on the higher module works too
+# path/to/module/__init__.py
+$ pydoc path.to.module  # shows doc in __init__.py
 ```
 
 **Important remember** pydoc will call only system docs, to call pydoc while in a *virtualenv*, you need to call `python -m pydoc module_name`
