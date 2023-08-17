@@ -5,7 +5,7 @@ description: "A small brief on NAPT which answers a question I have always had w
 categories: "computer networks"
 ---
 
-# How does Router know where to forward packet [(mirror copy)](https://superuser.com/questions/105838/how-does-router-know-where-to-forward-packet)
+### [(mirror copy)](https://superuser.com/questions/105838/how-does-router-know-where-to-forward-packet)
 
 ## The question
 
