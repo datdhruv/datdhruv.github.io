@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>computer networks on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/computer-networks/</link><description>Recent content in computer networks on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2023 22:00:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/computer-networks/index.xml" rel="self" type="application/rss+xml"/><item><title>How does Router know where to forward packet</title><link>https://datdhruv.github.io/p/how-does-router-know-where-to-forward-packet/</link><pubDate>Thu, 17 Aug 2023 22:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/how-does-router-know-where-to-forward-packet/</guid><description>&lt;h1 id="how-does-router-know-where-to-forward-packet-mirror-copyhttpssuperusercomquestions105838how-does-router-know-where-to-forward-packet">How does Router know where to forward packet &lt;a class="link" href="https://superuser.com/questions/105838/how-does-router-know-where-to-forward-packet" target="_blank" rel="noopener"
+>(mirror copy)&lt;/a>&lt;/h1>
+&lt;h2 id="the-question">The question&lt;/h2>
+&lt;p>If several computers with local addresses (192.168.0.#) are connected to a router and each computer opens a web browser and requests a page over HTTP, when these TCP:80 packets are sent out, the router switches the local address with the static IP of the router (i.e. Provider given IP) so the server can reply to the appropriate address.&lt;/p>
+&lt;p>But how does the router know to which computer to forward the HTTP reply, since the TCP header does not contain the local IP address (does it?), and all computers are using port 80?&lt;/p>
+&lt;p>Does this have anything to do with the MAC addresses?&lt;/p>
+&lt;p>How exactly does this work?&lt;/p>
+&lt;h2 id="the-answer">The answer&lt;/h2>
+&lt;p>Most home routers use a special-case of NAT called PAT.&lt;/p>
+&lt;p>You&amp;rsquo;ll also see it referred to as NAPT, or IP Masquerading. All three of the latter terms mean the same thing in general use. (The acronyms - Network Address Translation / Port Address Translation / Network Address Port Translation)&lt;/p>
+&lt;p>When the packet goes out from your internal machine, the source address is rewritten as you are aware. The source port is also changed, usually to a high number, and the router keeps an address translation table.&lt;/p>
+&lt;p>For example, let&amp;rsquo;s say you have a client machine that goes to &lt;a class="link" href="https://www.google.com" target="_blank" rel="noopener"
+>www.google.com&lt;/a>. Your computer (e.g., 192.168.1.100) looks that address up and makes a TCP connection to 72.14.204.147 on port 80 from your internal IP address, using a random source port.&lt;/p>
+&lt;p>To your computer, the connection looks like this:&lt;/p>
+&lt;p>&lt;code>192.168.1.100:37641 &amp;lt;--&amp;gt; 72.14.204.147:80&lt;/code>&lt;/p>
+&lt;p>Your computer sends the packet to the router, which picks a new random high port and rewrites the packet. Each outbound connection gets its own port on the router. The router then forwards the packet on to your ISP after adding it to its connection table:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">PrivateIP PrivatePort PublicIP PublicPort Remote RemotePort
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------- ---------- ----------- ----------- ---------- -----------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">192.168.1.100 37641 *10.6.23.5 59273 72.14.204.147 80
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>*For example purposes, I used an address starting with 10, but these aren&amp;rsquo;t publicly routable. The table is also somewhat oversimplified.&lt;/p>
+&lt;p>To google, the connection looks like this:&lt;/p>
+&lt;p>&lt;code>10.6.23.5:59273 &amp;lt;--&amp;gt; 72.14.204.147:80&lt;/code>&lt;/p>
+&lt;p>Google will send it&amp;rsquo;s reponse to &lt;code>10.6.23.5&lt;/code> on port &lt;code>59273&lt;/code>. Your router then looks up that information in the table and forwards the packet on to &lt;code>192.168.1.100:37641&lt;/code>.&lt;/p></description></item></channel></rss>
