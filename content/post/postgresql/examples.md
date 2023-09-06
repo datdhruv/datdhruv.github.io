@@ -56,3 +56,17 @@ CREATE TRIGGER check_booking_date_trigger
   FOR EACH ROW
   EXECUTE FUNCTION validate_booking_date();
 ```
+
+## Control access when creating a dashboard
+
+```sql
+-- as admin
+create user app_owner with password '';
+create schema app authorization app_owner;
+create role app_readers;
+
+-- run following as schema owner
+grant usage on schema app to app_readers;
+alter default privileges in schema app grant select on tables to app_readers;
+grant select on all tables in schema app to app_readers;
+```
