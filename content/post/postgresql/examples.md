@@ -30,6 +30,15 @@ my $STMT = $DBH->prepare(qq~insert into scd_logbook.fact_logbook_ae (offer_id,re
 		$STMT->execute("$OFFER_ID",$FD{REV},encode_json \%ANS,$FD{GID},$FD{GID}) or report_error("Error executing SQL:".$DBH->errstr()) ;
 ```
 
+## Getting max of a revision
+```sql
+select * from 
+(select fla.offer_id, rank() over (partition by fla.offer_id order by fla.rev desc) as rank_rev, fla.rev
+from fla_table fla) as cd
+where rank_rev = 1
+
+```
+
 ## Validate Booking using Functions
 
 ``` sql
