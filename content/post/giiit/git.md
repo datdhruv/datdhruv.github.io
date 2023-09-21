@@ -164,7 +164,12 @@ use the git log command
 ```git
 git log
 ```
-this gives the recent changes along with the unique hashcodes of each change
+this gives the recent changes along with the unique hashcodes of each change.
+
+In addition you can run view the history of commits in a graph format
+```shell
+git log --graph --oneline
+```
 
 ## Undoing changes
 we can undo the most recent changes using the git reset command
