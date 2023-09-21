@@ -301,8 +301,17 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git log
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>this gives the recent changes along with the unique hashcodes of each change&lt;/p>
-&lt;h2 id="undoing-changes">Undoing changes&lt;/h2>
+&lt;/div>&lt;p>this gives the recent changes along with the unique hashcodes of each change.&lt;/p>
+&lt;p>In addition you can run view the history of commits in a graph format&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git log --graph --oneline
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="undoing-changes">Undoing changes&lt;/h2>
 &lt;p>we can undo the most recent changes using the git reset command&lt;/p>
 &lt;p>reset without any argument resets only changes in the tracker list(git add stuff), to undo commits, you need to specify HEAD~a_num. HEAD is a pointer to the most recent change. HEAD~1 -&amp;gt; HEAD -1 = the change before the most recent change&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
