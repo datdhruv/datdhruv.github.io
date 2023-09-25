@@ -34,21 +34,21 @@
 </span><span class=lnt>13
 </span><span class=lnt>14
 </span><span class=lnt>15
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-v data-lang=v><span class=line><span class=cl><span class=err>$</span> <span class=nv>pydoc</span> <span class=nv>foo</span> <span class=o>#</span> <span class=nc>Note</span> <span class=nv>do</span> <span class=nv>not</span> <span class=nv>include</span> <span class=nv>the</span> <span class=p>.</span><span class=nv>py</span> <span class=nv>extention</span>
-</span></span><span class=line><span class=cl><span class=nc>Help</span> <span class=nv>on</span> <span class=kn>module</span> <span class=nl>foo</span><span class=p>:</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>$ pydoc foo # Note do not include the .py extention
+</span></span><span class=line><span class=cl>Help on module foo:
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nc>NAME</span>
-</span></span><span class=line><span class=cl>    <span class=nv>foo</span>
+</span></span><span class=line><span class=cl>NAME
+</span></span><span class=line><span class=cl>    foo
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nc>FILE</span>
-</span></span><span class=line><span class=cl>    <span class=o>/</span><span class=nv>path</span><span class=o>/</span><span class=nv>to</span><span class=o>/</span><span class=nv>foo</span><span class=p>.</span><span class=nv>py</span>
+</span></span><span class=line><span class=cl>FILE
+</span></span><span class=line><span class=cl>    /path/to/foo.py
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nc>FUNCTIONS</span>
-</span></span><span class=line><span class=cl>    <span class=nf>bar</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>        <span class=nv>this</span> <span class=k>is</span> <span class=nv>the</span> <span class=nv>docstring</span> <span class=k>for</span> <span class=nf>bar</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>FUNCTIONS
+</span></span><span class=line><span class=cl>    bar()
+</span></span><span class=line><span class=cl>        this is the docstring for bar()
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=nf>baz</span><span class=p>()</span>
-</span></span><span class=line><span class=cl>        <span class=nv>this</span> <span class=k>is</span> <span class=nv>the</span> <span class=nv>docstring</span> <span class=k>for</span> <span class=nf>baz</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    baz()
+</span></span><span class=line><span class=cl>        this is the docstring for baz()
 </span></span></code></pre></td></tr></table></div></div><p>You can also generate an HTML help file:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>$ pydoc -w foo
@@ -59,12 +59,12 @@
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span><span class=lnt>6
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-v data-lang=v><span class=line><span class=cl><span class=o>#</span> <span class=nv>file</span> <span class=nv>path</span><span class=o>/</span><span class=nv>to</span><span class=o>/</span><span class=kn>module</span><span class=o>/</span><span class=nv>submodule</span><span class=p>.</span><span class=nv>py</span>
-</span></span><span class=line><span class=cl><span class=err>$</span> <span class=nv>pydoc</span> <span class=nv>path</span><span class=p>.</span><span class=nv>to</span><span class=p>.</span><span class=kn>module</span><span class=p>.</span><span class=nv>submodule</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl># file path/to/module/submodule.py
+</span></span><span class=line><span class=cl>$ pydoc path.to.module.submodule
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=o>#</span> <span class=nc>If</span> <span class=nv>init</span><span class=p>.</span><span class=nv>py</span> <span class=k>is</span> <span class=nv>present</span><span class=p>,</span> <span class=nv>calling</span> <span class=nv>pydoc</span> <span class=nv>on</span> <span class=nv>the</span> <span class=nv>higher</span> <span class=kn>module</span> <span class=nv>works</span> <span class=nv>too</span>
-</span></span><span class=line><span class=cl><span class=o>#</span> <span class=nv>path</span><span class=o>/</span><span class=nv>to</span><span class=o>/</span><span class=kn>module</span><span class=o>/</span><span class=nv>__init__</span><span class=p>.</span><span class=nv>py</span>
-</span></span><span class=line><span class=cl><span class=err>$</span> <span class=nv>pydoc</span> <span class=nv>path</span><span class=p>.</span><span class=nv>to</span><span class=p>.</span><span class=kn>module</span>  <span class=o>#</span> <span class=nv>shows</span> <span class=nv>doc</span> <span class=k>in</span> <span class=nv>__init__</span><span class=p>.</span><span class=nv>py</span>
+</span></span><span class=line><span class=cl># If init.py is present, calling pydoc on the higher module works too
+</span></span><span class=line><span class=cl># path/to/module/__init__.py
+</span></span><span class=line><span class=cl>$ pydoc path.to.module  # shows doc in __init__.py
 </span></span></code></pre></td></tr></table></div></div><p><strong>Important remember</strong> pydoc will call only system docs, to call pydoc while in a <em>virtualenv</em>, you need to call <code>python -m pydoc module_name</code></p><h3 id=pip>Pip</h3><p>Did you know you can install packages that are not in the PyPI with pip install? It needs a setup.py/setup.cfg at the base of the pacakge. (which you need anyway while publishing a python package) But other than that you are all set!</p><h4 id=pip-install-gitprotocolversion-control>pip install &ldquo;git+protocol://version-control&rdquo;</h4><p>eg:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3

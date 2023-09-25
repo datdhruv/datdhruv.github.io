@@ -59,21 +59,21 @@
 &lt;/span>&lt;span class="lnt">15
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="err">$&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">foo&lt;/span> &lt;span class="o">#&lt;/span> &lt;span class="nc">Note&lt;/span> &lt;span class="nv">do&lt;/span> &lt;span class="nv">not&lt;/span> &lt;span class="nv">include&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span> &lt;span class="nv">extention&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">Help&lt;/span> &lt;span class="nv">on&lt;/span> &lt;span class="kn">module&lt;/span> &lt;span class="nl">foo&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">$ pydoc foo # Note do not include the .py extention
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Help on module foo:
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">NAME&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">foo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">NAME
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> foo
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">FILE&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">/&lt;/span>&lt;span class="nv">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">foo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">FILE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> /path/to/foo.py
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">FUNCTIONS&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">bar&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">this&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">docstring&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="nf">bar&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">FUNCTIONS
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> bar()
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> this is the docstring for bar()
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">this&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">docstring&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> baz()
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> this is the docstring for baz()
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>You can also generate an HTML help file:&lt;/p>
@@ -98,12 +98,12 @@
 &lt;/span>&lt;span class="lnt">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="o">#&lt;/span> &lt;span class="nv">file&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="kn">module&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">submodule&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">$&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="kn">module&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">submodule&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># file path/to/module/submodule.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ pydoc path.to.module.submodule
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">#&lt;/span> &lt;span class="nc">If&lt;/span> &lt;span class="nv">init&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">present&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nv">calling&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">on&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">higher&lt;/span> &lt;span class="kn">module&lt;/span> &lt;span class="nv">works&lt;/span> &lt;span class="nv">too&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">#&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="kn">module&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">__init__&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">$&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="kn">module&lt;/span> &lt;span class="o">#&lt;/span> &lt;span class="nv">shows&lt;/span> &lt;span class="nv">doc&lt;/span> &lt;span class="k">in&lt;/span> &lt;span class="nv">__init__&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># If init.py is present, calling pydoc on the higher module works too
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># path/to/module/__init__.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ pydoc path.to.module # shows doc in __init__.py
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>&lt;strong>Important remember&lt;/strong> pydoc will call only system docs, to call pydoc while in a &lt;em>virtualenv&lt;/em>, you need to call &lt;code>python -m pydoc module_name&lt;/code>&lt;/p>

@@ -34,7 +34,23 @@
 &lt;p>If remote port forwarding does not work, it is most likely because GatewayPorts is set to no in the sshd_config file.&lt;/p>
 &lt;p>Remember, in local port forwarding, A request to my computer&amp;rsquo;s port is &lt;em>forwarded&lt;/em> to a remote computer&amp;rsquo;s port and in remote port forwarding, requests to a remote computer&amp;rsquo;s port are &lt;em>forwarded&lt;/em> to my computer&amp;rsquo;s port.&lt;/p>
 &lt;p>This means that the meaning of host varies depending upon if the the port forwarding is local or remote. In local port forwarding, the host is the ssh-server. Whereas in remote port forwarding the host is the ssh-client (host is the one which &lt;em>hosts something on a port&lt;/em>)&lt;/p>
+&lt;p>&lt;strong>NOTE&lt;/strong>: Sometimes you need to explicitly mention 127.0.0.1/localhost (I have experienced this on windows).&lt;/p>
 &lt;hr>
+&lt;h3 id="the-vpn-functionality">The VPN functionality&lt;/h3>
+&lt;p>&lt;strong>This superpower can be used to tunnel connections to various sites that are not accessible to your local computer!!&lt;/strong> These might be databases or protected webservers.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># The folloiwing tunnel/forward any network traffic origination from your local computer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># to the super secret website&amp;#39;s port 5432&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ssh -L 127.0.0.1:5000:someSuperSecretSecretWebsite.com:5432 user@machine
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
 &lt;p>You can further forward ports through jump servers.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1041,21 +1057,21 @@ data-flex-basis="530px"
 &lt;/span>&lt;span class="lnt">15
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="err">$&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">foo&lt;/span> &lt;span class="o">#&lt;/span> &lt;span class="nc">Note&lt;/span> &lt;span class="nv">do&lt;/span> &lt;span class="nv">not&lt;/span> &lt;span class="nv">include&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span> &lt;span class="nv">extention&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">Help&lt;/span> &lt;span class="nv">on&lt;/span> &lt;span class="kn">module&lt;/span> &lt;span class="nl">foo&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">$ pydoc foo # Note do not include the .py extention
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Help on module foo:
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">NAME&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">foo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">NAME
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> foo
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">FILE&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">/&lt;/span>&lt;span class="nv">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">foo&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">FILE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> /path/to/foo.py
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nc">FUNCTIONS&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">bar&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">this&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">docstring&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="nf">bar&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">FUNCTIONS
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> bar()
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> this is the docstring for bar()
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">this&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">docstring&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> baz()
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> this is the docstring for baz()
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>You can also generate an HTML help file:&lt;/p>
@@ -1080,12 +1096,12 @@ data-flex-basis="530px"
 &lt;/span>&lt;span class="lnt">6
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="o">#&lt;/span> &lt;span class="nv">file&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="kn">module&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">submodule&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">$&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="kn">module&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">submodule&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># file path/to/module/submodule.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ pydoc path.to.module.submodule
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">#&lt;/span> &lt;span class="nc">If&lt;/span> &lt;span class="nv">init&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span> &lt;span class="k">is&lt;/span> &lt;span class="nv">present&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nv">calling&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">on&lt;/span> &lt;span class="nv">the&lt;/span> &lt;span class="nv">higher&lt;/span> &lt;span class="kn">module&lt;/span> &lt;span class="nv">works&lt;/span> &lt;span class="nv">too&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">#&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="kn">module&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nv">__init__&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">$&lt;/span> &lt;span class="nv">pydoc&lt;/span> &lt;span class="nv">path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">to&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="kn">module&lt;/span> &lt;span class="o">#&lt;/span> &lt;span class="nv">shows&lt;/span> &lt;span class="nv">doc&lt;/span> &lt;span class="k">in&lt;/span> &lt;span class="nv">__init__&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nv">py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># If init.py is present, calling pydoc on the higher module works too
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># path/to/module/__init__.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ pydoc path.to.module # shows doc in __init__.py
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>&lt;strong>Important remember&lt;/strong> pydoc will call only system docs, to call pydoc while in a &lt;em>virtualenv&lt;/em>, you need to call &lt;code>python -m pydoc module_name&lt;/code>&lt;/p>
@@ -2375,7 +2391,7 @@ Matches only the first character in the sequence.&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nd">@Override&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">2&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="o">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">getValue&lt;/span>&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
