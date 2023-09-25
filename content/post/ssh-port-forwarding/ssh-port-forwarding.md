@@ -57,6 +57,20 @@ Remember, in local port forwarding, A request to my computer's port is *forwarde
 
 This means that the meaning of host varies depending upon if the the port forwarding is local or remote. In local port forwarding, the host is the ssh-server. Whereas in remote port forwarding the host is the ssh-client (host is the one which *hosts something on a port*)
 
+**NOTE**: Sometimes you need to explicitly mention 127.0.0.1/localhost (I have experienced this on windows). 
+
+---
+
+### The VPN functionality
+
+**This superpower can be used to tunnel connections to various sites that are not accessible to your local computer!!** These might be databases or protected webservers.
+
+```bash
+# The folloiwing tunnel/forward any network traffic origination from your local computer
+# to the super secret website's port 5432
+ssh -L 127.0.0.1:5000:someSuperSecretSecretWebsite.com:5432 user@machine
+```
+
 ---
 
 You can further forward ports through jump servers.
@@ -64,7 +78,6 @@ You can further forward ports through jump servers.
 ```bash
 ssh -L local_socket:host:hostport user@machine1 ssh -L local_socket:host:hostport user@machine2
 ```
-
 ---
 
 ## Forwarding with an already established ssh connection
