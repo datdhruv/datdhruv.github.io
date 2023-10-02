@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ssh on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/ssh/</link><description>Recent content in ssh on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 26 Oct 2022 12:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/ssh/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ssh on datDhruv's Blog</title><link>https://datdhruv.github.io/categories/ssh/</link><description>Recent content in ssh on datDhruv's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 02 Oct 2023 18:30:00 +0400</lastBuildDate><atom:link href="https://datdhruv.github.io/categories/ssh/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://datdhruv.github.io/p/why-ssh-port-forwarding-gives-you-superpowers/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
 &lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
 &lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
 &lt;p>This was an example of local port forwarding.&lt;/p>
@@ -84,6 +84,18 @@
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">-KL &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-KR &lt;span class="o">[&lt;/span>bind_address:&lt;span class="o">]&lt;/span>port
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Running oneoff process in the background over ssh</title><link>https://datdhruv.github.io/p/running-oneoff-process-in-the-background-over-ssh/</link><pubDate>Mon, 02 Oct 2023 18:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/running-oneoff-process-in-the-background-over-ssh/</guid><description>&lt;p>Imagine a situation where you need to download a large file from the internet to a remote server.&lt;/p>
+&lt;p>You run &lt;code>curl https://download.com -o download&lt;/code> and logout of the ssh server. &lt;strong>Big mistake!&lt;/strong> you come back hours later just to see that the download ended as soon as you logged out.&lt;/p>
+&lt;p>The &lt;code>nohup&lt;/code> command helps here. &lt;code>nohup&lt;/code> stands for no hold up, and will run the command without any external interruptions. you can further run the command in the background using &lt;code>&amp;amp;&lt;/code>.&lt;/p>
+&lt;p>Here&amp;rsquo;s the example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ nohup curl https://download.com -o download &lt;span class="p">&amp;amp;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item><item><title>Useful Shell Shortcuts</title><link>https://datdhruv.github.io/p/useful-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://datdhruv.github.io/p/useful-shell-shortcuts/</guid><description>&lt;table>
