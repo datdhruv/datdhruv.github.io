@@ -1,0 +1,232 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{--accent-color:#FF4D4D}</style><title>Python OOPS Concepts</title>
+<meta name=description content="Some basic and advanced python oops concepts"><meta name=keywords content='blog,datDhruv,datdhruv,typdef,python'><meta property="og:url" content="http://datdhruv.github.io/posts/python/python-oop/"><meta property="og:type" content="website"><meta property="og:title" content="Python OOPS Concepts"><meta property="og:description" content="Some basic and advanced python oops concepts"><meta property="og:image" content="http://datdhruv.github.io/"><meta property="og:image:secure_url" content="http://datdhruv.github.io/"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Python OOPS Concepts"><meta name=twitter:description content="Some basic and advanced python oops concepts"><meta property="twitter:domain" content="http://datdhruv.github.io/posts/python/python-oop/"><meta property="twitter:url" content="http://datdhruv.github.io/posts/python/python-oop/"><meta name=twitter:image content="http://datdhruv.github.io/"><link rel=canonical href=http://datdhruv.github.io/posts/python/python-oop/><link rel=stylesheet type=text/css href=/css/normalize.min.css media=print><link rel=stylesheet type=text/css href=/css/main.min.css><link id=dark-theme rel=stylesheet href=/css/dark.min.css><script src=/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF+LqLEKDechJZVE="></script></head><body><script type=text/javascript>setThemeByUserPref()</script><header class=header><nav class=header-nav><div class=nav-title><a class=nav-brand href=http://datdhruv.github.io/>typdef's Blog</a></div><div class=nav-links><div class=nav-link><a href=http://datdhruv.github.io/posts/><span data-feather=book></span> Posts</a></div><div class=nav-link><a href=http://datdhruv.github.io/tags/><span data-feather=tag></span> Tags</a></div><div class=nav-link><a href=https://github.com/datdhruv target=_blank><span data-feather=github></span></a></div><span class=nav-icons-divider></span><div class="nav-link dark-theme-toggle"><span id=dark-theme-toggle-screen-reader-target class=sr-only></span>
+<a><span id=theme-toggle-icon data-feather=moon></span></a></div><div class=nav-link id=hamburger-menu-toggle><span id=hamburger-menu-toggle-screen-reader-target class=sr-only>menu</span>
+<a><span data-feather=menu></span></a></div><ul class="nav-hamburger-list visibility-hidden"><li class=nav-item><a href=http://datdhruv.github.io/posts/><span data-feather=book></span> Posts</a></li><li class=nav-item><a href=http://datdhruv.github.io/tags/><span data-feather=tag></span> Tags</a></li><li class=nav-item><a href=https://github.com/datdhruv target=_blank><span data-feather=github></span></a></li><li class="nav-item dark-theme-toggle"><span id=dark-theme-toggle-screen-reader-target class=sr-only>theme</span>
+<a><span id=theme-toggle-icon data-feather=moon></span></a></li></ul></div></nav></header><main id=content><div class="post container"><div class=post-header-section><h1>Python OOPS Concepts</h1><small role=doc-subtitle>Some basic and advanced python oops concepts</small><p class=post-date>January 5, 2020</p><ul class=post-tags><li class=post-tag><a href=http://datdhruv.github.io/tags/python>python</a></li></ul></div><div class=post-content><p><p>self => instances -> methods taking this as the first arguement work on instances</p><p>cls => classes -> work on the entire class rather than an instance</p><p>both of them are context-aware</p><p>when working with classes, unlike regular methods that take instances as the first arguemnt and unlike class methods that take classes as the first argument, static methods take no arguments</p><h1 id=object-oriented-concepts-with-python>Object Oriented Concepts with Python</h1><p>to declare a class in python you use the <code>class</code> keyword, if at all you want the class to be empty, you can use the <code>pass</code> keyword</p><p>example:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Employee</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>pass</span>
+</span></span></code></pre></div><h3 id=instance-variables>Instance variables</h3><p>contain data this is unique to each instance of the class</p><h2 id=__init__self><strong>init</strong>(self)</h2><p>dunder init is like the default constructor in java</p><p>self is (a reference to) THE INSTANCE ITSELF, which the initialize receives automatically and that is not restricted to self but self is the convention</p><p>here&rsquo;s what we mean:
+say we created that employee class, when we set a variable of the class, say first name, instead of doing <code>emp1.first = "lala"</code>, we do <code>self.first = "lala"</code>. Here emp1 is the instance and self is the <strong>placeholder</strong> for the instance</p><p>The first parameter of any class method is always the instance (which we have named self). Then when we create new instances we dont have to pass that instance/self.</p><p>The init method will be run automatically, emp1 is passed to the self attribute</p><p>example:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Employee</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>first <span style=color:#f92672>=</span> first
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>last <span style=color:#f92672>=</span> last
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>pay <span style=color:#f92672>=</span> pay
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>email <span style=color:#f92672>=</span> first <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;.&#39;</span> <span style=color:#f92672>+</span> last <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;@company.com&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fullname</span>(self):
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74> </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(self<span style=color:#f92672>.</span>first, self<span style=color:#f92672>.</span>last))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># The init method will be run automatically, emp1 is passed to the self attribute</span>
+</span></span><span style=display:flex><span>emp1 <span style=color:#f92672>=</span> Employee(<span style=color:#e6db74>&#34;Dhruv&#34;</span> ,<span style=color:#e6db74>&#34;Jain&#34;</span>, <span style=color:#ae81ff>50000</span>)
+</span></span></code></pre></div><p>When this is run the init method is run automatically</p><p>If you dont pass in the self method, you get this error:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>Traceback <span style=color:#f92672>(</span>most recent call last<span style=color:#f92672>)</span>:
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;.\learning-computing\python-oop\HelloWorld.py&#34;</span>, line 20, in &lt;module&gt;
+</span></span><span style=display:flex><span>    emp1.fullname<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>TypeError: fullname<span style=color:#f92672>()</span> takes <span style=color:#ae81ff>0</span> positional arguments but <span style=color:#ae81ff>1</span> was given
+</span></span></code></pre></div><p>This error arises because the class gives in the instance/self argument to the class-method, but here we said that the method does NOT take any argument. That is why this error aries.</p><h4 id=calling-class-method-from-the-class-rather-than-the-instance>calling class method from the class rather than the instance</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># Calling class-method from instance</span>
+</span></span><span style=display:flex><span>emp1<span style=color:#f92672>.</span>fullname()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Calling class-method from class</span>
+</span></span><span style=display:flex><span>Employee<span style=color:#f92672>.</span>fullname(emp1)
+</span></span></code></pre></div><h2 id=class-variable>class variable</h2><p>class variables are variables that are same for all instances of a class when the instance is initialized</p><p>when a variable is called, python will first check if the variable exists in the namespace of the <em>instance</em>, if it does not exist, then python will check for it in the classes the instance inherits from.</p><p>class variables can be accessed via instances as well as classes:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Employee</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    num_of_emps <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    raise_amount <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.04</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay):
+</span></span><span style=display:flex><span>       self<span style=color:#f92672>.</span>first <span style=color:#f92672>=</span> first
+</span></span><span style=display:flex><span>        <span style=color:#75715e># same things as before</span>
+</span></span><span style=display:flex><span>        Employee<span style=color:#f92672>.</span>num_of_emps <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fullname</span>(self):
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74> </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(self<span style=color:#f92672>.</span>first, self<span style=color:#f92672>.</span>last)) 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>apply_raise</span>(self):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>pay <span style=color:#f92672>=</span> int(self<span style=color:#f92672>.</span>pay <span style=color:#f92672>*</span> self<span style=color:#f92672>.</span>raise_amount)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># if we hardcoded this to Employees.raise_amount,</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># instances cannot update this</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>emp1 <span style=color:#f92672>=</span> Employee()
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Employee.raise_amount == 1.04</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># emp1.raise_amount == 1.04</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>emp1<span style=color:#f92672>.</span>raise_amount <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.5</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># now emp1.raise_amount == 1.5</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># BUT Employee.raise_amount == 1.04</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># self.raise_amount is a general case of emp1.raise_amount</span>
+</span></span></code></pre></div><p>a_name.lol -> hardcoded value of the class
+self.lol -> can be changed by instances
+emp1.lol -> are instance variables inherited from class or are set afterwards</p><h2 id=class-methods>Class methods</h2><p>to define a class method, we use the decorator <code>@classmethod</code> one line above the method.</p><p>What class methods do is that they manipulate the whole class <em>along with all instances of the class</em></p><p>Think of them as static methods (as seen in java)</p><p>Like the <code>self</code> convention used for instances in python, classes have a convention called <code>cls</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Employee</span>
+</span></span><span style=display:flex><span>    raise_amt <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.04</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@classmethod</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>set_raise_amount</span>(cls, amount):
+</span></span><span style=display:flex><span>        cls<span style=color:#f92672>.</span>raise_amt <span style=color:#f92672>=</span> amount
+</span></span><span style=display:flex><span>        <span style=color:#75715e># or do something</span>
+</span></span></code></pre></div><h4 id=class-methods-as-custom-constructors>class methods as custom constructors</h4><p>class methods can be used to construct new classes as follows:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Employee</span>:
+</span></span><span style=display:flex><span>    num_of_emps <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>first <span style=color:#f92672>=</span> first
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>last <span style=color:#f92672>=</span> last
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>pay <span style=color:#f92672>=</span> pay
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        Employee<span style=color:#f92672>.</span>num_of_emps <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fullname</span>(self):
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74> </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(self<span style=color:#f92672>.</span>first, self<span style=color:#f92672>.</span>last)) 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@classmethod</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>from_string</span>(cls, emp_str):
+</span></span><span style=display:flex><span>        first, last, pay <span style=color:#f92672>=</span> emp_str<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34;-&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> cls(first, last, pay)
+</span></span><span style=display:flex><span>	<span style=color:#75715e># Most important point here</span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># return a class object after parsing string</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>emp3_string <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;water bottle&#34;</span>
+</span></span><span style=display:flex><span>emp3 <span style=color:#f92672>=</span> Employee<span style=color:#f92672>.</span>from_string(emp3_string)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(Employee<span style=color:#f92672>.</span>num_of_emps)
+</span></span><span style=display:flex><span>emp3<span style=color:#f92672>.</span>fullname()
+</span></span></code></pre></div><p>In the above example, the <code>cls()</code> is a class constructor. It creates a class object from by applying the given logic</p><h3 id=static-methods>Static methods</h3><p>when working with classes, unlike regular methods that take instances as the first arguemnt and unlike class methods that take classes as the first argument, static methods take no arguments</p><p>use static methods where you dont need to use any of the class&rsquo;s variables or functions. In the example we are using, this may be the day of the week, which is entirely independent of the name or pay or anything else from the class really.</p><p>creating a staticmethod:</p><ol><li><p>using staticmethod() function</p><pre tabindex=0><code class=language-class data-lang=class>
+    def addNumbers(x, y):
+        return x + y
+
+# create addNumbers static method
+Calculator.addNumbers = staticmethod(Calculator.addNumbers)
+
+print(&#39;Product:&#39;, Calculator.addNumbers(15, 110))
+</code></pre></li><li><p>using @staticmethod decorator</p><pre tabindex=0><code class=language-class data-lang=class>
+    # create addNumbers static method
+    @staticmethod
+    def addNumbers(x, y):
+        return x + y
+
+print(&#39;Product:&#39;, Calculator.addNumbers(15, 110))
+</code></pre></li></ol><h2 id=inherititance>Inherititance</h2><p>to inherit a class&rsquo;s attributes in anohter class, just pass it as an arguement to the inheriting class
+eg <code>class Developer(Employee):</code></p><p>remeber python resolves methods and variables as:</p><ol><li>current class object</li><li>parent class object</li><li>parent&rsquo;s parent class object</li></ol><p>and so on</p><h3 id=super>super()</h3><p>To call the methods of a class above the current class, use <code>super</code>, for eg:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Developer</span>(Employee):
+</span></span><span style=display:flex><span>    raise_amount <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.10</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Can you think why this first, last ... is being passed down?</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Think.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># You need to do the same with *args and **kwargs also</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay, prog_lang):
+</span></span><span style=display:flex><span>        super()<span style=color:#f92672>.</span>__init__(first, last, pay)
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>prog_lang <span style=color:#f92672>=</span> prog_lang
+</span></span></code></pre></div><p>oh and while using super, you dont need to pass through self in the <code>super().__init__()</code>, however you need to pass ALL the fields of the super class in the class&rsquo;s <code>__init__</code></p><h2 id=most-of-the-code-uptill-now>Most of the code uptill now</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Employee</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    num_of_emps <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    raise_amount <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.04</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>first <span style=color:#f92672>=</span> first
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>last <span style=color:#f92672>=</span> last
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>pay <span style=color:#f92672>=</span> pay
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>email <span style=color:#f92672>=</span> first <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;.&#39;</span> <span style=color:#f92672>+</span> last <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;@company.com&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        Employee<span style=color:#f92672>.</span>num_of_emps <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fullname</span>(self):
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74> </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(self<span style=color:#f92672>.</span>first, self<span style=color:#f92672>.</span>last)) 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>apply_raise</span>(self):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>pay <span style=color:#f92672>=</span> int(self<span style=color:#f92672>.</span>pay <span style=color:#f92672>*</span> self<span style=color:#f92672>.</span>raise_amount)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># if we hardcoded this to Employees.raise_amount, instances cannot update this value</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@classmethod</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>from_string</span>(cls, emp_str):
+</span></span><span style=display:flex><span>        first, last, pay <span style=color:#f92672>=</span> emp_str<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34;-&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> cls(first, last, pay)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@staticmethod</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>is_workday</span>(day):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> day<span style=color:#f92672>.</span>weekday() <span style=color:#f92672>==</span> <span style=color:#ae81ff>5</span> <span style=color:#f92672>or</span> day<span style=color:#f92672>.</span>weekday() <span style=color:#f92672>==</span> <span style=color:#ae81ff>6</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Developer</span>(Employee):
+</span></span><span style=display:flex><span>    raise_amount <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.10</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay, prog_lang):
+</span></span><span style=display:flex><span>        super()<span style=color:#f92672>.</span>__init__(first, last, pay)
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>prog_lang <span style=color:#f92672>=</span> prog_lang
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Manager</span>(Employee):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay, employees):
+</span></span><span style=display:flex><span>        super()<span style=color:#f92672>.</span>__init__(first, last, pay)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> employees <span style=color:#f92672>==</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>employees <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>employees <span style=color:#f92672>=</span> employees
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add_emp</span>(self, emp):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> emp <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> self<span style=color:#f92672>.</span>employees:
+</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>employees<span style=color:#f92672>.</span>append(emp)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>remove_emp</span>(self, emp):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> emp <span style=color:#f92672>in</span> self<span style=color:#f92672>.</span>employees:
+</span></span><span style=display:flex><span>            self<span style=color:#f92672>.</span>employees<span style=color:#f92672>.</span>remove(emp)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>disp_emp</span>(self):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> self<span style=color:#f92672>.</span>employees:
+</span></span><span style=display:flex><span>            print(emp<span style=color:#f92672>.</span>fullname())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dev1 <span style=color:#f92672>=</span> Developer(<span style=color:#e6db74>&#34;Dhruv&#34;</span> ,<span style=color:#e6db74>&#34;Jain&#34;</span>, <span style=color:#ae81ff>50000</span>, <span style=color:#e6db74>&#34;python&#34;</span>)
+</span></span><span style=display:flex><span>dev2 <span style=color:#f92672>=</span> Developer(<span style=color:#e6db74>&#34;Mamma&#34;</span>, <span style=color:#e6db74>&#34;Hand&#34;</span>, <span style=color:#ae81ff>60000</span>, <span style=color:#e6db74>&#34;java&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#print(dev1.pay)</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#dev1.apply_raise()</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#print(dev1.pay)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># dev1.fullname()</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># dev2.fullname()</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>mgr1 <span style=color:#f92672>=</span> Manager(<span style=color:#e6db74>&#34;sue&#34;</span>, <span style=color:#e6db74>&#34;smith&#34;</span>, <span style=color:#ae81ff>70000</span>, [dev1])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#print(isinstance(mgr1, Manager))</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#print(isinstance(mgr1, Employee))</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#print(isinstance(mgr1, Developer))</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(issubclass(Manager, Employee))
+</span></span></code></pre></div><h2 id=magic-methods>Magic methods</h2><p>allows us to emulate built in behaviour within python and allows us to implement operator overloading</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> __repr__(self):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># return a string for the DEVELOPERS to see</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> __str__(self):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># return stuff for the END USERS to see</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> __add__(self, other):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># defines how to add datatypes</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># And Yes, other is a convention</span>
+</span></span></code></pre></div><h2 id=property-decorators>Property decorators</h2><p>property decorators allows methods to be accessed as variables rather than a function call</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Employee</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, first, last, pay):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>first <span style=color:#f92672>=</span> first
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>last <span style=color:#f92672>=</span> last
+</span></span><span style=display:flex><span>        <span style=color:#75715e>#self.email = first + &#39;.&#39; + last + &#34;@company.com&#34;</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@property</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>email</span>(self):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span>(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>.</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>@email.com&#34;</span><span style=color:#f92672>.</span>format(self<span style=color:#f92672>.</span>first, self<span style=color:#f92672>.</span>last)) 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@property</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fullname</span>(self):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span>(<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74> </span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>.</span>format(se lf<span style=color:#f92672>.</span>first, self<span style=color:#f92672>.</span>last)) 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>emp1 <span style=color:#f92672>=</span> Employee(<span style=color:#e6db74>&#34;shriyas&#34;</span>,<span style=color:#e6db74>&#34;Iyer&#34;</span>, <span style=color:#ae81ff>50000</span>)
+</span></span><span style=display:flex><span>emp2 <span style=color:#f92672>=</span> Employee(<span style=color:#e6db74>&#34;Vikrant&#34;</span>, <span style=color:#e6db74>&#34;Tiru&#34;</span>, <span style=color:#ae81ff>70000</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>print(emp1<span style=color:#f92672>.</span>email)
+</span></span></code></pre></div><h3 id=setter-decorators-and-functions>Setter decorators and functions</h3><p>To use the Setter decorator, use the method name you want to define along with
+.setter, for eg:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#a6e22e>@fullname.setter</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fullname</span>(self, name):
+</span></span><span style=display:flex><span>        first, last <span style=color:#f92672>=</span> name<span style=color:#f92672>.</span>split(<span style=color:#e6db74>&#34; &#34;</span>)
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>first <span style=color:#f92672>=</span> first
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>last <span style=color:#f92672>=</span> last
+</span></span></code></pre></div><h3 id=deleter-decorator>deleter decorator</h3><p>To use a deleter decorator, use the method name you want to use along with .deleter, and then while deleting, use the <code>del</code> keyword</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#a6e22e>@fullname.deleter</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fullname</span>(self):
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;Deleting name&#34;</span>)
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>first <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>last <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>del</span> emp1<span style=color:#f92672>.</span>fullname
+</span></span></code></pre></div><h2 id=self--main>Self == main??</h2><p><strong>it is</strong> <code>if __name__ == "__main__"</code>!!!</p><p><strong>name</strong> signifies name of the caller or something. <strong>main</strong> is the caller then!</p></p></div><div class=prev-next></div><svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6.0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9.0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9.0L7 329.7c-9.4-9.4-9.4-24.6.0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg>
+<script>let backToTopButton=document.getElementById("btt-button");window.onscroll=function(){scrollFunction()};function scrollFunction(){document.body.scrollTop>20||document.documentElement.scrollTop>20?backToTopButton.style.display="block":backToTopButton.style.display="none"}function topFunction(){smoothScrollToTop()}function smoothScrollToTop(){const e=()=>{const t=document.documentElement.scrollTop||document.body.scrollTop;t>0&&(window.requestAnimationFrame(e),window.scrollTo(0,t-t/8))};e()}</script></div><aside class=post-toc><nav id=toc><nav id=TableOfContents><ul><li><ul><li><a href=#instance-variables>Instance variables</a></li></ul></li><li><a href=#__init__self><strong>init</strong>(self)</a><ul><li></li></ul></li><li><a href=#class-variable>class variable</a></li><li><a href=#class-methods>Class methods</a><ul><li></li><li><a href=#static-methods>Static methods</a></li></ul></li><li><a href=#inherititance>Inherititance</a><ul><li><a href=#super>super()</a></li></ul></li><li><a href=#most-of-the-code-uptill-now>Most of the code uptill now</a></li><li><a href=#magic-methods>Magic methods</a></li><li><a href=#property-decorators>Property decorators</a><ul><li><a href=#setter-decorators-and-functions>Setter decorators and functions</a></li><li><a href=#deleter-decorator>deleter decorator</a></li></ul></li><li><a href=#self--main>Self == main??</a></li></ul></nav></nav></aside></main><footer class=footer><span>&copy; 2024 datDhruv</span>
+<span>Made with &#10084;&#65039; using <a target=_blank href=https://github.com/526avijitgupta/gokarna>Gokarna</a></span></footer></body></html>
