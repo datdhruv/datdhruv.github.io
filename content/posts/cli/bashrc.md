@@ -1,3 +1,13 @@
+---
+title:  "Bashrc customizations"
+date:   2023-03-01 12:00:00 +0400
+description: "Make bash look and behave better"
+tags: ["ssh"]
+type: post
+weight: 10
+showTableOfContents: true
+---
+
 ## Bash Prompt
 
 ```bash

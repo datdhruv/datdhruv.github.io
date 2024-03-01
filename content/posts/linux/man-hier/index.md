@@ -2,7 +2,7 @@
 title: "Linux Filesystem Hierarchy"
 date: 2023-06-12 21:00:00 +0400
 description: "Port Forwarding allows you to make a port on a computer behave like it is part of some other computer, and trust me it can give you Superpowers"
-tags: ["man pages"]
+tags: ["man pages", "linux"]
 type: post
 ---
 
@@ -14,4 +14,4 @@ A good way to know where things are, or where things go, is by referring to your
 
 `man hier`
 
-![Here's a screenshot](man-hier.png)
+![](man-hier.png)
