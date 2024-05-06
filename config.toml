@@ -2,7 +2,7 @@ baseURL = "http://typdef.com/"
 defaultContentLanguage = "en"
 languageCode = "en"
 
-title = "typdef's Blog"
+title = "Dhruv's Blog"
 
 theme = "gokarna"
 
@@ -52,7 +52,7 @@ enableRobotsTXT = true
   # avatarSize = ""
 
   # Description to display on homepage
-  description = "Sky above, sand below & peace within"
+  description = "Welcome to my (Ir)regular Blog"
 
   # Accent color is displayed when you hover over <a> tags
   accentColor = "#FF4D4D"
