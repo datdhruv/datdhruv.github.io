@@ -1,6 +1,6 @@
 ---
 title: "Vscode setup"
-date: 2024-05-06 12:00:00 +0200
+date: 2024-05-05 12:00:00 +0200
 description: "Confguration for vscode"
 tags: ["dotfiles"]
 type: post
