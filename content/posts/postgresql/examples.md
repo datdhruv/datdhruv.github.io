@@ -104,3 +104,17 @@ update evaluation.lkp_consumer set consumer_name = t.new_consumer from
     ('SE GS C REU', 'SE GS C RSO EU&AF')
 ) as t(prev_consumer, new_consumer) where t.prev_consumer = consumer_name;
 ```
+
+## Random sampling
+Scenario : 
+Let's say you are working as SQL Developer and you are asked to provide some sample data from a table. You need to provide 10 rows or 100 rows but they should be selected random from table.
+
+Solution : 
+You can use `random()` function with Limit to get RANDOM ROWS from table. By using Limit you will restrict the number of rows you want to return.
+
+``` SQL
+select * from YourTableName order by random() limit count;
+
+-- Example
+select * from customer order by random limit 10;
+```
