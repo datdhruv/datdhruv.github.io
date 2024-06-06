@@ -168,9 +168,14 @@ git log
 ```
 this gives the recent changes along with the unique hashcodes of each change.
 
-In addition you can run view the history of commits in a graph format
+In addition you can view the history of commits in a graph format
 ```shell
 git log --graph --oneline
+```
+
+To view all changes across all branches including ones from remote add the `--all` option.
+```shell
+git log --graph --all --oneline
 ```
 
 ## Undoing changes
