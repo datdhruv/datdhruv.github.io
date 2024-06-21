@@ -1,7 +1,7 @@
 ---
 title:  "Table naming conventions"
 description: ""
-date:   2023-06-06 11:55:00 +0200
+date:   2024-06-06 11:55:00 +0200
 tags: ["SQL"]
 type: post
 showTableOfContents: true
