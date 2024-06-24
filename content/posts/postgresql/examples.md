@@ -118,3 +118,9 @@ select * from YourTableName order by random() limit count;
 -- Example
 select * from customer order by random limit 10;
 ```
+
+## Inserting unique rows from one table to another table
+
+``` SQL
+insert into shop_tbl(name, shop_location) select distinct shop_name, shop_location from expenses_tbl;
+```
