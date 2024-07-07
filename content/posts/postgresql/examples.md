@@ -25,12 +25,29 @@ select offer_id, rev, bf.key as business_field, bf.value as business_field_comme
 select string_agg(bf, e', ')  from fact_logbook_ae fla, json_object_keys((fla.answer_data->>'AE54')::json) bf where offer_id= 'SECD-20230013';
 ```
 
-## Update record on conflict while inserting
-``` perl
-my $STMT = $DBH->prepare(qq~insert into scd_logbook.fact_logbook_ae (offer_id,rev,answer_data,created_by_gid,last_saved_by_gid,created_ts,last_saved_ts) values(?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP) on conflict (offer_id, rev)
-		do update set answer_data=excluded.answer_data, last_saved_ts=CURRENT_TIMESTAMP, last_saved_by_gid=excluded.last_saved_by_gid~) or report_error("Error preparing SQL:".$DBH->errstr());
-		$STMT->execute("$OFFER_ID",$FD{REV},encode_json \%ANS,$FD{GID},$FD{GID}) or report_error("Error executing SQL:".$DBH->errstr()) ;
+## UPSERTS: Update record on conflict while inserting
+
+Syntax:
+```SQL
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...)
+ON CONFLICT (conflict_column)
+DO NOTHING | DO UPDATE SET column1 = value1, column2 = value2, ...;
 ```
+
+Example
+
+```SQL
+insert into scd_logbook.fact_logbook_ae (offer_id,rev,answer_data,created_by_gid,last_saved_by_gid,created_ts,last_saved_ts) 
+values(?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP) 
+on conflict (offer_id, rev) do update set answer_data=excluded.answer_data, last_saved_ts=CURRENT_TIMESTAMP, last_saved_by_gid=excluded.last_saved_by_gid ;
+```
+
+Notice the `excluded` keyword.
+
+*The SET and WHERE clauses in ON CONFLICT DO UPDATE have access to the existing row using the table's name (or an alias), and to the row proposed for insertion using the special excluded table.*
+
+[On conflict clause in inserts from postgresql docs](https://www.postgresql.org/docs/current/sql-insert.html)
 
 ## Getting max of a revision
 ```sql
