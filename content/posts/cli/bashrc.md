@@ -2,7 +2,7 @@
 title:  "Bashrc customizations"
 date:   2023-03-01 12:00:00 +0400
 description: "Make bash look and behave better"
-tags: ["ssh"]
+tags: ["bash"]
 type: post
 weight: 15
 showTableOfContents: true
@@ -11,18 +11,19 @@ showTableOfContents: true
 ## Bash Prompt
 
 ```bash
-PS1=$'\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]$ \[\e[0m\]'
+PS1=$'\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]\u279c \[\e[0m\]'; PROMPT_DIRTRIM=2
 ```
 
-or with a right arrow for supported nerd fonts:
+or without supported nerd fonts:
 
 ```bash
-PS1=$'\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]\u279c \[\e[0m\]'
+PS1=$'\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]$ \[\e[0m\]'; PROMPT_DIRTRIM=2
 ```
 
 - Directory from `home`
 - uses a if-else ternary expression $(($?==0?92:91)) that makes the color code 0;91m (red, see color codes) if the last command exits with non-zero, or 0;92m green otherwise.
 - `$` prompt
+- `PROMPT_DIRTRIM=2` shows the current and the parent directory, collapsing the rest of the hierarchy.
 
 ## Case insensitive autocompletion
 In order to make bash case-insensitive for to current user:
