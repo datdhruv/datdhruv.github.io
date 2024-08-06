@@ -25,6 +25,12 @@ PS1=$'\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]$ \[\e[0m\]'; PROMPT_DIRTRI
 - `$` prompt
 - `PROMPT_DIRTRIM=2` shows the current and the parent directory, collapsing the rest of the hierarchy.
 
+#### Setting LANG may be required for certain variables to show up even with Nerd fonts
+```bash
+LANG='C.UTF-8'
+PS1=$'\[\e[0;1;38;5;111m\]\w\[\e[0m\] \[\e[$(($?==0?92:91))m\]\u279c\[\e[0m\] '; PROMPT_DIRTRIM=2
+```
+
 ## Case insensitive autocompletion
 In order to make bash case-insensitive for to current user:
 
