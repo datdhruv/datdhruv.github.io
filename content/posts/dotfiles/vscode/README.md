@@ -62,6 +62,19 @@ From Version 1.84, you can also move [Activity bar to the top](https://code.visu
 "workbench.activityBar.location": "top"
 ```
 
+# Git Blame info 
+Introduced with [`v1.96`](https://code.visualstudio.com/updates/v1_96#_source-control)
+
+```
+"git.blame.editorDecoration.enabled": true,
+```
+
+Optionally also:
+
+```
+"git.blame.statusBarItem.enabled": true,
+"git.blame.editorDecoration.template": "${subject}, ${authorName} (${authorDateAgo})"
+```
 
 # Day/Night theme
 
