@@ -1,19 +1,104 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ssh on Dhruv's Blog</title><link>https://dhruv.ing/tags/ssh/</link><description>Recent content in Ssh on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 02 Oct 2023 18:30:00 +0400</lastBuildDate><atom:link href="https://dhruv.ing/tags/ssh/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</guid><description>What is Port Forwarding? Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.
-Say you are running a website on a computer A, on localhost:8080, you can forward this port to another computer B and then any connection to computer-B:8080 will be tunneled back to computer A.
-This was an example of local port forwarding.
-You can go the other way round as well, having a website run on computer-B:8080 and tunnel it to the Computer A.</description></item><item><title>Running oneoff process in the background over ssh</title><link>https://dhruv.ing/posts/linux/running-procs-bg/</link><pubDate>Mon, 02 Oct 2023 18:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/running-procs-bg/</guid><description>Imagine a situation where you need to download a large file from the internet to a remote server.
-You run curl https://download.com -o download and logout of the ssh server. Big mistake! you come back hours later just to see that the download ended as soon as you logged out.
-The nohup command helps here. nohup stands for no hold up, and will run the command without any external interruptions. you can further run the command in the background using &amp;amp;.</description></item><item><title>Useful Shell Shortcuts</title><link>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</guid><description>Key Binding Description ESC f, ESC b Go forward/backword one word CTRL a, CTRL e Go to start/end of line ~ C Enter SSH Command Mode C-b, C-f Move backward/forward one character M-b, M-f Move backward/forward by word C-a, C-e Move to the beginning/end of the line C-w, M-d Kill word backward/forward C-d, Backspace Delete char forward/backward C-d may send EOF on an empty line M-. cycle through the argument to the previous commands C-k, C-u Kill (to clipboard) to end of line/beginning of line C-y Yank from kill ring M-y (after C-y) Cycle through kill ring history C-t, M-t Transpose character/word M-u, M-l, M-c Upper, lower, or capitalize forward word C-_, C-x C-u, C-/ Cycle through the undo list Note: C = Ctrl, M = Meta Key/modifier (alt or esc)</description></item><item><title>Copying Files Over a Remote Connection</title><link>https://dhruv.ing/posts/ssh/copying-files-over-remote/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/copying-files-over-remote/</guid><description>SCP SCP, or Secure Copy uses SSH to copy files or directories that you select.
-Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.
-You can even copy files over jump or intermediate connections by specifiying the -o flag, like this:
-# To copy myfile.txt to /my/dir directory on your remote host scp -o &amp;#39;ProxyJump your.jump.host&amp;#39; myfile.</description></item><item><title>Laggy SSH-Server connections on Laptops</title><link>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</link><pubDate>Fri, 24 Dec 2021 20:12:56 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</guid><description>When using a laptop as a server, if the SSH connection is laggy, it may be because of a wireless card’s power-saving feature.
-You can turn this feature off by issuing the command
-iw &amp;lt;devname&amp;gt; set power_save off
-You can view the status of iw using the command
-iw &amp;lt;devname&amp;gt; get power_save
-and the device name &amp;lt;devname&amp;gt; using the command ip a
-iw is used to show / manipulate wireless devices and their configuration</description></item><item><title>Multihop SSH</title><link>https://dhruv.ing/posts/ssh/multihop-ssh/</link><pubDate>Sun, 31 Oct 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/multihop-ssh/</guid><description>OpenSSH v7.3 onward supports a -J switch and a ProxyJump option, which allow one or more comma-separated jump hosts, so, you can simply do this now:
-ssh -J jumpuser1@jumphost1,jumpuser2@jumphost2,...,jumpuserN@jumphostN user@hostbe If you want to bind ports as well, You basically have three possibilities:
-Tunnel from localhost to host1:
-ssh -L 9999:host2:1234 -N host1 As noted above, the connection from host1 to host2 will not be secured.
-Tunnel from localhost to host1 and from host1 to host2:</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ssh on Dhruv's Blog</title><link>https://dhruv.ing/tags/ssh/</link><description>Recent content in Ssh on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 02 Oct 2023 18:30:00 +0400</lastBuildDate><atom:link href="https://dhruv.ing/tags/ssh/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+&lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
+&lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
+&lt;p>This was an example of local port forwarding.&lt;/p>
+&lt;p>You can go the other way round as well, having a website run on &lt;code>computer-B:8080&lt;/code> and tunnel it to the Computer A. This is called remote port forwarding.&lt;/p></description></item><item><title>Running oneoff process in the background over ssh</title><link>https://dhruv.ing/posts/linux/running-procs-bg/</link><pubDate>Mon, 02 Oct 2023 18:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/running-procs-bg/</guid><description>&lt;p>Imagine a situation where you need to download a large file from the internet to a remote server.&lt;/p>
+&lt;p>You run &lt;code>curl https://download.com -o download&lt;/code> and logout of the ssh server. &lt;strong>Big mistake!&lt;/strong> you come back hours later just to see that the download ended as soon as you logged out.&lt;/p>
+&lt;p>The &lt;code>nohup&lt;/code> command helps here. &lt;code>nohup&lt;/code> stands for no hold up, and will run the command without any external interruptions. you can further run the command in the background using &lt;code>&amp;amp;&lt;/code>.&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</guid><description>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Key Binding&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>ESC f&lt;/code>, &lt;code>ESC b&lt;/code>&lt;/td>
+ &lt;td>Go forward/backword one word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>CTRL a&lt;/code>, &lt;code>CTRL e&lt;/code>&lt;/td>
+ &lt;td>Go to start/end of line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>~ C&lt;/code>&lt;/td>
+ &lt;td>Enter SSH Command Mode&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-b&lt;/code>, &lt;code>C-f&lt;/code>&lt;/td>
+ &lt;td>Move backward/forward one character&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-b&lt;/code>, &lt;code>M-f&lt;/code>&lt;/td>
+ &lt;td>Move backward/forward by word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-a&lt;/code>, &lt;code>C-e&lt;/code>&lt;/td>
+ &lt;td>Move to the beginning/end of the line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-w&lt;/code>, &lt;code>M-d&lt;/code>&lt;/td>
+ &lt;td>Kill word backward/forward&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-d&lt;/code>, &lt;code>Backspace&lt;/code>&lt;/td>
+ &lt;td>Delete char forward/backward&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-d&lt;/code>&lt;/td>
+ &lt;td>may send EOF on an empty line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-.&lt;/code>&lt;/td>
+ &lt;td>cycle through the argument to the previous commands&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-k&lt;/code>, &lt;code>C-u&lt;/code>&lt;/td>
+ &lt;td>Kill (to clipboard) to end of line/beginning of line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-y&lt;/code>&lt;/td>
+ &lt;td>Yank from kill ring&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-y&lt;/code> (after &lt;code>C-y&lt;/code>)&lt;/td>
+ &lt;td>Cycle through kill ring history&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-t&lt;/code>, &lt;code>M-t&lt;/code>&lt;/td>
+ &lt;td>Transpose character/word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-u&lt;/code>, &lt;code>M-l&lt;/code>, &lt;code>M-c&lt;/code>&lt;/td>
+ &lt;td>Upper, lower, or capitalize forward word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-_&lt;/code>, &lt;code>C-x C-u&lt;/code>, &lt;code>C-/&lt;/code>&lt;/td>
+ &lt;td>Cycle through the undo list&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;em>Note&lt;/em>: &lt;code>C&lt;/code> = &lt;code>Ctrl&lt;/code>, &lt;code>M&lt;/code> = Meta Key/modifier (&lt;code>alt&lt;/code> or &lt;code>esc&lt;/code>)&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://dhruv.ing/posts/ssh/copying-files-over-remote/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/copying-files-over-remote/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
+&lt;p>SCP, or Secure Copy uses SSH to copy files or directories that you select.&lt;/p>
+&lt;p>Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.&lt;/p>
+&lt;p>You can even copy files over jump or intermediate connections by specifiying the &lt;code>-o&lt;/code> flag, like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># To copy myfile.txt to /my/dir directory on your remote host&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>scp -o &lt;span style="color:#e6db74">&amp;#39;ProxyJump your.jump.host&amp;#39;&lt;/span> myfile.txt remote.internal.host:/my/dir
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that with &lt;code>SSH version 9&lt;/code>, SCP now has a SFTP backend rather than the traditional rcp backend. More details can be found in the &lt;a href="https://www.openssh.com/txt/release-9.0">release notes&lt;/a>&lt;/p></description></item><item><title>Laggy SSH-Server connections on Laptops</title><link>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</link><pubDate>Fri, 24 Dec 2021 20:12:56 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</guid><description>&lt;p>When using a laptop as a server, if the SSH connection is laggy, it may be because of a wireless card’s power-saving feature.&lt;/p>
+&lt;p>You can turn this feature off by issuing the command&lt;/p>
+&lt;p>&lt;code>iw &amp;lt;devname&amp;gt; set power_save off&lt;/code>&lt;/p>
+&lt;p>You can view the status of iw using the command&lt;/p>
+&lt;p>&lt;code>iw &amp;lt;devname&amp;gt; get power_save&lt;/code>&lt;/p>
+&lt;p>and the device name &lt;code>&amp;lt;devname&amp;gt;&lt;/code> using the command &lt;code>ip a&lt;/code>&lt;/p>
+&lt;p>iw is used to show / manipulate wireless devices and their configuration&lt;/p></description></item><item><title>Multihop SSH</title><link>https://dhruv.ing/posts/ssh/multihop-ssh/</link><pubDate>Sun, 31 Oct 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/multihop-ssh/</guid><description>&lt;p>OpenSSH v7.3 onward supports a &lt;code>-J&lt;/code> switch and a &lt;code>ProxyJump&lt;/code> option, which allow one or more comma-separated jump hosts, so, you can simply do this now:&lt;/p>
+&lt;pre tabindex="0">&lt;code>ssh -J jumpuser1@jumphost1,jumpuser2@jumphost2,...,jumpuserN@jumphostN user@hostbe
+&lt;/code>&lt;/pre>&lt;hr>
+&lt;p>If you want to bind ports as well, You basically have three possibilities:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code>:&lt;/p>
+&lt;pre tabindex="0">&lt;code>ssh -L 9999:host2:1234 -N host1
+&lt;/code>&lt;/pre>&lt;p>As noted above, the connection from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code> will not be secured.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code> and from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code>:&lt;/p></description></item></channel></rss>

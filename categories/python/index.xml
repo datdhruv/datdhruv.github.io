@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Dhruv's Blog</title><link>https://dhruv.ing/categories/python/</link><description>Recent content in Python on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 05 Jan 2021 12:00:00 +0400</lastBuildDate><atom:link href="https://dhruv.ing/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python tools</title><link>https://dhruv.ing/posts/python/python-tooling/</link><pubDate>Tue, 05 Jan 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-tooling/</guid><description>Index pydoc Pip Setuptools json.tool argparse pyinstaller Note on python packages kivy Preferred LSP pydoc To get help with used defined functions and classes, just run pydoc
-eg:
-# foo.py def bar(): &amp;#34;&amp;#34;&amp;#34;this is the docstring for bar()&amp;#34;&amp;#34;&amp;#34; print &amp;#39;hello&amp;#39; def baz(): &amp;#34;&amp;#34;&amp;#34;this is the docstring for baz()&amp;#34;&amp;#34;&amp;#34; print &amp;#39;world&amp;#39; After Running pydoc:
-$ pydoc foo # Note do not include the .py extention Help on module foo: NAME foo FILE /path/to/foo.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Dhruv's Blog</title><link>https://dhruv.ing/categories/python/</link><description>Recent content in Python on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 05 Jan 2021 12:00:00 +0400</lastBuildDate><atom:link href="https://dhruv.ing/categories/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Python tools</title><link>https://dhruv.ing/posts/python/python-tooling/</link><pubDate>Tue, 05 Jan 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-tooling/</guid><description>&lt;h1 id="index">Index&lt;/h1>
+&lt;ol>
+&lt;li>&lt;a href="#pydoc">pydoc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#pip">Pip&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#setuptools">Setuptools&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#json-tool">json.tool&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#argparse">argparse&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#pyinstaller">pyinstaller&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#python-packages">Note on python packages&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#kivy">kivy&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#preferred-lsp">Preferred LSP&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="pydoc">pydoc&lt;/h3>
+&lt;p>To get help with used defined functions and classes, just run &lt;code>pydoc&lt;/code>&lt;/p>
+&lt;p>eg:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">bar&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;this is the docstring for bar()&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print &lt;span style="color:#e6db74">&amp;#39;hello&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">baz&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;this is the docstring for baz()&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print &lt;span style="color:#e6db74">&amp;#39;world&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After Running &lt;code>pydoc&lt;/code>:&lt;/p>
+&lt;pre tabindex="0">&lt;code>$ pydoc foo # Note do not include the .py extention
+Help on module foo:
+
+NAME
+ foo
+
+FILE
+ /path/to/foo.py
+
+FUNCTIONS
+ bar()
+ this is the docstring for bar()
+
+ baz()
+ this is the docstring for baz()
+&lt;/code>&lt;/pre>&lt;p>You can also generate an HTML help file:&lt;/p></description></item></channel></rss>

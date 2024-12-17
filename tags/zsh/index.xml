@@ -1,3 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zsh on Dhruv's Blog</title><link>https://dhruv.ing/tags/zsh/</link><description>Recent content in Zsh on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 05 Jan 2022 12:00:00 +0400</lastBuildDate><atom:link href="https://dhruv.ing/tags/zsh/index.xml" rel="self" type="application/rss+xml"/><item><title>ZSH Shenanigans</title><link>https://dhruv.ing/posts/cli/zsh-shenanigans/</link><pubDate>Wed, 05 Jan 2022 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/zsh-shenanigans/</guid><description>Aliases Python Aliases alias pip=&amp;#39;python3 -m pip&amp;#39; alias python=&amp;#39;python3&amp;#39; alias py=&amp;#39;python3&amp;#39; ls Alias Because ls does not automagically add color
-alias ls=&amp;#39;ls --color&amp;#39; Prompt customization checkout the sourcefile for more, here I am going to detail the customization that I add.
-export PROMPT=$&amp;#39;%F{green}%B%n%b%f %F{111}%3~%f %(?.%F{green}\U279c%f.%F{009}\U279c%f) &amp;#39; $ : Required for unicode parsing %F&amp;hellip;.%f is for setting Foreground colors, colors specified in {color/color_code} format %B&amp;hellip;.%b for bold text %n for username %m for machine name (condensed) %~ for pwd, but with $HOME prefix, 3 for the number of parent dirs to show alternatively use %d or %/ for full paths \U0000 for unicode %(?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zsh on Dhruv's Blog</title><link>https://dhruv.ing/tags/zsh/</link><description>Recent content in Zsh on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 05 Jan 2022 12:00:00 +0400</lastBuildDate><atom:link href="https://dhruv.ing/tags/zsh/index.xml" rel="self" type="application/rss+xml"/><item><title>ZSH Shenanigans</title><link>https://dhruv.ing/posts/cli/zsh-shenanigans/</link><pubDate>Wed, 05 Jan 2022 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/zsh-shenanigans/</guid><description>&lt;h2 id="aliases">Aliases&lt;/h2>
+&lt;h4 id="python-aliases">Python Aliases&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>alias pip&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;python3 -m pip&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias python&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias py&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="ls-alias">ls Alias&lt;/h4>
+&lt;p>Because ls does not automagically add color&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>alias ls&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;ls --color&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="prompt-customization">Prompt customization&lt;/h2>
+&lt;p>checkout the &lt;a href="https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Prompt-Expansion">sourcefile&lt;/a> for more, here I am going to detail the customization that I add.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>export PROMPT&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">$&amp;#39;%F{green}%B%n%b%f %F{111}%3~%f %(?.%F{green}\U279c%f.%F{009}\U279c%f) &amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>$ : Required for unicode parsing&lt;/li>
+&lt;li>%F&amp;hellip;.%f is for setting Foreground colors,&lt;/li>
+&lt;li>colors specified in {color/color_code} format&lt;/li>
+&lt;li>%B&amp;hellip;.%b for bold text&lt;/li>
+&lt;li>%n for username&lt;/li>
+&lt;li>%m for machine name (condensed)&lt;/li>
+&lt;li>%~ for pwd, but with $HOME prefix,&lt;/li>
+&lt;li>3 for the number of parent dirs to show&lt;/li>
+&lt;li>alternatively use %d or %/ for full paths&lt;/li>
+&lt;li>\U0000 for unicode&lt;/li>
+&lt;li>%(?.if_reu\turn_code_istrue.if_reuturn_code_isfalse)&lt;/li>
+&lt;li>Next we have colorized the output for each case (true/false)&lt;/li>
+&lt;li>009 is a brighter, non panicy version of red&lt;/li>
+&lt;/ul>
+&lt;h2 id="you-can-invoke-the-new-user-install-again-by-running">You can invoke the new user install again by running&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>autoload zsh-newuser-install &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> zsh-newuser-install -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will add some autocomplete magic and let you set options for history file etc.&lt;/p></description></item></channel></rss>

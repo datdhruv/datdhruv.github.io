@@ -1,78 +1,503 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dhruv's Blog</title><link>https://dhruv.ing/</link><description>Recent content on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 06 Jun 2024 11:55:00 +0200</lastBuildDate><atom:link href="https://dhruv.ing/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</guid><description>What is Port Forwarding? Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.
-Say you are running a website on a computer A, on localhost:8080, you can forward this port to another computer B and then any connection to computer-B:8080 will be tunneled back to computer A.
-This was an example of local port forwarding.
-You can go the other way round as well, having a website run on computer-B:8080 and tunnel it to the Computer A.</description></item><item><title>Bashrc customizations</title><link>https://dhruv.ing/posts/cli/bashrc/</link><pubDate>Wed, 01 Mar 2023 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/bashrc/</guid><description>Bash Prompt PS1=$&amp;#39;\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]\u279c \[\e[0m\]&amp;#39;; PROMPT_DIRTRIM=2 or without supported nerd fonts:
-PS1=$&amp;#39;\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]$ \[\e[0m\]&amp;#39;; PROMPT_DIRTRIM=2 Directory from home uses a if-else ternary expression $(($?==0?92:91)) that makes the color code 0;91m (red, see color codes) if the last command exits with non-zero, or 0;92m green otherwise. $ prompt PROMPT_DIRTRIM=2 shows the current and the parent directory, collapsing the rest of the hierarchy. Setting LANG may be required for certain variables to show up even with Nerd fonts LANG=&amp;#39;C.</description></item><item><title>Git</title><link>https://dhruv.ing/posts/git/git/</link><pubDate>Thu, 05 Mar 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/git/git/</guid><description>Some Conventions
-repository(repo) -&amp;gt; basically just a folder, which has all your code in it
-local repo -&amp;gt; The folder that is On your computer
-remote repo -&amp;gt; The folder that is on some git server (or on a server, basically not on your computer)
-origin is the git repo, master is the branch of the repo you want to push to.
-Before we proceed, please also check the help pages and the man pages for the topics, they go beyond these basics and explaing in more depth</description></item><item><title>Table naming conventions</title><link>https://dhruv.ing/posts/postgresql/table-naming-conventions/</link><pubDate>Thu, 06 Jun 2024 11:55:00 +0200</pubDate><guid>https://dhruv.ing/posts/postgresql/table-naming-conventions/</guid><description>Standardization Needs When a data warehouse is designed, it may get data from several source systems and each source may have its own names, data types etc. These anomalies can be eliminated if a proper standardization is maintained across the organization.
-Table Names Standardization: Giving a full name to the tables, will give an idea about data what it is about. Generally, do not abbreviate the table names; however this may differ according to organization’s standards.</description></item><item><title>Vscode setup</title><link>https://dhruv.ing/posts/dotfiles/vscode/</link><pubDate>Sun, 05 May 2024 12:00:00 +0200</pubDate><guid>https://dhruv.ing/posts/dotfiles/vscode/</guid><description>The base config is as follows:
-{ &amp;#34;editor.fontSize&amp;#34;: 16, &amp;#34;editor.glyphMargin&amp;#34;: true, &amp;#34;editor.suggest.preview&amp;#34;: true, &amp;#34;editor.minimap.autohide&amp;#34;: true, &amp;#34;editor.cursorBlinking&amp;#34;: &amp;#34;phase&amp;#34;, &amp;#34;editor.wordWrap&amp;#34;: &amp;#34;on&amp;#34;, &amp;#34;files.autoSave&amp;#34;: &amp;#34;afterDelay&amp;#34;, &amp;#34;breadcrumbs.enabled&amp;#34;: false, &amp;#34;telemetry.telemetryLevel&amp;#34;: &amp;#34;off&amp;#34;, &amp;#34;window.autoDetectColorScheme&amp;#34;: true, &amp;#34;editor.suggest.localityBonus&amp;#34;: true, &amp;#34;editor.guides.bracketPairs&amp;#34;: &amp;#34;active&amp;#34;, &amp;#34;editor.fontFamily&amp;#34;: &amp;#34;JetBrainsMono NF Medium&amp;#34;, &amp;#34;window.commandCenter&amp;#34;: false, &amp;#34;workbench.layoutControl.enabled&amp;#34;: false }</description></item><item><title>Change the time zone data on Linux</title><link>https://dhruv.ing/posts/linux/change-time-zone/</link><pubDate>Fri, 01 Mar 2024 22:45:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/change-time-zone/</guid><description>The main step to do here is to configure the tzdata package
-Then choose the appropriate timezone info
-Ubuntu sudo dpkg-reconfigure tzdata</description></item><item><title>Running oneoff process in the background over ssh</title><link>https://dhruv.ing/posts/linux/running-procs-bg/</link><pubDate>Mon, 02 Oct 2023 18:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/running-procs-bg/</guid><description>Imagine a situation where you need to download a large file from the internet to a remote server.
-You run curl https://download.com -o download and logout of the ssh server. Big mistake! you come back hours later just to see that the download ended as soon as you logged out.
-The nohup command helps here. nohup stands for no hold up, and will run the command without any external interruptions. you can further run the command in the background using &amp;amp;.</description></item><item><title>How does Router know where to forward packet</title><link>https://dhruv.ing/posts/misc/napt/</link><pubDate>Thu, 17 Aug 2023 22:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/napt/</guid><description>(mirror copy) The question If several computers with local addresses (192.168.0.#) are connected to a router and each computer opens a web browser and requests a page over HTTP, when these TCP:80 packets are sent out, the router switches the local address with the static IP of the router (i.e. Provider given IP) so the server can reply to the appropriate address.
-But how does the router know to which computer to forward the HTTP reply, since the TCP header does not contain the local IP address (does it?</description></item><item><title>Notes on making a Web Scraper in Java</title><link>https://dhruv.ing/posts/misc/java-webscraping/</link><pubDate>Wed, 05 Jul 2023 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/java-webscraping/</guid><description>First things first. A Web Request Library Before we can start to scrape anything, we will need a way to send and receive web requests. There are multiple ways to do this in java with various libraries, however we will use java.net.http.HttpClient which was released with java 11.
-Let&amp;rsquo;s create a simple request:
-package org.datdhruv; import java.io.IOException; import java.net.URI; import java.net.http.HttpClient; import java.net.http.HttpRequest; import java.net.http.HttpResponse; public class Main { public static void main(String[] args) throws IOException, InterruptedException { var client = HttpClient.</description></item><item><title>Installing Postgresql on Ubuntu</title><link>https://dhruv.ing/posts/postgresql/postgresql/</link><pubDate>Sat, 24 Jun 2023 11:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/postgresql/postgresql/</guid><description>Installing Postgres sudo apt search postgres sudo apt install postgresql sudo apt install postgresql postgresql-contrib sudo systemctl start postgresql.service sudo -i -u postgres sudo -u postgres createuser --interactive sudo -u upskillr psql sudo -u postgres createdb upskillr sudo -u upskillr psql sudo adduser upskillr sudo -u upskillr psql Double and single Quotes in (PG)SQL Double quotes are for names of tables or fields. Sometimes You can omit them. The single quotes are for string constants.</description></item><item><title>Some Postgresql Examples</title><link>https://dhruv.ing/posts/postgresql/examples/</link><pubDate>Sat, 24 Jun 2023 11:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/postgresql/examples/</guid><description>jsonb to record select fla.offer_id, ans_data.* from fla, jsonb_to_record(answer_data) as ans_data(&amp;#34;AE46&amp;#34; text,&amp;#34;AE3&amp;#34; text,&amp;#34;AE16&amp;#34; text,&amp;#34;AE45&amp;#34; date,&amp;#34;AE47&amp;#34; date,&amp;#34;AE55&amp;#34; text,&amp;#34;AE60&amp;#34; text,&amp;#34;AE61&amp;#34; text,&amp;#34;AE73&amp;#34; date,&amp;#34;AE74&amp;#34; date,&amp;#34;AE62&amp;#34; text,&amp;#34;AE27&amp;#34; text,&amp;#34;AE42&amp;#34; text,&amp;#34;AE58&amp;#34; text,&amp;#34;AE25&amp;#34; text,&amp;#34;AE54&amp;#34; text,&amp;#34;AE44&amp;#34; text,&amp;#34;AE17&amp;#34; text,&amp;#34;AE53&amp;#34; text,&amp;#34;AE59&amp;#34; text,&amp;#34;AE19&amp;#34; text,&amp;#34;AE56&amp;#34; text,&amp;#34;AE21&amp;#34; text,&amp;#34;AE57&amp;#34; text,&amp;#34;AE33&amp;#34; text,&amp;#34;AE32&amp;#34; text,&amp;#34;AE41&amp;#34; date,&amp;#34;AE31&amp;#34; date,&amp;#34;AE65&amp;#34; text,&amp;#34;AE66&amp;#34; text,&amp;#34;AE67&amp;#34; text,&amp;#34;AE72&amp;#34; text,&amp;#34;AE52&amp;#34; text,&amp;#34;AE38&amp;#34; text,&amp;#34;AE69&amp;#34; text,&amp;#34;AE70&amp;#34; text,&amp;#34;AE68&amp;#34; text,&amp;#34;AE71&amp;#34; text,&amp;#34;AE39&amp;#34; text); Accessing record&amp;rsquo;s key and values select offer_id, rev, bf.key as business_field, bf.value as business_field_comments from table_name tn, jsonb_each_text((tn.answer_data-&amp;gt;&amp;gt;&amp;#39;FI5&amp;#39;)::jsonb) as bf; JSON String agg -- Data is stored as text within a json.</description></item><item><title>Linux Filesystem Hierarchy</title><link>https://dhruv.ing/posts/linux/man-hier/</link><pubDate>Mon, 12 Jun 2023 21:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/man-hier/</guid><description>It is often tough to know where certain kinds of files or applications are in the Linux files system.
-It is complicated due to historical reasons, and different distributions often put their files in different locations.
-A good way to know where things are, or where things go, is by referring to your distribution&amp;rsquo;s man pages.
-man hier</description></item><item><title>Find Patterns in a directory with grep</title><link>https://dhruv.ing/posts/cli/recursive-grep/</link><pubDate>Fri, 26 May 2023 22:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/recursive-grep/</guid><description>Recently I had to lookup a usage for function in a project I was working on.
-This is relatively an easy task with vscode. You just open the search in files menu, type what you are looking for, and off you go.
-This made me wonder, how would you achieve this task in the command line with something like grep?
-There is an amazing tool which specializes in this activity: ripgrep, however I was determined to complete this task with just grep.</description></item><item><title>Get a Brief of Ip command (with Color)</title><link>https://dhruv.ing/posts/cli/ip-brief-output/</link><pubDate>Sun, 25 Dec 2022 11:25:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/ip-brief-output/</guid><description>The default ip addr command, which gives you ip address of your device, is cluttered with alot of values, which may not be useful to you. To quickly get the output, you can pass the -br or --brief argument, which outputs a brief of the network statistic.
-Additionally you can get color output by passing the -c or --color argument.</description></item><item><title>Useful Shell Shortcuts</title><link>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</guid><description>Key Binding Description ESC f, ESC b Go forward/backword one word CTRL a, CTRL e Go to start/end of line ~ C Enter SSH Command Mode C-b, C-f Move backward/forward one character M-b, M-f Move backward/forward by word C-a, C-e Move to the beginning/end of the line C-w, M-d Kill word backward/forward C-d, Backspace Delete char forward/backward C-d may send EOF on an empty line M-. cycle through the argument to the previous commands C-k, C-u Kill (to clipboard) to end of line/beginning of line C-y Yank from kill ring M-y (after C-y) Cycle through kill ring history C-t, M-t Transpose character/word M-u, M-l, M-c Upper, lower, or capitalize forward word C-_, C-x C-u, C-/ Cycle through the undo list Note: C = Ctrl, M = Meta Key/modifier (alt or esc)</description></item><item><title>Copying Files Over a Remote Connection</title><link>https://dhruv.ing/posts/ssh/copying-files-over-remote/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/copying-files-over-remote/</guid><description>SCP SCP, or Secure Copy uses SSH to copy files or directories that you select.
-Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.
-You can even copy files over jump or intermediate connections by specifiying the -o flag, like this:
-# To copy myfile.txt to /my/dir directory on your remote host scp -o &amp;#39;ProxyJump your.jump.host&amp;#39; myfile.</description></item><item><title>A list of (unix) environment variables on your system</title><link>https://dhruv.ing/posts/linux/environ-variables/</link><pubDate>Sun, 14 Aug 2022 22:20:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/environ-variables/</guid><description>On Linux, man 7 environ describes a number of common environment variables, and gives references to other man pages which describe them in more detail. Equivalents exist on other systems; see for example the FreeBSD version. (Historically, Unix V7 had an equivalent in section 5; the BSDs have had this in section 7 since at least BSD4.3.)
-In general, to look through all the man pages which mention a given environment variable, you can use man -K, which runs a full-text search in all the installed man pages’ sources, with the -w and -i options (which respectively list man pages instead of viewing them, and match the strings’ case):</description></item><item><title>Notes on System Design</title><link>https://dhruv.ing/posts/misc/system-design/</link><pubDate>Thu, 11 Aug 2022 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/system-design/</guid><description>1. Design for Moore&amp;rsquo;s Law Moore&amp;rsquo;s Law imageThe one constant for computer designers is rapid change, which is driven largely by Moore&amp;rsquo;s Law. It states that integrated circuit resources double every 18–24 months. Moore&amp;rsquo;s Law resulted from a 1965 prediction of such growth in IC capacity made by Gordon Moore, one of the founders of Intel. As computer designs can take years, the resources available per chip can easily double or quadruple between the start and finish of the project.</description></item><item><title>Getting a command from Shell History, Fast</title><link>https://dhruv.ing/posts/cli/reverse-shell-search/</link><pubDate>Thu, 10 Mar 2022 12:16:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/reverse-shell-search/</guid><description>To quickly search through, or re-run one of the previously run command, especially if it is a long one, instead of searching the .hist file, you can just type ctrl r and that will bring up a reverse/back search prompt where it will try to autocomplete the previously run command.
-The command search from most recently used first, so if the first suggestion is not the command you want, you can keep going back and searching by repeatedly typing ctrl r</description></item><item><title>Onefetch</title><link>https://dhruv.ing/posts/cli/onefetch/</link><pubDate>Wed, 19 Jan 2022 00:52:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/onefetch/</guid><description>Onefetch is a command-line Git information tool written in Rust that displays project information and code statistics for a local Git repository directly on your terminal. The tool is completely offline - no network access is required.
-By default, the repo&amp;rsquo;s information is displayed alongside the dominant language&amp;rsquo;s logo, but you can further configure onefetch to instead use an image - on supported terminals -, a text input or nothing at all.</description></item><item><title>ZSH Shenanigans</title><link>https://dhruv.ing/posts/cli/zsh-shenanigans/</link><pubDate>Wed, 05 Jan 2022 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/zsh-shenanigans/</guid><description>Aliases Python Aliases alias pip=&amp;#39;python3 -m pip&amp;#39; alias python=&amp;#39;python3&amp;#39; alias py=&amp;#39;python3&amp;#39; ls Alias Because ls does not automagically add color
-alias ls=&amp;#39;ls --color&amp;#39; Prompt customization checkout the sourcefile for more, here I am going to detail the customization that I add.
-export PROMPT=$&amp;#39;%F{green}%B%n%b%f %F{111}%3~%f %(?.%F{green}\U279c%f.%F{009}\U279c%f) &amp;#39; $ : Required for unicode parsing %F&amp;hellip;.%f is for setting Foreground colors, colors specified in {color/color_code} format %B&amp;hellip;.%b for bold text %n for username %m for machine name (condensed) %~ for pwd, but with $HOME prefix, 3 for the number of parent dirs to show alternatively use %d or %/ for full paths \U0000 for unicode %(?</description></item><item><title>Download files with curl</title><link>https://dhruv.ing/posts/cli/download-files-with-curl/</link><pubDate>Sun, 26 Dec 2021 20:48:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/download-files-with-curl/</guid><description>You can download files with curl, just like with wget, using the flag -O
-The capital -O outputs the file name to be as the same name as the one on the server, but you can also use -o (small o), to name the files as you want, like curl -o filename link-to-file
-These flags are important, because otherwise, curl will dump the output to stdout.</description></item><item><title>Laggy SSH-Server connections on Laptops</title><link>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</link><pubDate>Fri, 24 Dec 2021 20:12:56 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</guid><description>When using a laptop as a server, if the SSH connection is laggy, it may be because of a wireless card’s power-saving feature.
-You can turn this feature off by issuing the command
-iw &amp;lt;devname&amp;gt; set power_save off
-You can view the status of iw using the command
-iw &amp;lt;devname&amp;gt; get power_save
-and the device name &amp;lt;devname&amp;gt; using the command ip a
-iw is used to show / manipulate wireless devices and their configuration</description></item><item><title>Linux as a Backend</title><link>https://dhruv.ing/posts/linux/linux-as-backend/</link><pubDate>Thu, 02 Dec 2021 22:15:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/linux-as-backend/</guid><description>After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine.
-Why SSH Port Forwarding gives you Superpowers
-Most of the usage of this kind of work will be via the terminal itself.
-I am however still struggling with how to use desktop linux, so as to be that one guy who propogates Linux use on the desktop.</description></item><item><title>Forget git history</title><link>https://dhruv.ing/posts/git/forget-git-hist/</link><pubDate>Mon, 29 Nov 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/git/forget-git-hist/</guid><description>To remove the git history git checkout --orphan tmp # create a temporary branch git add -A # Add all files and commit them git commit -m &amp;#39;Add files&amp;#39; git branch -D main # Deletes the master branch git branch -m main # Rename the current branch to master git push -f origin main # Force push master branch to Git server</description></item><item><title>Git Credential Manager</title><link>https://dhruv.ing/posts/git/git-credential-manager/</link><pubDate>Fri, 26 Nov 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/git/git-credential-manager/</guid><description>Github removed the https login with username password to push/pull code.
-Now you have to generate a personal access token and use that token instead of the password for those operations.
-This brings us to git credential manger, you can save the username and password (or the personal access token) with git for https logins, so that you dont have to input it again and again.
-You can do this with</description></item><item><title>./ in Linux</title><link>https://dhruv.ing/posts/linux/dotslash-linux/</link><pubDate>Mon, 01 Nov 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/dotslash-linux/</guid><description>So, why exactly does ./executable work in Linux and Unix (and .\ in windows)?
-The ./ translates to: in the current directory (dot(.) : this, slash(/) : directory)
-Now recall that there is a variable called $PATH in all operating system shells.
-The role of this variable is to store the path to all the places where system binaries are stored (for eg in /bin or /usr/bin or /sbin)
-Also remember that shells can then take these binaries as inputs and directly run them like</description></item><item><title>Multihop SSH</title><link>https://dhruv.ing/posts/ssh/multihop-ssh/</link><pubDate>Sun, 31 Oct 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/multihop-ssh/</guid><description>OpenSSH v7.3 onward supports a -J switch and a ProxyJump option, which allow one or more comma-separated jump hosts, so, you can simply do this now:
-ssh -J jumpuser1@jumphost1,jumpuser2@jumphost2,...,jumpuserN@jumphostN user@hostbe If you want to bind ports as well, You basically have three possibilities:
-Tunnel from localhost to host1:
-ssh -L 9999:host2:1234 -N host1 As noted above, the connection from host1 to host2 will not be secured.
-Tunnel from localhost to host1 and from host1 to host2:</description></item><item><title>Python tools</title><link>https://dhruv.ing/posts/python/python-tooling/</link><pubDate>Tue, 05 Jan 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-tooling/</guid><description>Index pydoc Pip Setuptools json.tool argparse pyinstaller Note on python packages kivy Preferred LSP pydoc To get help with used defined functions and classes, just run pydoc
-eg:
-# foo.py def bar(): &amp;#34;&amp;#34;&amp;#34;this is the docstring for bar()&amp;#34;&amp;#34;&amp;#34; print &amp;#39;hello&amp;#39; def baz(): &amp;#34;&amp;#34;&amp;#34;this is the docstring for baz()&amp;#34;&amp;#34;&amp;#34; print &amp;#39;world&amp;#39; After Running pydoc:
-$ pydoc foo # Note do not include the .py extention Help on module foo: NAME foo FILE /path/to/foo.</description></item><item><title>Python Sockets</title><link>https://dhruv.ing/posts/python/python-network-sockets/</link><pubDate>Tue, 11 Aug 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-network-sockets/</guid><description>Network Sockets Server side import socket import threading HEADER = 64 # Choose a port PORT = 5050 FORMAT = &amp;#39;utf-8&amp;#39; DISCONNECT_MESSAGE = &amp;#34;!DISCONNECT&amp;#34; # Check your ip address using ifconfig/ipconfig/ip addr # SERVER = &amp;#34;192.168.1.114&amp;#34; # To get based on dynamic hostname # SERVER = socket.gethostbyname(socket.gethostname()) # Symbolic empty string signifies all availiable interfaces SERVER = &amp;#39;&amp;#39; ADDR = (SERVER, PORT) # What kind of address are we going to look for in the connections # SOCK_Stream: Streaming data over the socket server = socket.</description></item><item><title>Intermediate Python Concepts</title><link>https://dhruv.ing/posts/python/python-concepts/</link><pubDate>Wed, 05 Aug 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-concepts/</guid><description>Classes and objects creating and using classes class circle(object): def __init__(self,radius,color): self.radius = radius self.color = color RedCircle = circle(10,&amp;#34;Red&amp;#34;) Methods are functions which operate on the class instances class rectangle(object): def __init__(self, height, width, color): self.height = height self.width = width self.color = color def add_height(self,h): self.height = self.height + h return(self.radius) List Comprehension my_function = lambda a, b, c : a + b my_function(1, 2, 3)</description></item><item><title>Python OOPS Concepts</title><link>https://dhruv.ing/posts/python/python-oop/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-oop/</guid><description>self =&amp;gt; instances -&amp;gt; methods taking this as the first arguement work on instances
-cls =&amp;gt; classes -&amp;gt; work on the entire class rather than an instance
-both of them are context-aware
-when working with classes, unlike regular methods that take instances as the first arguemnt and unlike class methods that take classes as the first argument, static methods take no arguments
-Object Oriented Concepts with Python to declare a class in python you use the class keyword, if at all you want the class to be empty, you can use the pass keyword</description></item><item><title>Regex concepts</title><link>https://dhruv.ing/posts/misc/regex-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/regex-concepts/</guid><description>Regex Concepts To escape characters you need to use \ escape characters, for eg if you want to search for a &amp;ldquo;?&amp;rdquo; or &amp;ldquo;.&amp;rdquo; or &amp;ldquo;&amp;quot;, use backslash \., \?, \\. If you want to search for an email address eg: name@example.com, use: name@example\.com
-. -&amp;gt; matches any character except newline character
-\d matches digits (anything from 0-9)
-\D matches anything BUT a digit
-\w searches for any alphanumeric character (a-z,A-Z,0-9)</description></item><item><title>Installing kali linux on Raspberry pi when you have no monitor</title><link>https://dhruv.ing/posts/misc/rpi-headless-install/</link><pubDate>Wed, 25 Dec 2019 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/rpi-headless-install/</guid><description>Installing Kali linux on Raspberry Pi Flash the image on to the sd card (I recommend using balena etcher) Before putting the SD card into the pi, in the boot folder, create a ssh file (just touch ssh in the boot folder) now come the more tricky part. connect the pi to the router (with a wire) and then ssh into it. use nmtui to to set up the network now you have to enable ssh at each subsequent boot.</description></item><item><title/><link>https://dhruv.ing/index-about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/index-about/</guid><description/></item><item><title/><link>https://dhruv.ing/posts/dotfiles/linux/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/linux/</guid><description>Linux Better font rendering on Linux Set Anti Aliasing to Subpixel and Hinting to Slight
-Gnome &amp;amp; monitor colors Change the monitor color to sRGB
-Setting up chromium based browsers You can set up your own color scheme using the profiles setting. Use that to match whatever is the primary window color of the theme.
-Setting up Desktop Entrys [Desktop Entry] Name=Appllication Name Exec=/home/mrPeterson/path_to_executable StartupNotify=true Terminal=false Type=Application Icon=/optional/path/to/icon.png</description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/terminal-font/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/terminal-font/</guid><description>Terminal font JetBrainsMonoNerdFontPropo-Medium Meslo Nerd Font FiraCode Nerd Font Meslo (Apple only) Ubuntu/Mono</description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/vscode/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/vscode/readme/</guid><description>Colorscheme Bear Theme
-Bearded Theme
-Edge
-Github Theme
-GruvBox Material Theme
-Extentions Error Lens for inline error highlighting.
-Thunder Client as a lightweight postman alternative.
-Most Important Settings &amp;#34;editor.suggest.preview&amp;#34;: true, &amp;#34;editor.minimap.autohide&amp;#34;: true, &amp;#34;editor.cursorBlinking&amp;#34;: &amp;#34;phase&amp;#34;, &amp;#34;editor.wordWrap&amp;#34;: &amp;#34;on&amp;#34;, &amp;#34;workbench.activityBar.location&amp;#34;: &amp;#34;top&amp;#34;, &amp;#34;window.autoDetectColorScheme&amp;#34;: true, &amp;#34;editor.suggest.localityBonus&amp;#34;: true Reseting Pane sizes (of sidebar and terminal) Move the cursor till the option to resize comes up, and then just double click! and it will resize!
-Learnt from here</description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/windows/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/windows/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dhruv's Blog</title><link>https://dhruv.ing/</link><description>Recent content on Dhruv's Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 06 Jun 2024 11:55:00 +0200</lastBuildDate><atom:link href="https://dhruv.ing/index.xml" rel="self" type="application/rss+xml"/><item><title>Why SSH port Forwarding gives you superpowers</title><link>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</link><pubDate>Wed, 19 May 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/ssh-port-forwarding/</guid><description>&lt;h2 id="what-is-port-forwarding">&lt;strong>What is Port Forwarding?&lt;/strong>&lt;/h2>
+&lt;p>Port Forwarding allows you to make a port on a computer behave like it is part of some other computer.&lt;/p>
+&lt;p>Say you are running a website on a computer A, on &lt;code>localhost:8080&lt;/code>, you can forward this port to another computer B and then any connection to &lt;code>computer-B:8080&lt;/code> will be &lt;strong>tunneled&lt;/strong> back to computer A.&lt;/p>
+&lt;p>This was an example of local port forwarding.&lt;/p>
+&lt;p>You can go the other way round as well, having a website run on &lt;code>computer-B:8080&lt;/code> and tunnel it to the Computer A. This is called remote port forwarding.&lt;/p></description></item><item><title>Bashrc customizations</title><link>https://dhruv.ing/posts/cli/bashrc/</link><pubDate>Wed, 01 Mar 2023 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/bashrc/</guid><description>&lt;h2 id="bash-prompt">Bash Prompt&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>PS1&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">$&amp;#39;\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]\u279c \[\e[0m\]&amp;#39;&lt;/span>; PROMPT_DIRTRIM&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>or without supported nerd fonts:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>PS1&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">$&amp;#39;\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]$ \[\e[0m\]&amp;#39;&lt;/span>; PROMPT_DIRTRIM&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Directory from &lt;code>home&lt;/code>&lt;/li>
+&lt;li>uses a if-else ternary expression $(($?==0?92:91)) that makes the color code 0;91m (red, see color codes) if the last command exits with non-zero, or 0;92m green otherwise.&lt;/li>
+&lt;li>&lt;code>$&lt;/code> prompt&lt;/li>
+&lt;li>&lt;code>PROMPT_DIRTRIM=2&lt;/code> shows the current and the parent directory, collapsing the rest of the hierarchy.&lt;/li>
+&lt;/ul>
+&lt;h4 id="setting-lang-may-be-required-for-certain-variables-to-show-up-even-with-nerd-fonts">Setting LANG may be required for certain variables to show up even with Nerd fonts&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>LANG&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;C.UTF-8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PS1&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">$&amp;#39;\[\e[0;1;38;5;111m\]\w\[\e[0m\] \[\e[$(($?==0?92:91))m\]\u279c\[\e[0m\] &amp;#39;&lt;/span>; PROMPT_DIRTRIM&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="case-insensitive-autocompletion">Case insensitive autocompletion&lt;/h2>
+&lt;p>In order to make bash case-insensitive for to current user:&lt;/p></description></item><item><title>Git</title><link>https://dhruv.ing/posts/git/git/</link><pubDate>Thu, 05 Mar 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/git/git/</guid><description>&lt;p>Some Conventions&lt;/p>
+&lt;p>repository(repo) -&amp;gt; basically just a folder, which has all your code in it&lt;/p>
+&lt;p>local repo -&amp;gt; The folder that is On your computer&lt;/p>
+&lt;p>remote repo -&amp;gt; The folder that is on some git server (or on a server, basically not on your computer)&lt;/p>
+&lt;p>origin is the git repo, master is the branch of the repo you want to push to.&lt;/p>
+&lt;p>Before we proceed, &lt;strong>please also check the help pages and the man pages for the topics, they go beyond these basics and explaing in more depth&lt;/strong>&lt;/p></description></item><item><title>Table naming conventions</title><link>https://dhruv.ing/posts/postgresql/table-naming-conventions/</link><pubDate>Thu, 06 Jun 2024 11:55:00 +0200</pubDate><guid>https://dhruv.ing/posts/postgresql/table-naming-conventions/</guid><description>&lt;p>&lt;img src="table-naming-conventions.png" alt="Star schema">&lt;/p>
+&lt;h3 id="standardization-needs">Standardization Needs&lt;/h3>
+&lt;p>When a data warehouse is designed, it may get data from several source systems and each source may have its own names, data types etc. These anomalies can be eliminated if a proper standardization is maintained across the organization.&lt;/p>
+&lt;h3 id="table-names-standardization">Table Names Standardization:&lt;/h3>
+&lt;p>Giving a full name to the tables, will give an idea about data what it is about. Generally, do not abbreviate the table names; however this may differ according to organization’s standards. If the table name’s length exceeds the database standards, then try to abbreviate the table names. Some general guidelines are listed below that may be used as a prefix or suffix for the table.&lt;/p></description></item><item><title>Vscode setup</title><link>https://dhruv.ing/posts/dotfiles/vscode/</link><pubDate>Sun, 05 May 2024 12:00:00 +0200</pubDate><guid>https://dhruv.ing/posts/dotfiles/vscode/</guid><description>&lt;p>The base config is as follows:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.fontSize&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">16&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.glyphMargin&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.suggest.preview&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.minimap.autohide&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.cursorBlinking&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;phase&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.wordWrap&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;on&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;files.autoSave&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;afterDelay&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;breadcrumbs.enabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;telemetry.telemetryLevel&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;off&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;window.autoDetectColorScheme&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.suggest.localityBonus&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.guides.bracketPairs&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;active&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;editor.fontFamily&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;JetBrainsMono NF Medium&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;window.commandCenter&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;workbench.layoutControl.enabled&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Change the time zone data on Linux</title><link>https://dhruv.ing/posts/linux/change-time-zone/</link><pubDate>Fri, 01 Mar 2024 22:45:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/change-time-zone/</guid><description>&lt;p>The main step to do here is to configure the &lt;strong>&lt;code>tzdata&lt;/code>&lt;/strong> package&lt;/p>
+&lt;p>Then choose the appropriate timezone info&lt;/p>
+&lt;hr>
+&lt;h3 id="ubuntu">Ubuntu&lt;/h3>
+&lt;p>&lt;code>sudo dpkg-reconfigure tzdata&lt;/code>&lt;/p>
+&lt;p>&lt;img src="change-time-zone.png" alt="On ubuntu">&lt;/p>
+&lt;hr></description></item><item><title>Running oneoff process in the background over ssh</title><link>https://dhruv.ing/posts/linux/running-procs-bg/</link><pubDate>Mon, 02 Oct 2023 18:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/running-procs-bg/</guid><description>&lt;p>Imagine a situation where you need to download a large file from the internet to a remote server.&lt;/p>
+&lt;p>You run &lt;code>curl https://download.com -o download&lt;/code> and logout of the ssh server. &lt;strong>Big mistake!&lt;/strong> you come back hours later just to see that the download ended as soon as you logged out.&lt;/p>
+&lt;p>The &lt;code>nohup&lt;/code> command helps here. &lt;code>nohup&lt;/code> stands for no hold up, and will run the command without any external interruptions. you can further run the command in the background using &lt;code>&amp;amp;&lt;/code>.&lt;/p></description></item><item><title>How does Router know where to forward packet</title><link>https://dhruv.ing/posts/misc/napt/</link><pubDate>Thu, 17 Aug 2023 22:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/napt/</guid><description>&lt;h3 id="mirror-copyhttpssuperusercomquestions105838how-does-router-know-where-to-forward-packet">&lt;a href="https://superuser.com/questions/105838/how-does-router-know-where-to-forward-packet">(mirror copy)&lt;/a>&lt;/h3>
+&lt;h2 id="the-question">The question&lt;/h2>
+&lt;p>If several computers with local addresses (192.168.0.#) are connected to a router and each computer opens a web browser and requests a page over HTTP, when these TCP:80 packets are sent out, the router switches the local address with the static IP of the router (i.e. Provider given IP) so the server can reply to the appropriate address.&lt;/p>
+&lt;p>But how does the router know to which computer to forward the HTTP reply, since the TCP header does not contain the local IP address (does it?), and all computers are using port 80?&lt;/p></description></item><item><title>Notes on making a Web Scraper in Java</title><link>https://dhruv.ing/posts/misc/java-webscraping/</link><pubDate>Wed, 05 Jul 2023 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/java-webscraping/</guid><description>&lt;h2 id="first-things-first-a-web-request-library">First things first. A Web Request Library&lt;/h2>
+&lt;p>Before we can start to scrape anything, we will need a way to send and receive web requests. There are multiple ways to do this in java with various libraries, however we will use &lt;code>java.net.http.HttpClient&lt;/code> which was released with java 11.&lt;/p>
+&lt;p>Let&amp;rsquo;s create a simple request:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> org.datdhruv;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.io.IOException;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.net.URI;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.net.http.HttpClient;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.net.http.HttpRequest;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.net.http.HttpResponse;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Main&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) &lt;span style="color:#66d9ef">throws&lt;/span> IOException, InterruptedException {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> client &lt;span style="color:#f92672">=&lt;/span> HttpClient.&lt;span style="color:#a6e22e">newHttpClient&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> HttpRequest request &lt;span style="color:#f92672">=&lt;/span> HttpRequest.&lt;span style="color:#a6e22e">newBuilder&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">uri&lt;/span>(URI.&lt;span style="color:#a6e22e">create&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;https://datdhruv.me&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">build&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> response &lt;span style="color:#f92672">=&lt;/span> client.&lt;span style="color:#a6e22e">send&lt;/span>(request, HttpResponse.&lt;span style="color:#a6e22e">BodyHandlers&lt;/span>.&lt;span style="color:#a6e22e">ofString&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(response.&lt;span style="color:#a6e22e">body&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>First we import &lt;code>java.net.URI&lt;/code>, &lt;code>java.net.http.HttpClient&lt;/code>, &lt;code>java.net.http.HttpRequest&lt;/code>, &lt;code>java.net.http.HttpResponse&lt;/code>. These are required for our requests to run.&lt;/p></description></item><item><title>Installing Postgresql on Ubuntu</title><link>https://dhruv.ing/posts/postgresql/postgresql/</link><pubDate>Sat, 24 Jun 2023 11:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/postgresql/postgresql/</guid><description>&lt;h1 id="installing-postgres">Installing Postgres&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt search postgres
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install postgresql
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install postgresql postgresql-contrib
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl start postgresql.service
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo -i -u postgres
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo -u postgres createuser --interactive
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo -u upskillr psql
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo -u postgres createdb upskillr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo -u upskillr psql
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo adduser upskillr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo -u upskillr psql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="double-and-single-quotes-in-pgsql">Double and single Quotes in (PG)SQL&lt;/h1>
+&lt;p>Double quotes are for names of tables or fields. Sometimes You can omit them. The single quotes are for string constants. This is the SQL standard. In the verbose form, your query looks like this:&lt;/p></description></item><item><title>Some Postgresql Examples</title><link>https://dhruv.ing/posts/postgresql/examples/</link><pubDate>Sat, 24 Jun 2023 11:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/postgresql/examples/</guid><description>&lt;h2 id="jsonb-to-record">jsonb to record&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">select&lt;/span> fla.offer_id, ans_data.&lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#66d9ef">from&lt;/span> fla, jsonb_to_record(answer_data) &lt;span style="color:#66d9ef">as&lt;/span> ans_data(&lt;span style="color:#e6db74">&amp;#34;AE46&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE3&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE16&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE45&amp;#34;&lt;/span> date,&lt;span style="color:#e6db74">&amp;#34;AE47&amp;#34;&lt;/span> date,&lt;span style="color:#e6db74">&amp;#34;AE55&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE60&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE61&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE73&amp;#34;&lt;/span> date,&lt;span style="color:#e6db74">&amp;#34;AE74&amp;#34;&lt;/span> date,&lt;span style="color:#e6db74">&amp;#34;AE62&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE27&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE42&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE58&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE25&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE54&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE44&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE17&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE53&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE59&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE19&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE56&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE21&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE57&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE33&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE32&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE41&amp;#34;&lt;/span> date,&lt;span style="color:#e6db74">&amp;#34;AE31&amp;#34;&lt;/span> date,&lt;span style="color:#e6db74">&amp;#34;AE65&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE66&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE67&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE72&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE52&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE38&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE69&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE70&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE68&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE71&amp;#34;&lt;/span> text,&lt;span style="color:#e6db74">&amp;#34;AE39&amp;#34;&lt;/span> text); 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="accessing-records-key-and-values">Accessing record&amp;rsquo;s key and values&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">select&lt;/span> offer_id, rev, bf.&lt;span style="color:#66d9ef">key&lt;/span> &lt;span style="color:#66d9ef">as&lt;/span> business_field, bf.value &lt;span style="color:#66d9ef">as&lt;/span> business_field_comments &lt;span style="color:#66d9ef">from&lt;/span> &lt;span style="color:#66d9ef">table_name&lt;/span> tn, jsonb_each_text((tn.answer_data&lt;span style="color:#f92672">-&amp;gt;&amp;gt;&lt;/span>&lt;span style="color:#e6db74">&amp;#39;FI5&amp;#39;&lt;/span>)::jsonb) &lt;span style="color:#66d9ef">as&lt;/span> bf;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="json-string-agg">JSON String agg&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Data is stored as text within a json. Data itself is of type json
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- The end output is comma separted string from json keys
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">select&lt;/span> string_agg(bf, e&lt;span style="color:#e6db74">&amp;#39;, &amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">from&lt;/span> fact_logbook_ae fla, json_object_keys((fla.answer_data&lt;span style="color:#f92672">-&amp;gt;&amp;gt;&lt;/span>&lt;span style="color:#e6db74">&amp;#39;AE54&amp;#39;&lt;/span>)::json) bf &lt;span style="color:#66d9ef">where&lt;/span> offer_id&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;SECD-20230013&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="upserts-update-record-on-conflict-while-inserting">UPSERTS: Update record on conflict while inserting&lt;/h2>
+&lt;p>Syntax:&lt;/p></description></item><item><title>Linux Filesystem Hierarchy</title><link>https://dhruv.ing/posts/linux/man-hier/</link><pubDate>Mon, 12 Jun 2023 21:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/man-hier/</guid><description>&lt;p>It is often tough to know where certain kinds of files or applications are in the Linux files system.&lt;/p>
+&lt;p>It is complicated due to historical reasons, and different distributions often put their files in different locations.&lt;/p>
+&lt;p>A good way to know where things are, or where things go, is by referring to your distribution&amp;rsquo;s man pages.&lt;/p>
+&lt;p>&lt;code>man hier&lt;/code>&lt;/p>
+&lt;p>&lt;img src="man-hier.png" alt="">&lt;/p></description></item><item><title>Find Patterns in a directory with grep</title><link>https://dhruv.ing/posts/cli/recursive-grep/</link><pubDate>Fri, 26 May 2023 22:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/recursive-grep/</guid><description>&lt;p>Recently I had to lookup a usage for function in a project I was working on.&lt;/p>
+&lt;p>This is relatively an easy task with vscode. You just open the search in files menu, type what you are looking for, and off you go.&lt;/p>
+&lt;p>This made me wonder, how would you achieve this task in the command line with something like grep?&lt;/p>
+&lt;p>There is an amazing tool which specializes in this activity: &lt;code>ripgrep&lt;/code>, however I was determined to complete this task with just grep.&lt;/p></description></item><item><title>Get a Brief of Ip command (with Color)</title><link>https://dhruv.ing/posts/cli/ip-brief-output/</link><pubDate>Sun, 25 Dec 2022 11:25:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/ip-brief-output/</guid><description>&lt;p>The default &lt;code>ip addr&lt;/code> command, which gives you ip address of your device, is cluttered with alot of values, which may not be useful to you. To quickly get the output, you can pass the &lt;code>-br&lt;/code> or &lt;code>--brief&lt;/code> argument, which outputs a brief of the network statistic.&lt;/p>
+&lt;p>Additionally you can get color output by passing the &lt;code>-c&lt;/code> or &lt;code>--color&lt;/code> argument.&lt;/p>
+&lt;p>&lt;img src="ip-brief-output.png" alt="">&lt;/p></description></item><item><title>Useful Shell Shortcuts</title><link>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</link><pubDate>Wed, 26 Oct 2022 12:30:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/bash-shell-shortcuts/</guid><description>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Key Binding&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>ESC f&lt;/code>, &lt;code>ESC b&lt;/code>&lt;/td>
+ &lt;td>Go forward/backword one word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>CTRL a&lt;/code>, &lt;code>CTRL e&lt;/code>&lt;/td>
+ &lt;td>Go to start/end of line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>~ C&lt;/code>&lt;/td>
+ &lt;td>Enter SSH Command Mode&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-b&lt;/code>, &lt;code>C-f&lt;/code>&lt;/td>
+ &lt;td>Move backward/forward one character&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-b&lt;/code>, &lt;code>M-f&lt;/code>&lt;/td>
+ &lt;td>Move backward/forward by word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-a&lt;/code>, &lt;code>C-e&lt;/code>&lt;/td>
+ &lt;td>Move to the beginning/end of the line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-w&lt;/code>, &lt;code>M-d&lt;/code>&lt;/td>
+ &lt;td>Kill word backward/forward&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-d&lt;/code>, &lt;code>Backspace&lt;/code>&lt;/td>
+ &lt;td>Delete char forward/backward&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-d&lt;/code>&lt;/td>
+ &lt;td>may send EOF on an empty line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-.&lt;/code>&lt;/td>
+ &lt;td>cycle through the argument to the previous commands&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-k&lt;/code>, &lt;code>C-u&lt;/code>&lt;/td>
+ &lt;td>Kill (to clipboard) to end of line/beginning of line&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-y&lt;/code>&lt;/td>
+ &lt;td>Yank from kill ring&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-y&lt;/code> (after &lt;code>C-y&lt;/code>)&lt;/td>
+ &lt;td>Cycle through kill ring history&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-t&lt;/code>, &lt;code>M-t&lt;/code>&lt;/td>
+ &lt;td>Transpose character/word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>M-u&lt;/code>, &lt;code>M-l&lt;/code>, &lt;code>M-c&lt;/code>&lt;/td>
+ &lt;td>Upper, lower, or capitalize forward word&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>C-_&lt;/code>, &lt;code>C-x C-u&lt;/code>, &lt;code>C-/&lt;/code>&lt;/td>
+ &lt;td>Cycle through the undo list&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;em>Note&lt;/em>: &lt;code>C&lt;/code> = &lt;code>Ctrl&lt;/code>, &lt;code>M&lt;/code> = Meta Key/modifier (&lt;code>alt&lt;/code> or &lt;code>esc&lt;/code>)&lt;/p></description></item><item><title>Copying Files Over a Remote Connection</title><link>https://dhruv.ing/posts/ssh/copying-files-over-remote/</link><pubDate>Fri, 09 Sep 2022 11:25:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/copying-files-over-remote/</guid><description>&lt;h1 id="scp">SCP&lt;/h1>
+&lt;p>SCP, or Secure Copy uses SSH to copy files or directories that you select.&lt;/p>
+&lt;p>Since scp relies on ssh, it is available on the recent builds of windows (that pack ssh by default), mac and ofcourse linux.&lt;/p>
+&lt;p>You can even copy files over jump or intermediate connections by specifiying the &lt;code>-o&lt;/code> flag, like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># To copy myfile.txt to /my/dir directory on your remote host&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>scp -o &lt;span style="color:#e6db74">&amp;#39;ProxyJump your.jump.host&amp;#39;&lt;/span> myfile.txt remote.internal.host:/my/dir
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that with &lt;code>SSH version 9&lt;/code>, SCP now has a SFTP backend rather than the traditional rcp backend. More details can be found in the &lt;a href="https://www.openssh.com/txt/release-9.0">release notes&lt;/a>&lt;/p></description></item><item><title>A list of (unix) environment variables on your system</title><link>https://dhruv.ing/posts/linux/environ-variables/</link><pubDate>Sun, 14 Aug 2022 22:20:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/environ-variables/</guid><description>&lt;p>On Linux, man 7 environ describes a number of common environment variables, and gives references to other man pages which describe them in more detail. Equivalents exist on other systems; see for example the FreeBSD version. (Historically, Unix V7 had an equivalent in section 5; the BSDs have had this in section 7 since at least BSD4.3.)&lt;/p>
+&lt;p>In general, to look through all the man pages which mention a given environment variable, you can use man -K, which runs a full-text search in all the installed man pages’ sources, with the -w and -i options (which respectively list man pages instead of viewing them, and match the strings’ case):&lt;/p></description></item><item><title>Notes on System Design</title><link>https://dhruv.ing/posts/misc/system-design/</link><pubDate>Thu, 11 Aug 2022 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/system-design/</guid><description>&lt;h1 id="1-design-for-moores-law">1. Design for Moore&amp;rsquo;s Law&lt;/h1>
+&lt;p>Moore&amp;rsquo;s Law imageThe one constant for computer designers is rapid change, which is driven largely by Moore&amp;rsquo;s Law. It states that integrated circuit resources double every 18–24 months. Moore&amp;rsquo;s Law resulted from a 1965 prediction of such growth in IC capacity made by Gordon Moore, one of the founders of Intel. As computer designs can take years, the resources available per chip can easily double or quadruple between the start and finish of the project. Like a skeet shooter, computer architects must anticipate where the technology will be when the design finishes rather than design for where it starts. We use an &amp;ldquo;up and to the right&amp;rdquo; Moore&amp;rsquo;s Law graph to represent designing for rapid change.&lt;/p></description></item><item><title>Getting a command from Shell History, Fast</title><link>https://dhruv.ing/posts/cli/reverse-shell-search/</link><pubDate>Thu, 10 Mar 2022 12:16:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/reverse-shell-search/</guid><description>&lt;p>To quickly search through, or re-run one of the previously run command, especially if it is a long one, instead of searching the &lt;code>.hist&lt;/code> file, you can just type &lt;code>ctrl r&lt;/code> and that will bring up a reverse/back search prompt where it will try to autocomplete the previously run command.&lt;/p>
+&lt;p>The command search from most recently used first, so if the first suggestion is not the command you want, you can keep going back and searching by repeatedly typing &lt;code>ctrl r&lt;/code>&lt;/p></description></item><item><title>Onefetch</title><link>https://dhruv.ing/posts/cli/onefetch/</link><pubDate>Wed, 19 Jan 2022 00:52:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/onefetch/</guid><description>&lt;p>Onefetch is a command-line Git information tool written in Rust that displays project information and code statistics for a local Git repository directly on your terminal. The tool is completely offline - no network access is required.&lt;/p>
+&lt;p>By default, the repo&amp;rsquo;s information is displayed alongside the dominant language&amp;rsquo;s logo, but you can further configure onefetch to instead use an image - on supported terminals -, a text input or nothing at all.&lt;/p></description></item><item><title>ZSH Shenanigans</title><link>https://dhruv.ing/posts/cli/zsh-shenanigans/</link><pubDate>Wed, 05 Jan 2022 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/zsh-shenanigans/</guid><description>&lt;h2 id="aliases">Aliases&lt;/h2>
+&lt;h4 id="python-aliases">Python Aliases&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>alias pip&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;python3 -m pip&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias python&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alias py&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;python3&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="ls-alias">ls Alias&lt;/h4>
+&lt;p>Because ls does not automagically add color&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>alias ls&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;ls --color&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="prompt-customization">Prompt customization&lt;/h2>
+&lt;p>checkout the &lt;a href="https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Prompt-Expansion">sourcefile&lt;/a> for more, here I am going to detail the customization that I add.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>export PROMPT&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">$&amp;#39;%F{green}%B%n%b%f %F{111}%3~%f %(?.%F{green}\U279c%f.%F{009}\U279c%f) &amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>$ : Required for unicode parsing&lt;/li>
+&lt;li>%F&amp;hellip;.%f is for setting Foreground colors,&lt;/li>
+&lt;li>colors specified in {color/color_code} format&lt;/li>
+&lt;li>%B&amp;hellip;.%b for bold text&lt;/li>
+&lt;li>%n for username&lt;/li>
+&lt;li>%m for machine name (condensed)&lt;/li>
+&lt;li>%~ for pwd, but with $HOME prefix,&lt;/li>
+&lt;li>3 for the number of parent dirs to show&lt;/li>
+&lt;li>alternatively use %d or %/ for full paths&lt;/li>
+&lt;li>\U0000 for unicode&lt;/li>
+&lt;li>%(?.if_reu\turn_code_istrue.if_reuturn_code_isfalse)&lt;/li>
+&lt;li>Next we have colorized the output for each case (true/false)&lt;/li>
+&lt;li>009 is a brighter, non panicy version of red&lt;/li>
+&lt;/ul>
+&lt;h2 id="you-can-invoke-the-new-user-install-again-by-running">You can invoke the new user install again by running&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>autoload zsh-newuser-install &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> zsh-newuser-install -f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will add some autocomplete magic and let you set options for history file etc.&lt;/p></description></item><item><title>Download files with curl</title><link>https://dhruv.ing/posts/cli/download-files-with-curl/</link><pubDate>Sun, 26 Dec 2021 20:48:00 +0400</pubDate><guid>https://dhruv.ing/posts/cli/download-files-with-curl/</guid><description>&lt;p>You can download files with curl, just like with wget, using the flag &lt;code>-O&lt;/code>&lt;/p>
+&lt;p>The capital &lt;code>-O&lt;/code> outputs the file name to be as the same name as the one on the server, but you can also use &lt;code>-o&lt;/code> (small o), to name the files as you want, like &lt;code>curl -o filename link-to-file&lt;/code>&lt;/p>
+&lt;p>These flags are important, because otherwise, curl will dump the output to stdout.&lt;/p></description></item><item><title>Laggy SSH-Server connections on Laptops</title><link>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</link><pubDate>Fri, 24 Dec 2021 20:12:56 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/laggy-ssh-server-with-iw-powersave/</guid><description>&lt;p>When using a laptop as a server, if the SSH connection is laggy, it may be because of a wireless card’s power-saving feature.&lt;/p>
+&lt;p>You can turn this feature off by issuing the command&lt;/p>
+&lt;p>&lt;code>iw &amp;lt;devname&amp;gt; set power_save off&lt;/code>&lt;/p>
+&lt;p>You can view the status of iw using the command&lt;/p>
+&lt;p>&lt;code>iw &amp;lt;devname&amp;gt; get power_save&lt;/code>&lt;/p>
+&lt;p>and the device name &lt;code>&amp;lt;devname&amp;gt;&lt;/code> using the command &lt;code>ip a&lt;/code>&lt;/p>
+&lt;p>iw is used to show / manipulate wireless devices and their configuration&lt;/p></description></item><item><title>Linux as a Backend</title><link>https://dhruv.ing/posts/linux/linux-as-backend/</link><pubDate>Thu, 02 Dec 2021 22:15:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/linux-as-backend/</guid><description>&lt;p>After accessing the linux server in the creative lab and then setting up my blog site on a VBox VM, using port-binding, I have started to feel like using whatever Desktop OS (Windows/MacOS/Linux) is just fine.&lt;/p>
+&lt;p>&lt;a href="https://dhruv.ing/posts/ssh/ssh-port-forwarding/">Why SSH Port Forwarding gives you Superpowers&lt;/a>&lt;/p>
+&lt;p>Most of the usage of this kind of work will be via the terminal itself.&lt;/p>
+&lt;p>I am however still struggling with how to use desktop linux, so as to be that one guy who propogates Linux use on the desktop.&lt;/p></description></item><item><title>Forget git history</title><link>https://dhruv.ing/posts/git/forget-git-hist/</link><pubDate>Mon, 29 Nov 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/git/forget-git-hist/</guid><description>&lt;h1 id="to-remove-the-git-history">To remove the git history&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>git checkout --orphan tmp &lt;span style="color:#75715e"># create a temporary branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git add -A &lt;span style="color:#75715e"># Add all files and commit them&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -m &lt;span style="color:#e6db74">&amp;#39;Add files&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git branch -D main &lt;span style="color:#75715e"># Deletes the master branch&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git branch -m main &lt;span style="color:#75715e"># Rename the current branch to master&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git push -f origin main &lt;span style="color:#75715e"># Force push master branch to Git server&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Git Credential Manager</title><link>https://dhruv.ing/posts/git/git-credential-manager/</link><pubDate>Fri, 26 Nov 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/git/git-credential-manager/</guid><description>&lt;p>Github removed the https login with username password to push/pull code.&lt;/p>
+&lt;p>Now you have to generate a personal access token and use that token instead of the password for those operations.&lt;/p>
+&lt;p>This brings us to git credential manger, you can save the username and password (or the personal access token) with git for https logins, so that you dont have to input it again and again.&lt;/p>
+&lt;p>You can do this with&lt;/p></description></item><item><title>./ in Linux</title><link>https://dhruv.ing/posts/linux/dotslash-linux/</link><pubDate>Mon, 01 Nov 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/linux/dotslash-linux/</guid><description>&lt;p>So, why exactly does &lt;code>./executable&lt;/code> work in Linux and Unix (and &lt;code>.\&lt;/code> in windows)?&lt;/p>
+&lt;p>The &lt;code>./&lt;/code> translates to: &lt;strong>in the current directory&lt;/strong> (dot(.) : this, slash(/) : directory)&lt;/p>
+&lt;p>Now recall that there is a variable called &lt;code>$PATH&lt;/code> in all operating system shells.&lt;/p>
+&lt;p>The role of this variable is to store the path to all the places where system binaries are stored (for eg in &lt;code>/bin&lt;/code> or &lt;code>/usr/bin&lt;/code> or &lt;code>/sbin&lt;/code>)&lt;/p>
+&lt;p>Also remember that shells can then take these binaries as inputs and directly run them like&lt;/p></description></item><item><title>Multihop SSH</title><link>https://dhruv.ing/posts/ssh/multihop-ssh/</link><pubDate>Sun, 31 Oct 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/ssh/multihop-ssh/</guid><description>&lt;p>OpenSSH v7.3 onward supports a &lt;code>-J&lt;/code> switch and a &lt;code>ProxyJump&lt;/code> option, which allow one or more comma-separated jump hosts, so, you can simply do this now:&lt;/p>
+&lt;pre tabindex="0">&lt;code>ssh -J jumpuser1@jumphost1,jumpuser2@jumphost2,...,jumpuserN@jumphostN user@hostbe
+&lt;/code>&lt;/pre>&lt;hr>
+&lt;p>If you want to bind ports as well, You basically have three possibilities:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code>:&lt;/p>
+&lt;pre tabindex="0">&lt;code>ssh -L 9999:host2:1234 -N host1
+&lt;/code>&lt;/pre>&lt;p>As noted above, the connection from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code> will not be secured.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Tunnel from &lt;code>localhost&lt;/code> to &lt;code>host1&lt;/code> and from &lt;code>host1&lt;/code> to &lt;code>host2&lt;/code>:&lt;/p></description></item><item><title>Python tools</title><link>https://dhruv.ing/posts/python/python-tooling/</link><pubDate>Tue, 05 Jan 2021 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-tooling/</guid><description>&lt;h1 id="index">Index&lt;/h1>
+&lt;ol>
+&lt;li>&lt;a href="#pydoc">pydoc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#pip">Pip&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#setuptools">Setuptools&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#json-tool">json.tool&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#argparse">argparse&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#pyinstaller">pyinstaller&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#python-packages">Note on python packages&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#kivy">kivy&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#preferred-lsp">Preferred LSP&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h3 id="pydoc">pydoc&lt;/h3>
+&lt;p>To get help with used defined functions and classes, just run &lt;code>pydoc&lt;/code>&lt;/p>
+&lt;p>eg:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">bar&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;this is the docstring for bar()&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print &lt;span style="color:#e6db74">&amp;#39;hello&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">baz&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;this is the docstring for baz()&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print &lt;span style="color:#e6db74">&amp;#39;world&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After Running &lt;code>pydoc&lt;/code>:&lt;/p>
+&lt;pre tabindex="0">&lt;code>$ pydoc foo # Note do not include the .py extention
+Help on module foo:
+
+NAME
+ foo
+
+FILE
+ /path/to/foo.py
+
+FUNCTIONS
+ bar()
+ this is the docstring for bar()
+
+ baz()
+ this is the docstring for baz()
+&lt;/code>&lt;/pre>&lt;p>You can also generate an HTML help file:&lt;/p></description></item><item><title>Python Sockets</title><link>https://dhruv.ing/posts/python/python-network-sockets/</link><pubDate>Tue, 11 Aug 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-network-sockets/</guid><description>&lt;h1 id="network-sockets">Network Sockets&lt;/h1>
+&lt;h2 id="server-side">Server side&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> socket
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> threading
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>HEADER &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">64&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Choose a port&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PORT &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">5050&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>FORMAT &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;utf-8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DISCONNECT_MESSAGE &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;!DISCONNECT&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Check your ip address using ifconfig/ipconfig/ip addr&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># SERVER = &amp;#34;192.168.1.114&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># To get based on dynamic hostname&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># SERVER = socket.gethostbyname(socket.gethostname())&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Symbolic empty string signifies all availiable interfaces&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SERVER &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ADDR &lt;span style="color:#f92672">=&lt;/span> (SERVER, PORT)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># What kind of address are we going to look for in the connections&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># SOCK_Stream: Streaming data over the socket&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>server &lt;span style="color:#f92672">=&lt;/span> socket&lt;span style="color:#f92672">.&lt;/span>socket(socket&lt;span style="color:#f92672">.&lt;/span>AF_INET, socket&lt;span style="color:#f92672">.&lt;/span>SOCK_STREAM)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># binds the server to the port. first arguemnt of bind is a tuple&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>server&lt;span style="color:#f92672">.&lt;/span>bind((SERVER, PORT))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">handle_client&lt;/span>(conn, addr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> We are not doing much with the address
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> But the object conn of type socket, that is the read deal.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> You see, that is the connection/connected object
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> That is like the io stream
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> conn.doThis conn.doThat and other shenanigans
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> :param conn:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> :param addr:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> :return:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;[NEW CONNECTION] &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>addr&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74"> connected.&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> connected &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> connected:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Here the first message from the client will always be the length of the header&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># knock knock protocol&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> msg_length &lt;span style="color:#f92672">=&lt;/span> conn&lt;span style="color:#f92672">.&lt;/span>recv(HEADER)&lt;span style="color:#f92672">.&lt;/span>decode(&lt;span style="color:#e6db74">&amp;#34;utf-8&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># The first message comes in as an empty string. (connection succesful msg)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># To get around that, we check if the string is empty or not.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> msg_length:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> msg_length &lt;span style="color:#f92672">=&lt;/span> int(msg_length)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Actual message&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> msg &lt;span style="color:#f92672">=&lt;/span> conn&lt;span style="color:#f92672">.&lt;/span>recv(msg_length)&lt;span style="color:#f92672">.&lt;/span>decode(FORMAT)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (msg &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;!DISCONNECT&amp;#34;&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> connected &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;[&lt;/span>&lt;span style="color:#e6db74">{&lt;/span>addr&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">] &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>msg&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn&lt;span style="color:#f92672">.&lt;/span>send(&lt;span style="color:#e6db74">&amp;#34;Msg Recv!&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>encode(FORMAT))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn&lt;span style="color:#f92672">.&lt;/span>close()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">start&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Listen is the actual thing that makes our server, &amp;#34;our server&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> That and the server.accept() method
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#39;&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#34;[Starting] server is starting&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server&lt;span style="color:#f92672">.&lt;/span>listen()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;[SERVER HAS STARTED] Listening on &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>SERVER&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Wait for new connection&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn, addr &lt;span style="color:#f92672">=&lt;/span> server&lt;span style="color:#f92672">.&lt;/span>accept()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> thread &lt;span style="color:#f92672">=&lt;/span> threading&lt;span style="color:#f92672">.&lt;/span>Thread(target&lt;span style="color:#f92672">=&lt;/span>handle_client,args&lt;span style="color:#f92672">=&lt;/span>(conn, addr))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Notice that we dont have handle_client() and arguemnts to it are passed by args()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> thread&lt;span style="color:#f92672">.&lt;/span>start()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;[ACTIVE CONNECTIONS] &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>threading&lt;span style="color:#f92672">.&lt;/span>activeCount() &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>start()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="client-side">Client side&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> socket
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>HEADER &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">64&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Choose a port&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>PORT &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">5050&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>FORMAT &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;utf-8&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DISCONNECT_MESSAGE &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;!DISCONNECT&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Check your ip address using ifconfig/ipconfig/ip addr&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SERVER &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;192.168.1.114&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ADDR &lt;span style="color:#f92672">=&lt;/span> (SERVER, PORT)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>client &lt;span style="color:#f92672">=&lt;/span> socket&lt;span style="color:#f92672">.&lt;/span>socket(socket&lt;span style="color:#f92672">.&lt;/span>AF_INET, socket&lt;span style="color:#f92672">.&lt;/span>SOCK_STREAM)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>client&lt;span style="color:#f92672">.&lt;/span>connect(ADDR)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">send&lt;/span>(msg):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> message &lt;span style="color:#f92672">=&lt;/span> msg&lt;span style="color:#f92672">.&lt;/span>encode(&lt;span style="color:#e6db74">&amp;#39;utf-8&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> msg_length &lt;span style="color:#f92672">=&lt;/span> len(message)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> send_length &lt;span style="color:#f92672">=&lt;/span> str(msg_length)&lt;span style="color:#f92672">.&lt;/span>encode(FORMAT)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> send_length &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#e6db74">b&lt;/span>&lt;span style="color:#e6db74">&amp;#39; &amp;#39;&lt;/span> &lt;span style="color:#f92672">*&lt;/span> (HEADER &lt;span style="color:#f92672">-&lt;/span> len(send_length))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client&lt;span style="color:#f92672">.&lt;/span>send(send_length)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client&lt;span style="color:#f92672">.&lt;/span>send(message)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(client&lt;span style="color:#f92672">.&lt;/span>recv(&lt;span style="color:#ae81ff">2048&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>decode(FORMAT))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>send(&lt;span style="color:#e6db74">&amp;#34;Hello world&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>send(&lt;span style="color:#e6db74">&amp;#34;YOLO&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>send(&lt;span style="color:#e6db74">&amp;#34;LALA LAND&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>send(DISCONNECT_MESSAGE)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Intermediate Python Concepts</title><link>https://dhruv.ing/posts/python/python-concepts/</link><pubDate>Wed, 05 Aug 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-concepts/</guid><description>&lt;h2 id="classes-and-objects">Classes and objects&lt;/h2>
+&lt;ul>
+&lt;li>creating and using classes    &lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">circle&lt;/span>(object):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self,radius,color):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>radius &lt;span style="color:#f92672">=&lt;/span> radius
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>color &lt;span style="color:#f92672">=&lt;/span> color
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>RedCircle &lt;span style="color:#f92672">=&lt;/span> circle(&lt;span style="color:#ae81ff">10&lt;/span>,&lt;span style="color:#e6db74">&amp;#34;Red&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Methods are functions which operate on the class instances&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">rectangle&lt;/span>(object):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self, height, width, color):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>height &lt;span style="color:#f92672">=&lt;/span> height
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>width &lt;span style="color:#f92672">=&lt;/span> width
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>color &lt;span style="color:#f92672">=&lt;/span> color
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">add_height&lt;/span>(self,h):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>height &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>height &lt;span style="color:#f92672">+&lt;/span> h
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>(self&lt;span style="color:#f92672">.&lt;/span>radius)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="list-comprehension">List Comprehension&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>my_function &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">lambda&lt;/span> a, b, c : a &lt;span style="color:#f92672">+&lt;/span> b
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>my_function(&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python OOPS Concepts</title><link>https://dhruv.ing/posts/python/python-oop/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/python/python-oop/</guid><description>&lt;p>self =&amp;gt; instances -&amp;gt; methods taking this as the first arguement work on instances&lt;/p>
+&lt;p>cls =&amp;gt; classes -&amp;gt; work on the entire class rather than an instance&lt;/p>
+&lt;p>both of them are context-aware&lt;/p>
+&lt;p>when working with classes, unlike regular methods that take instances as the first arguemnt and unlike class methods that take classes as the first argument, static methods take no arguments&lt;/p>
+&lt;h1 id="object-oriented-concepts-with-python">Object Oriented Concepts with Python&lt;/h1>
+&lt;p>to declare a class in python you use the &lt;code>class&lt;/code> keyword, if at all you want the class to be empty, you can use the &lt;code>pass&lt;/code> keyword&lt;/p></description></item><item><title>Regex concepts</title><link>https://dhruv.ing/posts/misc/regex-concepts/</link><pubDate>Sun, 05 Jan 2020 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/regex-concepts/</guid><description>&lt;h1 id="regex-concepts">Regex Concepts&lt;/h1>
+&lt;p>To escape characters you need to use &lt;code>\&lt;/code> escape characters, for eg if you want to search for a &amp;ldquo;?&amp;rdquo; or &amp;ldquo;.&amp;rdquo; or &amp;ldquo;&amp;quot;, use backslash &lt;code>\.&lt;/code>, &lt;code>\?&lt;/code>, &lt;code>\\&lt;/code>. If you want to search for an email address eg: &lt;a href="mailto:name@example.com">name@example.com&lt;/a>, use: &lt;code>name@example\.com&lt;/code>&lt;/p>
+&lt;p>. -&amp;gt; matches any character except newline character&lt;/p>
+&lt;p>\d matches digits (anything from 0-9)&lt;/p>
+&lt;p>\D matches anything BUT a digit&lt;/p>
+&lt;p>\w searches for any alphanumeric character (a-z,A-Z,0-9)&lt;/p></description></item><item><title>Installing kali linux on Raspberry pi when you have no monitor</title><link>https://dhruv.ing/posts/misc/rpi-headless-install/</link><pubDate>Wed, 25 Dec 2019 12:00:00 +0400</pubDate><guid>https://dhruv.ing/posts/misc/rpi-headless-install/</guid><description>&lt;h1 id="installing-kali-linux-on-raspberry-pi">Installing Kali linux on Raspberry Pi&lt;/h1>
+&lt;ol>
+&lt;li>Flash the image on to the sd card (I recommend using balena etcher)&lt;/li>
+&lt;li>Before putting the SD card into the pi, in the boot folder, create a ssh file (just touch ssh in the boot folder)&lt;/li>
+&lt;li>now come the more tricky part. connect the pi to the router (with a wire) and then ssh into it.&lt;/li>
+&lt;li>use nmtui to to set up the network&lt;/li>
+&lt;li>now you have to enable ssh at each subsequent boot. This is done using &lt;code>sudo systemctl enable ssh.service&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;p>And you are done! ✨🎉🎊🎆&lt;/p></description></item><item><title/><link>https://dhruv.ing/index-about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/index-about/</guid><description/></item><item><title/><link>https://dhruv.ing/posts/dotfiles/linux/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/linux/</guid><description>&lt;h1 id="linux">Linux&lt;/h1>
+&lt;h2 id="better-font-rendering-on-linux">Better font rendering on Linux&lt;/h2>
+&lt;p>Set Anti Aliasing to Subpixel and Hinting to Slight&lt;/p>
+&lt;h2 id="gnome--monitor-colors">Gnome &amp;amp; monitor colors&lt;/h2>
+&lt;p>Change the monitor color to sRGB&lt;/p>
+&lt;h2 id="setting-up-chromium-based-browsers">Setting up chromium based browsers&lt;/h2>
+&lt;p>You can set up your own color scheme using the profiles setting. Use that to match whatever is the primary window color of the theme.&lt;/p>
+&lt;h2 id="setting-up-desktop-entrys">Setting up Desktop Entrys&lt;/h2>
+&lt;pre tabindex="0">&lt;code>[Desktop Entry]
+Name=Appllication Name
+Exec=/home/mrPeterson/path_to_executable
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/optional/path/to/icon.png
+&lt;/code>&lt;/pre></description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/terminal-font/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/terminal-font/</guid><description>&lt;h1 id="terminal-font">Terminal font&lt;/h1>
+&lt;ul>
+&lt;li>JetBrainsMonoNerdFontPropo-Medium&lt;/li>
+&lt;li>Meslo Nerd Font&lt;/li>
+&lt;li>FiraCode Nerd Font&lt;/li>
+&lt;li>Meslo (Apple only)&lt;/li>
+&lt;li>Ubuntu/Mono&lt;/li>
+&lt;/ul></description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/vscode/readme/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/vscode/readme/</guid><description>&lt;h1 id="colorscheme">Colorscheme&lt;/h1>
+&lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=dahong.theme-bear">Bear Theme&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=BeardedBear.beardedtheme">Bearded Theme&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=sainnhe.edge">Edge&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme">Github Theme&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=sainnhe.gruvbox-material">GruvBox Material Theme&lt;/a>&lt;/p>
+&lt;h1 id="extentions">Extentions&lt;/h1>
+&lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens">Error Lens&lt;/a> for inline error highlighting.&lt;/p>
+&lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client">Thunder Client&lt;/a> as a lightweight postman alternative.&lt;/p>
+&lt;h1 id="most-important-settings">Most Important Settings&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.suggest.preview&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.minimap.autohide&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.cursorBlinking&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;phase&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.wordWrap&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;on&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;workbench.activityBar.location&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;top&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;window.autoDetectColorScheme&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.suggest.localityBonus&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reseting-pane-sizes-of-sidebar-and-terminal">Reseting Pane sizes (of sidebar and terminal)&lt;/h1>
+&lt;p>Move the cursor till the option to resize comes up, and then just double click! and it will resize!&lt;/p>
+&lt;p>&lt;a href="https://dev.to/entrptaher/vscode-trick-reset-the-sidebar-and-terminal-pane-size-5cd1">Learnt from here&lt;/a>&lt;/p>
+&lt;h1 id="using-the-native-title-bar">Using the Native Title Bar&lt;/h1>
+&lt;p>You can use the native title bar of each platform (Is set as true by default on Linux).&lt;/p></description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/windows/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/windows/</guid><description/></item></channel></rss>
