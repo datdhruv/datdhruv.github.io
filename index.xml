@@ -485,7 +485,10 @@ Icon=/optional/path/to/icon.png
 &lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=sainnhe.edge">Edge&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme">Github Theme&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=sainnhe.gruvbox-material">GruvBox Material Theme&lt;/a>&lt;/p>
-&lt;h1 id="extentions">Extentions&lt;/h1>
+&lt;h1 id="font">Font&lt;/h1>
+&lt;p>&lt;a href="https://www.nerdfonts.com/font-downloads">Jetbrains Nerd font Medium&lt;/a>&lt;/p>
+&lt;pre tabindex="0">&lt;code>&amp;#34;editor.fontFamily&amp;#34;: &amp;#34;JetBrainsMono NF Medium&amp;#34;,
+&lt;/code>&lt;/pre>&lt;h1 id="extentions">Extentions&lt;/h1>
 &lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens">Error Lens&lt;/a> for inline error highlighting.&lt;/p>
 &lt;p>&lt;a href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client">Thunder Client&lt;/a> as a lightweight postman alternative.&lt;/p>
 &lt;h1 id="most-important-settings">Most Important Settings&lt;/h1>
@@ -498,6 +501,4 @@ Icon=/optional/path/to/icon.png
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#34;editor.suggest.localityBonus&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reseting-pane-sizes-of-sidebar-and-terminal">Reseting Pane sizes (of sidebar and terminal)&lt;/h1>
 &lt;p>Move the cursor till the option to resize comes up, and then just double click! and it will resize!&lt;/p>
-&lt;p>&lt;a href="https://dev.to/entrptaher/vscode-trick-reset-the-sidebar-and-terminal-pane-size-5cd1">Learnt from here&lt;/a>&lt;/p>
-&lt;h1 id="using-the-native-title-bar">Using the Native Title Bar&lt;/h1>
-&lt;p>You can use the native title bar of each platform (Is set as true by default on Linux).&lt;/p></description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/windows/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/windows/</guid><description/></item></channel></rss>
+&lt;p>&lt;a href="https://dev.to/entrptaher/vscode-trick-reset-the-sidebar-and-terminal-pane-size-5cd1">Learnt from here&lt;/a>&lt;/p></description></item><item><title/><link>https://dhruv.ing/posts/dotfiles/windows/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://dhruv.ing/posts/dotfiles/windows/</guid><description/></item></channel></rss>
