@@ -10,6 +10,12 @@
 
 [GruvBox Material Theme](https://marketplace.visualstudio.com/items?itemName=sainnhe.gruvbox-material)
 
+# Font
+[Jetbrains Nerd font Medium](https://www.nerdfonts.com/font-downloads)
+```
+"editor.fontFamily": "JetBrainsMono NF Medium",
+```
+
 # Extentions
 [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) for inline error highlighting.
 
