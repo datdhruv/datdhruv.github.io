@@ -93,5 +93,12 @@ Default themes for the day/night mode can be controlled using:
 "workbench.preferredLightColorTheme": "Default Light+",
 ```
 
+# Copilot-WSL httpProxy settings
+For Copilot to run under WSL, you need to disable `http.proxySupport`:
+
+```
+"http.proxySupport": "off"
+```
+
 # Python language server
 You can use Jedi server or Pylance. However intellicode only works with pylance
