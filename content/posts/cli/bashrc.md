@@ -11,13 +11,13 @@ showTableOfContents: true
 ## Bash Prompt
 
 ```bash
-PS1=$'\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]\u279c \[\e[0m\]'; PROMPT_DIRTRIM=2
+export PS1=$'\[\e[0;1;38;5;111m\]\w\[\e[38;5;173m\]$(__git_ps1) \[\e[$(($?==0?92:91))m\]\u279c \[\e[0m\]'; PROMPT_DIRTRIM=2
 ```
 
 or without supported nerd fonts:
 
 ```bash
-PS1=$'\[\e[0;1;38;5;111m\]\w \[\e[$(($?==0?92:91))m\]$ \[\e[0m\]'; PROMPT_DIRTRIM=2
+PS1=$'\[\e[0;1;38;5;111m\]\w\[\e[38;5;173m\]$(__git_ps1) \[\e[$(($?==0?92:91))m\]$ \[\e[0m\]'; PROMPT_DIRTRIM=2
 ```
 
 - Directory from `home`
