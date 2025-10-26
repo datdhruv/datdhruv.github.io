@@ -1,14 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import viteLogo from '/vite.svg'
 
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
 import { GlowingEffect } from "./components/ui/glowing-effect";
 import { Globe, World } from './components/ui/globe';
 import { motion } from "framer-motion";
-
-function GlowingEffectDemo() {
-
-}
+import { PersonIcon } from '@radix-ui/react-icons';
 
 interface GridItemProps {
   area: string;
@@ -56,11 +53,11 @@ const GlobeInGrid = () => {
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
-    emissiveIntensity: 0.1,
-    shininess: 0.9,
-    polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
+    emissive: "#061f56", 
+    emissiveIntensity: 1,
+    shininess: 1,
+    polygonColor: "#ffffff",
+    ambientLight: "#ffffff",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
     pointLight: "#ffffff",
@@ -78,20 +75,20 @@ const GlobeInGrid = () => {
       order: 1,
       startLat: -19.885592,
       startLng: -43.951191,
+      endLat: -19.885592,
+      endLng: -43.951191,
+      arcAlt: 0,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
     {
       order: 1,
       startLat: 28.6139,
       startLng: 77.209,
+      endLat: 28.6139,
+      endLng: 77.209,
+      arcAlt: 0,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 2,
-      startLat: 1.3521,
-      startLng: 103.8198,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    }
   ];
   return (
     <div className="w-full h-64 md:h-80 relative">
@@ -100,16 +97,71 @@ const GlobeInGrid = () => {
   );
 };
 
+// Add CurrentTimeCard component
+const CurrentTimeCard = () => {
+  const [time, setTime] = useState<string>(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <GridItem
+      area="md:[grid-area:3/1/4/7] xl:[grid-area:2/5/3/8]"
+      icon={<Sparkles className="h-4 w-4 text-black dark:text-neutral-400" />}
+      title="Your Current Time"
+      description={time}
+    />
+  );
+};
+
+// Add ThemeToggleCard component
+const ThemeToggleCard = () => {
+  const [isDark, setIsDark] = useState<boolean>(
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDark]);
+
+  return (
+    <GridItem
+      area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/2/8]"
+      icon={<Lock className="h-4 w-4 text-black dark:text-neutral-400" />}
+      title="Theme Toggle"
+      description={
+        <button
+          className="px-4 py-2 rounded-lg border bg-gray-100 dark:bg-neutral-800 text-black dark:text-white"
+          onClick={() => setIsDark((prev) => !prev)}
+        >
+          {isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        </button>
+      }
+    />
+  );
+};
+
 function App() {
 
   return (
-    <div className="flex items-center justify-center min-h-[90vh] py-24 px-4 bg-white dark:bg-black">
+    <div className="flex items-center justify-center min-h-screen w-full py-24 px-4 bg-white dark:bg-black">
       <ul className="grid grid-cols-1 grid-rows-none gap-6 md:grid-cols-12 md:grid-rows-3 lg:gap-8 xl:max-h-[44rem] xl:grid-rows-2 w-full max-w-7xl">
         <GridItem
           area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
-          icon={<Box className="h-4 w-4 text-black dark:text-neutral-400" />}
-          title="Do things the right way"
-          description="Running out of copy so I'll write anything."
+          icon={<PersonIcon className="h-4 w-4 text-black dark:text-neutral-400" />}
+          title="Hi! I am Dhruv."
+          description={
+            <div className="relative min-h-[8rem] flex items-center">
+            </div>
+          }
         />
 
         <GridItem
@@ -119,12 +171,9 @@ function App() {
           description="Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me."
         />
 
-        <GridItem
-          area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
-          icon={<Lock className="h-4 w-4 text-black dark:text-neutral-400" />}
-          title="You should buy Aceternity UI Pro"
-          description="It's the best money you'll ever spend"
-        />
+        <CurrentTimeCard />
+
+        <ThemeToggleCard />
 
         <GridItem
           area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
@@ -146,6 +195,7 @@ function App() {
             </>
           }
         />
+        
       </ul>
     </div>
   );
