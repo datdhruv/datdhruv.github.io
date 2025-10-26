@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react'
-import viteLogo from '/vite.svg'
-
-import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
+import { Clock, Lock, Search, Settings, Sparkles } from "lucide-react";
 import { GlowingEffect } from "./components/ui/glowing-effect";
-import { Globe, World } from './components/ui/globe';
-import { motion } from "framer-motion";
+import { World } from './components/ui/globe';
 import { PersonIcon } from '@radix-ui/react-icons';
+import { col, desc } from 'motion/react-client';
 
 interface GridItemProps {
   area: string;
@@ -53,7 +51,7 @@ const GlobeInGrid = () => {
     showAtmosphere: true,
     atmosphereColor: "#FFFFFF",
     atmosphereAltitude: 0.1,
-    emissive: "#061f56", 
+    emissive: "#061f56",
     emissiveIntensity: 1,
     shininess: 1,
     polygonColor: "#ffffff",
@@ -69,25 +67,96 @@ const GlobeInGrid = () => {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
-  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
   const sampleArcs = [
     {
       order: 1,
-      startLat: -19.885592,
-      startLng: -43.951191,
-      endLat: -19.885592,
-      endLng: -43.951191,
+      startLat: 18.9582,
+      startLng: 72.8321,
+      endLat: 18.9582,
+      endLng: 72.8321,
       arcAlt: 0,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: "#FFD400",
+      city: "Mumbai",
     },
     {
-      order: 1,
-      startLat: 28.6139,
-      startLng: 77.209,
-      endLat: 28.6139,
-      endLng: 77.209,
+      order: 2,
+      startLat: 25.2048,
+      startLng: 55.2708,
+      endLat: 25.2048,
+      endLng: 55.2708,
       arcAlt: 0,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: "#16C172",
+      city: "Dubai",
+    },
+    {
+      order: 3,
+      startLat: 1.3521,
+      startLng: 103.8198,
+      endLat: 1.3521,
+      endLng: 103.8198,
+      arcAlt: 0,
+      color: "#06b6d4",
+      city: "Singapore",
+    },
+    {
+      order: 4,
+      startLat: 3.1319,
+      startLng: 101.6841,
+      endLat: 3.1319,
+      endLng: 101.6841,
+      arcAlt: 0,
+      color: "#06b6d4",
+      city: "Kuala Lumpur",
+    },
+    {
+      order: 5,
+      startLat: 52.2297,
+      startLng: 21.0122,
+      endLat: 52.2297,
+      endLng: 21.0122,
+      arcAlt: 0,
+      color: "#06b6d4",
+      city: "Warsaw",
+    },
+    {
+      order: 6,
+      startLat: 52.5200,
+      startLng: 13.4050,
+      endLat: 52.5200,
+      endLng: 13.4050,
+      arcAlt: 0,
+      color: "#06b6d4",
+      city: "Berlin",
+    },
+    {
+      order: 7,
+      startLat: 44.4268,
+      startLng: 26.1025,
+      endLat: 44.4268,
+      endLng: 26.1025,
+      arcAlt: 0,
+      color: "#FFD400",
+      city: "Bucharest",
+    },
+    {
+      order: 8,
+      startLat: 37.9838,
+      startLng: 23.7275,
+      endLat: 37.9838,
+      endLng: 23.7275,
+      arcAlt: 0,
+      color: "#06b6d4",
+      city: "Athens",
+    },
+    {
+      order: 9,
+      startLat: 34.9182,
+      startLng: 33.6201,
+      endLat: 34.9182,
+      endLng: 33.6201,
+      arcAlt: 0,
+      color: "#06b6d4",
+      city: "Larnaca",
     },
   ];
   return (
@@ -99,11 +168,14 @@ const GlobeInGrid = () => {
 
 // Add CurrentTimeCard component
 const CurrentTimeCard = () => {
-  const [time, setTime] = useState<string>(new Date().toLocaleTimeString());
+  // Set time to Asia/Dubai timezone
+  const [time, setTime] = useState<string>(
+    new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai' })
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime(new Date().toLocaleTimeString());
+      setTime(new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai' }));
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -111,8 +183,8 @@ const CurrentTimeCard = () => {
   return (
     <GridItem
       area="md:[grid-area:3/1/4/7] xl:[grid-area:2/5/3/8]"
-      icon={<Sparkles className="h-4 w-4 text-black dark:text-neutral-400" />}
-      title="Your Current Time"
+      icon={<Clock className="h-4 w-4 text-black dark:text-neutral-400" />}
+      title="My Current Time"
       description={time}
     />
   );
@@ -185,17 +257,16 @@ function App() {
         <GridItem
           area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
           icon={<Search className="h-4 w-4 text-black dark:text-neutral-400" />}
-          title="Coming soon on Aceternity UI"
+          title="Places I have been to"
           description={
             <>
-              I'm writing the code as I record this, no shit.
               <div className="mt-4">
                 <GlobeInGrid />
               </div>
             </>
           }
         />
-        
+
       </ul>
     </div>
   );
